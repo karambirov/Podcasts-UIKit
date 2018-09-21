@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class PodcastCell: UITableViewCell {
+final class PodcastCell: UITableViewCell {
 
     // MARK: - Outlets
     @IBOutlet fileprivate weak var podcastImageView: UIImageView!
