@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		23478D5A6CEDB3B61832A90D /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
-		AA62F5E52154C1BF00356E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E42154C1BF00356E3F /* ViewController.swift */; };
-		AA62F5E82154C1BF00356E3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5E62154C1BF00356E3F /* Main.storyboard */; };
 		AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5E92154C1C100356E3F /* Assets.xcassets */; };
 		AA62F5ED2154C1C100356E3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5EB2154C1C100356E3F /* LaunchScreen.storyboard */; };
+		AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5F62154C95900356E3F /* MainTabBarController.swift */; };
+		AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */; };
+		AA62F5FF2154CF0A00356E3F /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5FE2154CF0A00356E3F /* FavoritesController.swift */; };
+		AA62F6022154CF3000356E3F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6012154CF3000356E3F /* PodcastsSearchController.swift */; };
+		AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6042154CF5000356E3F /* DownloadsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,11 +23,14 @@
 		9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA62F5DF2154C1BF00356E3F /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA62F5E22154C1BF00356E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA62F5E42154C1BF00356E3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AA62F5E72154C1BF00356E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA62F5E92154C1C100356E3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA62F5EC2154C1C100356E3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA62F5EE2154C1C100356E3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA62F5F62154C95900356E3F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		AA62F5FE2154CF0A00356E3F /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		AA62F6012154CF3000356E3F /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
+		AA62F6042154CF5000356E3F /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,14 +84,81 @@
 		AA62F5E12154C1BF00356E3F /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
-				AA62F5E22154C1BF00356E3F /* AppDelegate.swift */,
-				AA62F5E42154C1BF00356E3F /* ViewController.swift */,
-				AA62F5E62154C1BF00356E3F /* Main.storyboard */,
-				AA62F5E92154C1C100356E3F /* Assets.xcassets */,
-				AA62F5EB2154C1C100356E3F /* LaunchScreen.storyboard */,
-				AA62F5EE2154C1C100356E3F /* Info.plist */,
+				AA62F5F42154C92400356E3F /* Controllers */,
+				AA62F5FA2154CA5C00356E3F /* Extensions */,
+				AA62F5F92154C99800356E3F /* Supporting Files */,
+				AA62F5F82154C98700356E3F /* Resources */,
 			);
 			path = Podcasts;
+			sourceTree = "<group>";
+		};
+		AA62F5F42154C92400356E3F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5FD2154CEB900356E3F /* Favorites */,
+				AA62F6002154CF1200356E3F /* PodcastsSearch */,
+				AA62F6032154CF3D00356E3F /* Downloads */,
+				AA62F5F52154C93000356E3F /* MainTabBar */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AA62F5F52154C93000356E3F /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5F62154C95900356E3F /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		AA62F5F82154C98700356E3F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5E92154C1C100356E3F /* Assets.xcassets */,
+				AA62F5EB2154C1C100356E3F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA62F5F92154C99800356E3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5E22154C1BF00356E3F /* AppDelegate.swift */,
+				AA62F5EE2154C1C100356E3F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA62F5FA2154CA5C00356E3F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA62F5FD2154CEB900356E3F /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F5FE2154CF0A00356E3F /* FavoritesController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		AA62F6002154CF1200356E3F /* PodcastsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F6012154CF3000356E3F /* PodcastsSearchController.swift */,
+			);
+			path = PodcastsSearch;
+			sourceTree = "<group>";
+		};
+		AA62F6032154CF3D00356E3F /* Downloads */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F6042154CF5000356E3F /* DownloadsController.swift */,
+			);
+			path = Downloads;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,7 +172,6 @@
 				AA62F5DB2154C1BF00356E3F /* Sources */,
 				AA62F5DC2154C1BF00356E3F /* Frameworks */,
 				AA62F5DD2154C1BF00356E3F /* Resources */,
-				7F90BE62FC6033E232C5AAE5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -150,35 +222,12 @@
 			files = (
 				AA62F5ED2154C1C100356E3F /* LaunchScreen.storyboard in Resources */,
 				AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */,
-				AA62F5E82154C1BF00356E3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7F90BE62FC6033E232C5AAE5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9135D73CBF1D40545644E1BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,22 +253,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA62F5E52154C1BF00356E3F /* ViewController.swift in Sources */,
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
+				AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */,
+				AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */,
+				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
+				AA62F6022154CF3000356E3F /* PodcastsSearchController.swift in Sources */,
+				AA62F5FF2154CF0A00356E3F /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AA62F5E62154C1BF00356E3F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA62F5E72154C1BF00356E3F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AA62F5EB2154C1C100356E3F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,7 +399,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TDR3533VJS;
-				INFOPLIST_FILE = Podcasts/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -373,7 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TDR3533VJS;
-				INFOPLIST_FILE = Podcasts/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
