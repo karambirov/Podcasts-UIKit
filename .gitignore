@@ -66,3 +66,5 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Podcasts.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Podcasts.xcodeproj/project.xcworkspace/contents.xcworkspacedata
