@@ -28,7 +28,7 @@ final class PodcastsSearchController: UITableViewController {
 }
 
 
-// MARK: - Table View
+// MARK: - UITableView
 extension PodcastsSearchController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
