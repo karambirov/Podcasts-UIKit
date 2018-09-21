@@ -8,23 +8,40 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
+        UINavigationBar.appearance().prefersLargeTitles = true
+        tabBar.tintColor = .purple
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        setupViewControllers()
     }
-    */
+
+}
+
+
+extension MainTabBarController {
+
+    fileprivate func setupViewControllers() {
+        let layout = UICollectionViewFlowLayout()
+        let favoritesController = FavoritesController(collectionViewLayout: layout)
+
+        viewControllers = [
+            generateNavigationController(for: PodcastsSearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
+            generateNavigationController(for: favoritesController, title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
+            generateNavigationController(for: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
+        ]
+    }
+
+    fileprivate func generateNavigationController(for rootViewController: UIViewController,
+                                                  title: String, image: UIImage) -> UIViewController {
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        rootViewController.navigationItem.title = title
+        navigationController.tabBarItem.title   = title
+        navigationController.tabBarItem.image   = image
+        return navigationController
+    }
 
 }
