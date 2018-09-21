@@ -58,6 +58,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistNameLabel" destination="5Ma-sH-geH" id="LA3-5b-1gz"/>
+                <outlet property="episodeCountLabel" destination="45n-WY-J2P" id="c6m-9c-7Iv"/>
+                <outlet property="podcastImageView" destination="v4E-vE-mO3" id="BV8-13-2YI"/>
+                <outlet property="trackNameLabel" destination="j9l-82-rgD" id="hej-Nm-pCL"/>
+            </connections>
             <point key="canvasLocation" x="340.80000000000001" y="139.880059970015"/>
         </tableViewCell>
     </objects>
