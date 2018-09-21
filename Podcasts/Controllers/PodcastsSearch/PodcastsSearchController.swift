@@ -9,22 +9,27 @@
 import UIKit
 import Alamofire
 
-class PodcastsSearchController: UITableViewController {
+// TODO: Replase strings with type-safety values
 
+final class PodcastsSearchController: UITableViewController {
+
+    // MARK: - Properties
     fileprivate var podcasts = [Podcast]()
+    fileprivate var timer: Timer?
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        initialSetup()
     }
 
-    // MARK: - Table view data source
+}
 
+
+// MARK: - Table View
+extension PodcastsSearchController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -34,15 +39,46 @@ class PodcastsSearchController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
-
-
 }
 
+
+// MARK: - UISearchBarDelegate
 extension PodcastsSearchController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        podcasts = []
+        tableView.reloadData()
+
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
+            // TODO: Fetch podcasts
+            print("searching...")
+        })
     }
 
+}
+
+
+// MARK: - Setup
+extension PodcastsSearchController {
+
+    fileprivate func initialSetup() {
+        setupSearchBar()
+        setupTableView()
+    }
+
+    fileprivate func setupSearchBar() {
+        self.definesPresentationContext                   = true
+        navigationItem.searchController                   = searchController
+        navigationItem.hidesSearchBarWhenScrolling        = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate               = self
+    }
+
+    fileprivate func setupTableView() {
+        tableView.tableFooterView = UIView()
+        let nib = UINib(nibName: "PodcastCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "PodcastCell")
+        self.clearsSelectionOnViewWillAppear = false
+    }
 }
