@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DownloadsController: UITableViewController {
+final class DownloadsController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
