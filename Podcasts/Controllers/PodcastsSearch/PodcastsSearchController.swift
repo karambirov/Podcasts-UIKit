@@ -50,12 +50,13 @@ extension PodcastsSearchController {
         let label = UILabel()
         label.text = "Please, enter a search term."
         label.textAlignment = .center
+        label.textColor = .purple
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? 250 : 0
+        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? (tableView.bounds.height / 2) : 0
     }
 
     // MARK: Footer Setup
