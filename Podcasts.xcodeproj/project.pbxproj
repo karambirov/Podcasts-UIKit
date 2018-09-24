@@ -23,6 +23,7 @@
 		AA62F6142154E05600356E3F /* PodcastsSearchingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */; };
 		AA62F61A215958B800356E3F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F619215958B800356E3F /* NetworkService.swift */; };
 		AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61B215958F200356E3F /* Notification+Extensions.swift */; };
+		AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61D21595C2C00356E3F /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsSearchingView.xib; sourceTree = "<group>"; };
 		AA62F619215958B800356E3F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA62F61B215958F200356E3F /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
+		AA62F61D21595C2C00356E3F /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F6072154D34A00356E3F /* Podcast.swift */,
+				AA62F61D21595C2C00356E3F /* SearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
 				AA62F6022154CF3000356E3F /* PodcastsSearchController.swift in Sources */,
 				AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */,
+				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
