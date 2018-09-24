@@ -79,8 +79,10 @@ extension PodcastsSearchController: UISearchBarDelegate {
 
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
-            // TODO: Fetch podcasts
-            print("searching...")
+            NetworkService.shared.fetchPodcasts(searchText: searchText, completionHandler: { podcasts in
+                self.podcasts = podcasts
+                self.tableView.reloadData()
+            })
         })
     }
 
