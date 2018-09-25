@@ -68,6 +68,11 @@ extension PodcastsSearchController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
     }
+
+    // MARK: Navigation
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+    }
 }
 
 
