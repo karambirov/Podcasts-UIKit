@@ -118,6 +118,5 @@ extension PodcastsSearchController {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PodcastCell")
-        self.clearsSelectionOnViewWillAppear = false
     }
 }

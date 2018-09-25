@@ -81,7 +81,6 @@ extension EpisodesController {
         let nib = UINib(nibName: "EpisodeCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "EpisodeCell")
         tableView.tableFooterView = UIView()
-        self.clearsSelectionOnViewWillAppear = false
     }
 
     private func setupNavigationBarButtons() {
