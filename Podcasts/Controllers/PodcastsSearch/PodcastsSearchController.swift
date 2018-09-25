@@ -106,7 +106,7 @@ extension PodcastsSearchController {
         setupTableView()
     }
 
-    fileprivate func setupSearchBar() {
+    private func setupSearchBar() {
         self.definesPresentationContext                   = true
         navigationItem.searchController                   = searchController
         navigationItem.hidesSearchBarWhenScrolling        = false
@@ -114,7 +114,7 @@ extension PodcastsSearchController {
         searchController.searchBar.delegate               = self
     }
 
-    fileprivate func setupTableView() {
+    private func setupTableView() {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PodcastCell")
