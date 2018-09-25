@@ -33,7 +33,17 @@ final class EpisodesController: UITableViewController {
 
 // MARK: - UITableView
 extension EpisodesController {
-    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return episodes.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell", for: indexPath) as! EpisodeCell
+        cell.episode = episodes[indexPath.row]
+        return cell
+    }
+
 }
 
 
@@ -46,8 +56,8 @@ extension EpisodesController {
     }
 
     private func setupTableView() {
-        let nib = UINib(nibName: "EpisodesCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "EpisodesCell")
+        let nib = UINib(nibName: "EpisodeCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "EpisodeCell")
         tableView.tableFooterView = UIView()
         self.clearsSelectionOnViewWillAppear = false
     }
