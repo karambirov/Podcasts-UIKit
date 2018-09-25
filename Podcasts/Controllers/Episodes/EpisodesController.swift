@@ -44,6 +44,28 @@ extension EpisodesController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 134
+    }
+
+    // MARK: Footer Setup
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicatorView.color = .darkGray
+        activityIndicatorView.startAnimating()
+        return activityIndicatorView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return episodes.isEmpty ? 200 : 0
+    }
+
+    // MARK: Navigation
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let episode = episodes[indexPath.row]
+//        let mainTabBarController = UIApplication.mainTabBarController
+//        // TODO: Maximize player
+//    }
 }
 
 
