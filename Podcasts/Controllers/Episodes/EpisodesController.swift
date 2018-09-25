@@ -8,7 +8,15 @@
 
 import UIKit
 
-class EpisodesController: UITableViewController {
+final class EpisodesController: UITableViewController {
+
+    // MARK: - Properties
+    var podcast: Podcast? {
+        didSet {
+            navigationItem.title = podcast?.trackName
+            // TODO: Fetch episodes
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
