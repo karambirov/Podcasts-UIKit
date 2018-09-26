@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="511" height="230.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37V-Io-PKY">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37V-Io-PKY">
                         <rect key="frame" x="136" y="82.5" width="375" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pubDate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-0k-v1T">

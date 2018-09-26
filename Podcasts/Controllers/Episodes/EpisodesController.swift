@@ -91,7 +91,12 @@ extension EpisodesController {
         print("\n\t\tLooking for episodes at feed url:", podcast?.feedUrl ?? "")
 
         guard let feedURL = podcast?.feedUrl else { return }
-        // TODO: Fetch episodes
+        NetworkService.shared.fetchEpisodes(feedUrl: feedURL) { episodes in
+            self.episodes = episodes
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
 }
