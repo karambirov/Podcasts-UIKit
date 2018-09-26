@@ -31,6 +31,8 @@
 		AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F629215A086B00356E3F /* String+Extensions.swift */; };
 		AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */; };
 		AA62F62E215B608400356E3F /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */; };
+		AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F630215B751500356E3F /* PlayerDetailsView.swift */; };
+		AA62F633215B752200356E3F /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F632215B752200356E3F /* PlayerDetailsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		AA62F629215A086B00356E3F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSSFeed+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		AA62F630215B751500356E3F /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
+		AA62F632215B752200356E3F /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +235,7 @@
 		AA62F60F2154E01400356E3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA62F62F215B74DC00356E3F /* PlayerDetailsView */,
 				AA62F6102154E02300356E3F /* PodcastsSearchingView */,
 			);
 			path = Views;
@@ -268,6 +273,15 @@
 				AA62F626215A046500356E3F /* EpisodeCell.xib */,
 			);
 			path = EpisodeCell;
+			sourceTree = "<group>";
+		};
+		AA62F62F215B74DC00356E3F /* PlayerDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				AA62F630215B751500356E3F /* PlayerDetailsView.swift */,
+				AA62F632215B752200356E3F /* PlayerDetailsView.xib */,
+			);
+			path = PlayerDetailsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA62F633215B752200356E3F /* PlayerDetailsView.xib in Resources */,
 				AA62F5ED2154C1C100356E3F /* LaunchScreen.storyboard in Resources */,
 				AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */,
 				AA62F6142154E05600356E3F /* PodcastsSearchingView.xib in Resources */,
@@ -388,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */,
 				AA62F61A215958B800356E3F /* NetworkService.swift in Sources */,
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
