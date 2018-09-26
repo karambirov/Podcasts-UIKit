@@ -21,7 +21,6 @@ final class PodcastsSearchController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialSetup()
     }
 
@@ -68,6 +67,14 @@ extension PodcastsSearchController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
     }
+
+    // MARK: Navigation
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+        let podcast = podcasts[indexPath.row]
+        episodesController.podcast = podcast
+        navigationController?.pushViewController(episodesController, animated: true)
+    }
 }
 
 
@@ -98,7 +105,7 @@ extension PodcastsSearchController {
         setupTableView()
     }
 
-    fileprivate func setupSearchBar() {
+    private func setupSearchBar() {
         self.definesPresentationContext                   = true
         navigationItem.searchController                   = searchController
         navigationItem.hidesSearchBarWhenScrolling        = false
@@ -106,10 +113,9 @@ extension PodcastsSearchController {
         searchController.searchBar.delegate               = self
     }
 
-    fileprivate func setupTableView() {
+    private func setupTableView() {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "PodcastCell")
-        self.clearsSelectionOnViewWillAppear = false
     }
 }

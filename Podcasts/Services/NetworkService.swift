@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import FeedKit
 
 final class NetworkService {
 
@@ -17,6 +18,8 @@ final class NetworkService {
 
 }
 
+
+// MARK: - Fetching podcasts
 extension NetworkService {
 
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Podcast]) -> Void) {
@@ -43,6 +46,35 @@ extension NetworkService {
                 print("\n\t\tFailed to decode:", decodeError)
             }
 
+        }
+    }
+
+}
+
+
+// MARK: - Fetching episodes
+extension NetworkService {
+
+    func fetchEpisodes(feedUrl: String, completionHandler: @escaping ([Episode]) -> Void) {
+        guard let url = URL(string: feedUrl.httpsUrlString) else { return }
+
+        DispatchQueue.global(qos: .background).async {
+            print("Before parser")
+            let parser = FeedParser(URL: url)
+            print("After parser")
+
+            parser?.parseAsync(result: { result in
+                print("Successfully parse feed:", result.isSuccess)
+
+                if let error = result.error {
+                    print("Failed to parse XML feed:", error)
+                    return
+                }
+
+                guard let feed = result.rssFeed else { return }
+                let episodes = feed.toEpisodes()
+                completionHandler(episodes)
+            })
         }
     }
 
