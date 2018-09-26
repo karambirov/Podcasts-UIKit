@@ -26,22 +26,22 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hDJ-S6-m7R" userLabel="Podcast Info Stack View">
-                        <rect key="frame" x="132" y="44.5" width="382" height="61"/>
+                        <rect key="frame" x="132" y="44.5" width="374" height="61"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9l-82-rgD">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ma-sH-geH">
-                                <rect key="frame" x="0.0" y="22.5" width="382" height="19.5"/>
+                                <rect key="frame" x="0.0" y="22.5" width="374" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Count" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45n-WY-J2P">
-                                <rect key="frame" x="0.0" y="44" width="382" height="17"/>
+                                <rect key="frame" x="0.0" y="44" width="374" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="hDJ-S6-m7R" secondAttribute="trailing" id="565-On-389"/>
+                    <constraint firstAttribute="trailing" secondItem="hDJ-S6-m7R" secondAttribute="trailing" constant="8" id="565-On-389"/>
                     <constraint firstItem="v4E-vE-mO3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="GHP-Uk-MhX"/>
                     <constraint firstItem="hDJ-S6-m7R" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RdY-mr-3Wj"/>
                     <constraint firstItem="hDJ-S6-m7R" firstAttribute="leading" secondItem="v4E-vE-mO3" secondAttribute="trailing" constant="12" id="cMx-Yd-fJ7"/>

@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37V-Io-PKY">
-                        <rect key="frame" x="136" y="82.5" width="375" height="66"/>
+                        <rect key="frame" x="136" y="82.5" width="367" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pubDate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-0k-v1T">
                                 <rect key="frame" x="0.0" y="0.0" width="62.5" height="19.5"/>
@@ -33,7 +33,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHK-gI-LqS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHK-gI-LqS">
                                 <rect key="frame" x="0.0" y="49" width="72.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,7 +61,7 @@
                     <constraint firstItem="37V-Io-PKY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4Bg-8n-Q2d"/>
                     <constraint firstItem="Whd-AA-EaP" firstAttribute="centerY" secondItem="9hy-Qi-6D3" secondAttribute="centerY" id="4cv-Jj-HAV"/>
                     <constraint firstItem="9hy-Qi-6D3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6bm-1M-7oy"/>
-                    <constraint firstAttribute="trailing" secondItem="37V-Io-PKY" secondAttribute="trailing" id="Ims-OV-8Ez"/>
+                    <constraint firstAttribute="trailing" secondItem="37V-Io-PKY" secondAttribute="trailing" constant="8" id="Ims-OV-8Ez"/>
                     <constraint firstItem="37V-Io-PKY" firstAttribute="leading" secondItem="9hy-Qi-6D3" secondAttribute="trailing" constant="16" id="f20-LG-gkM"/>
                     <constraint firstItem="9hy-Qi-6D3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tL9-Ms-hn6"/>
                     <constraint firstItem="Whd-AA-EaP" firstAttribute="centerX" secondItem="9hy-Qi-6D3" secondAttribute="centerX" id="z3m-b1-w0X"/>

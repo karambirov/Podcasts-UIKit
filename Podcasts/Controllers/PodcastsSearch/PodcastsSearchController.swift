@@ -21,7 +21,6 @@ final class PodcastsSearchController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialSetup()
     }
 

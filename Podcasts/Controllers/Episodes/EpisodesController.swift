@@ -15,7 +15,6 @@ final class EpisodesController: UITableViewController {
     var podcast: Podcast? {
         didSet {
             navigationItem.title = podcast?.trackName
-
             fetchEpisodes()
         }
     }
@@ -25,7 +24,6 @@ final class EpisodesController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initialSetup()
     }
 
@@ -84,7 +82,16 @@ extension EpisodesController {
     }
 
     private func setupNavigationBarButtons() {
+        let savedPodcasts = UserDefaults.standard.savedPodcasts()
+        let hasFavorited = savedPodcasts
+            .index(where: { $0.trackName == self.podcast?.trackName &&
+                   $0.artistName == self.podcast?.artistName }) != nil
 
+        if hasFavorited {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(saveFavorite))
+        }
     }
 
     fileprivate func fetchEpisodes() {
@@ -97,6 +104,25 @@ extension EpisodesController {
                 self.tableView.reloadData()
             }
         }
+    }
+
+    @objc private func saveFavorite() {
+        print("\n\t\tSaving info into UserDefaults")
+
+        guard let podcast = self.podcast else { return }
+
+        var listOfPodcasts = UserDefaults.standard.savedPodcasts()
+        listOfPodcasts.append(podcast)
+        let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
+
+        UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+
+        showBadgeHighlight()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+    }
+
+    private func showBadgeHighlight() {
+        UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = "New"
     }
 
 }
