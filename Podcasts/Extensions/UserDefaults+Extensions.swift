@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+extension UserDefaults {
+
+    static let favoritedPodcastKey = "favoritedPodcastKey"
+    static let downloadedEpisodesKey = "downloadEpisodesKey"
+
+    func savedPodcasts() -> [Podcast] {
+        guard let savedPodcastsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
+        guard let savedPodcasts = NSKeyedUnarchiver.unarchiveObject(with: savedPodcastsData) as? [Podcast] else { return [] }
+        return savedPodcasts
+    }
+}
