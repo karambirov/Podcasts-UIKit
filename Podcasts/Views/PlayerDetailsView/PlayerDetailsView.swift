@@ -10,12 +10,30 @@ import UIKit
 
 class PlayerDetailsView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    // MARK: - Outlets
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+
+    @IBOutlet weak var episodeImageView: UIImageView!
+
+
+    // MARK: - Actions
+    @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
     }
-    */
+
+    @IBAction func dismiss(_ sender: Any) {
+    }
+    @IBAction func rewind(_ sender: Any) {
+    }
+    @IBAction func playPause(_ sender: Any) {
+    }
+    @IBAction func fastForward(_ sender: Any) {
+    }
+    @IBAction func changeVolume(_ sender: UISlider) {
+    }
 
 }

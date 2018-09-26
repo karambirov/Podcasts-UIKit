@@ -24,6 +24,9 @@
                                 <constraint firstAttribute="height" constant="44" id="HA9-FB-Ei5"/>
                             </constraints>
                             <state key="normal" title="Dismiss"/>
+                            <connections>
+                                <action selector="dismiss:" destination="iN0-l3-epB" eventType="touchUpInside" id="HeM-au-lew"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="8JE-7c-6PO">
                             <rect key="frame" x="0.0" y="49" width="327" height="327"/>
@@ -36,6 +39,9 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="7Fh-wz-uBW"/>
                             </constraints>
+                            <connections>
+                                <action selector="handleCurrentTimeSliderChange:" destination="iN0-l3-epB" eventType="valueChanged" id="Rxq-b0-Gg3"/>
+                            </connections>
                         </slider>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-u8-mGI">
                             <rect key="frame" x="0.0" y="422" width="327" height="22"/>
@@ -57,7 +63,7 @@
                                 <constraint firstAttribute="height" constant="22" id="vOo-so-UIT"/>
                             </constraints>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdC-ln-Trr">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdC-ln-Trr">
                             <rect key="frame" x="0.0" y="449" width="327" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="PHj-4D-4w0"/>
@@ -92,6 +98,9 @@
                                         <constraint firstAttribute="width" constant="44" id="mu6-6r-QpP"/>
                                     </constraints>
                                     <state key="normal" title="Button" image="rewind15"/>
+                                    <connections>
+                                        <action selector="rewind:" destination="iN0-l3-epB" eventType="touchUpInside" id="REX-AT-Xau"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEK-xT-obv">
                                     <rect key="frame" x="94" y="0.0" width="45" height="85"/>
@@ -104,6 +113,9 @@
                                         <constraint firstAttribute="width" constant="54" id="MIX-Fw-q53"/>
                                     </constraints>
                                     <state key="normal" title="Button" image="play"/>
+                                    <connections>
+                                        <action selector="playPause:" destination="iN0-l3-epB" eventType="touchUpInside" id="nqX-7F-R6o"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcj-Ck-3jL">
                                     <rect key="frame" x="193" y="0.0" width="45" height="85"/>
@@ -116,6 +128,9 @@
                                         <constraint firstAttribute="width" constant="44" id="pH4-Kw-b6A"/>
                                     </constraints>
                                     <state key="normal" title="Button" image="fastforward15"/>
+                                    <connections>
+                                        <action selector="fastForward:" destination="iN0-l3-epB" eventType="touchUpInside" id="5qh-O0-Jik"/>
+                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etj-9L-4cF">
                                     <rect key="frame" x="282" y="0.0" width="45" height="85"/>
@@ -140,6 +155,9 @@
                                 </imageView>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0am-oQ-jmf">
                                     <rect key="frame" x="32" y="0.0" width="263" height="35"/>
+                                    <connections>
+                                        <action selector="changeVolume:" destination="iN0-l3-epB" eventType="valueChanged" id="ldl-dm-9OE"/>
+                                    </connections>
                                 </slider>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="max_volume" translatesAutoresizingMaskIntoConstraints="NO" id="xdj-kX-w5e">
                                     <rect key="frame" x="293" y="0.0" width="34" height="34"/>
@@ -161,6 +179,15 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kDl-Fm-j1s" secondAttribute="bottom" constant="24" id="z2k-HY-VIP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="authorLabel" destination="iYB-T7-IbV" id="jzg-bB-zxf"/>
+                <outlet property="currentTimeLabel" destination="o3X-G7-Of5" id="1MK-hT-R3A"/>
+                <outlet property="currentTimeSlider" destination="IXf-na-WtN" id="U2i-M1-5Lo"/>
+                <outlet property="durationLabel" destination="pYM-lh-viM" id="wUh-lC-vN7"/>
+                <outlet property="episodeImageView" destination="8JE-7c-6PO" id="f27-4u-03k"/>
+                <outlet property="maximizedStackView" destination="kDl-Fm-j1s" id="KXD-QW-vFe"/>
+                <outlet property="titleLabel" destination="NdC-ln-Trr" id="0P4-8Z-BwF"/>
+            </connections>
         </view>
     </objects>
     <resources>
