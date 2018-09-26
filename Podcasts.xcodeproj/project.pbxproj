@@ -29,6 +29,7 @@
 		AA62F627215A046500356E3F /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F625215A046500356E3F /* EpisodeCell.swift */; };
 		AA62F628215A046500356E3F /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F626215A046500356E3F /* EpisodeCell.xib */; };
 		AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F629215A086B00356E3F /* String+Extensions.swift */; };
+		AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		AA62F625215A046500356E3F /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		AA62F626215A046500356E3F /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		AA62F629215A086B00356E3F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSSFeed+Extensions.swift"; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 				AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */,
 				AA62F61B215958F200356E3F /* Notification+Extensions.swift */,
 				AA62F629215A086B00356E3F /* String+Extensions.swift */,
+				AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */,
 				AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */,
 				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
+				AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */,
 				AA62F627215A046500356E3F /* EpisodeCell.swift in Sources */,
 				AA62F6022154CF3000356E3F /* PodcastsSearchController.swift in Sources */,
 				AA62F6232159FD1000356E3F /* Episode.swift in Sources */,
