@@ -85,6 +85,7 @@ class PlayerDetailsView: UIView {
         super.awakeFromNib()
 
         observePlayerCurrentTime()
+        observeBoundaryTime()
     }
 
 }
@@ -202,6 +203,17 @@ extension PlayerDetailsView {
             self?.durationLabel.text = durationTime?.toDisplayString()
 
             self?.updateCurrentTimeSlider()
+        }
+    }
+
+    fileprivate func observeBoundaryTime() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            print("Episode started playing")
+            self?.enlargeEpisodeImageView()
+            // TODO: self?.setupLockscreenDuration()
         }
     }
 
