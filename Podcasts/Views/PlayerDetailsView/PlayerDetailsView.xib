@@ -112,7 +112,7 @@
                                         <constraint firstAttribute="width" secondItem="ply-N4-Gun" secondAttribute="height" multiplier="54:85" id="K3c-Fv-5UB"/>
                                         <constraint firstAttribute="width" constant="54" id="MIX-Fw-q53"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="play"/>
+                                    <state key="normal" title="Button" image="pause"/>
                                     <connections>
                                         <action selector="playPause:" destination="iN0-l3-epB" eventType="touchUpInside" id="nqX-7F-R6o"/>
                                     </connections>
@@ -195,7 +195,7 @@
         <image name="fastforward15" width="45.5" height="45.5"/>
         <image name="max_volume" width="32.5" height="32.5"/>
         <image name="muted_volume" width="32.5" height="32.5"/>
-        <image name="play" width="59" height="59"/>
+        <image name="pause" width="57" height="57"/>
         <image name="rewind15" width="45.5" height="45.5"/>
     </resources>
 </document>

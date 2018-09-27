@@ -44,4 +44,8 @@ extension MainTabBarController {
         return navigationController
     }
 
+    @objc func minimizePlayerDetails() {
+        fatalError("Need implementation \(#function)")
+    }
+
 }
