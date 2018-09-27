@@ -15,8 +15,25 @@ class PlayerDetailsView: UIView {
     // MARK: - Properties
     var episode: Episode! {
         didSet {
+            miniTitleLabel.text = episode.title
+            titleLabel.text = episode.title
+            authorLabel.text = episode.author
+
+            setupNowPlayingInfo()
+            setupAudioSession()
+            playEpisode()
+
             guard let url = URL(string: episode.imageUrl ?? "") else { return }
             episodeImageView.sd_setImage(with: url)
+            miniEpisodeImageView.sd_setImage(with: url)
+
+            miniEpisodeImageView.sd_setImage(with: url) { (image, _, _, _) in
+                let image = self.episodeImageView.image ?? UIImage()
+                let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { size -> UIImage in
+                    return image
+                })
+                MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] = artworkItem
+            }
         }
     }
 
@@ -127,6 +144,47 @@ extension PlayerDetailsView {
         let elapsedTime = CMTimeGetSeconds(player.currentTime())
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
+    }
+
+    fileprivate func setupNowPlayingInfo() {
+        var nowPlayingInfo = [String: Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
+        nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+    }
+
+    fileprivate func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let sessionError {
+            print("Failed to activate session:", sessionError)
+        }
+    }
+
+    fileprivate func playEpisode() {
+        if episode.fileUrl != nil {
+            playEpisodeUsingFileUrl()
+        } else {
+            print("Trying to play episode at url:", episode.streamUrl)
+            guard let url = URL(string: episode.streamUrl) else { return }
+            let playerItem = AVPlayerItem(url: url)
+            player.replaceCurrentItem(with: playerItem)
+            player.play()
+        }
+    }
+
+    fileprivate func playEpisodeUsingFileUrl() {
+        print("Attempt to play episode with file url:", episode.fileUrl ?? "")
+
+        guard let fileUrl = URL(string: episode.fileUrl ?? "") else { return }
+        let fileName = fileUrl.lastPathComponent
+
+        guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        trueLocation.appendPathComponent(fileName)
+        print("True Location of episode:", trueLocation.absoluteString)
+        let playerItem = AVPlayerItem(url: trueLocation)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
     }
 
     fileprivate func enlargeEpisodeImageView() {
