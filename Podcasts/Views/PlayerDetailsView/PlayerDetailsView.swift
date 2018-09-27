@@ -80,6 +80,13 @@ class PlayerDetailsView: UIView {
         }
     }
 
+    // MARK: - Life Cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        observePlayerCurrentTime()
+    }
+
 }
 
 // MARK: - Actions
@@ -191,7 +198,19 @@ extension PlayerDetailsView {
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
             self?.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self?.player.currentItem?.duration
+            self?.durationLabel.text = durationTime?.toDisplayString()
+
+            self?.updateCurrentTimeSlider()
         }
+    }
+
+    fileprivate func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percentage = currentTimeSeconds / durationSeconds
+
+        self.currentTimeSlider.value = Float(percentage)
     }
 
     fileprivate func enlargeEpisodeImageView() {
