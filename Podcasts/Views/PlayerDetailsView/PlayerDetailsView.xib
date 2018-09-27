@@ -26,29 +26,29 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abs-ih-JZO">
-                            <rect key="frame" x="8" y="72" width="398" height="57"/>
+                            <rect key="frame" x="8" y="8.6666666666666679" width="398" height="47.333333333333329"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="38l-6f-KcZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="48" height="57"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="47.333333333333336"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="48" id="rXJ-Fu-He7"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdw-Yd-MYO">
-                                    <rect key="frame" x="48" y="0.0" width="254" height="57"/>
+                                    <rect key="frame" x="48" y="0.0" width="254" height="47.333333333333336"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7j-wD-vl1">
-                                    <rect key="frame" x="302" y="0.0" width="48" height="57"/>
+                                    <rect key="frame" x="302" y="0.0" width="48" height="47.333333333333336"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="48" id="7t6-Ys-3r7"/>
                                     </constraints>
                                     <state key="normal" title="Button" image="pause"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsG-ln-Twe">
-                                    <rect key="frame" x="350" y="0.0" width="48" height="57"/>
+                                    <rect key="frame" x="350" y="0.0" width="48" height="47.333333333333336"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="48" id="4b0-CG-nLx"/>
                                     </constraints>
@@ -57,16 +57,16 @@
                             </subviews>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="mba-ZK-rhQ" firstAttribute="top" secondItem="OYT-QN-SIC" secondAttribute="top" id="0t0-wg-cZ5"/>
-                        <constraint firstItem="Abs-ih-JZO" firstAttribute="leading" secondItem="OYT-QN-SIC" secondAttribute="leading" constant="8" id="1Wc-nF-SlX"/>
                         <constraint firstItem="mba-ZK-rhQ" firstAttribute="leading" secondItem="OYT-QN-SIC" secondAttribute="leading" id="2Qh-XV-gIV"/>
-                        <constraint firstAttribute="bottom" secondItem="Abs-ih-JZO" secondAttribute="bottom" constant="8" id="Lth-uf-p4F"/>
+                        <constraint firstAttribute="trailing" secondItem="Abs-ih-JZO" secondAttribute="trailing" constant="8" id="Kaf-gz-HRL"/>
+                        <constraint firstAttribute="bottom" secondItem="Abs-ih-JZO" secondAttribute="bottom" constant="8" id="MN7-Zu-uIV"/>
+                        <constraint firstItem="Abs-ih-JZO" firstAttribute="leading" secondItem="OYT-QN-SIC" secondAttribute="leading" constant="8" id="ONg-na-UX0"/>
                         <constraint firstAttribute="trailing" secondItem="mba-ZK-rhQ" secondAttribute="trailing" id="W7H-jI-PHV"/>
-                        <constraint firstAttribute="trailing" secondItem="Abs-ih-JZO" secondAttribute="trailing" constant="8" id="kBP-Iy-ekp"/>
-                        <constraint firstItem="Abs-ih-JZO" firstAttribute="top" secondItem="OYT-QN-SIC" secondAttribute="bottom" constant="8" id="puP-c7-nHJ"/>
                         <constraint firstAttribute="height" constant="64" id="sF0-mS-eY7"/>
+                        <constraint firstItem="Abs-ih-JZO" firstAttribute="top" secondItem="mba-ZK-rhQ" secondAttribute="bottom" constant="8" id="ttb-bs-sB4"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kDl-Fm-j1s">
@@ -145,12 +145,13 @@
                                         <constraint firstAttribute="width" constant="45" id="cnC-QV-8e3"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJw-pO-N9p">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJw-pO-N9p">
                                     <rect key="frame" x="54" y="0.0" width="44" height="85"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="hJw-pO-N9p" secondAttribute="height" multiplier="44:85" id="0u2-l2-QJC"/>
                                         <constraint firstAttribute="width" constant="44" id="mu6-6r-QpP"/>
                                     </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button" image="rewind15"/>
                                     <connections>
                                         <action selector="rewind:" destination="iN0-l3-epB" eventType="touchUpInside" id="REX-AT-Xau"/>
@@ -160,12 +161,13 @@
                                     <rect key="frame" x="107" y="0.0" width="45" height="85"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ply-N4-Gun">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ply-N4-Gun">
                                     <rect key="frame" x="156" y="0.0" width="54" height="85"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ply-N4-Gun" secondAttribute="height" multiplier="54:85" id="K3c-Fv-5UB"/>
                                         <constraint firstAttribute="width" constant="54" id="MIX-Fw-q53"/>
                                     </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button" image="pause"/>
                                     <connections>
                                         <action selector="playPause:" destination="iN0-l3-epB" eventType="touchUpInside" id="nqX-7F-R6o"/>
@@ -175,12 +177,13 @@
                                     <rect key="frame" x="214" y="0.0" width="45" height="85"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-rF-wFz">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ib5-rF-wFz">
                                     <rect key="frame" x="268" y="0.0" width="44" height="85"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Ib5-rF-wFz" secondAttribute="height" multiplier="44:85" id="178-eW-pTc"/>
                                         <constraint firstAttribute="width" constant="44" id="pH4-Kw-b6A"/>
                                     </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" title="Button" image="fastforward15"/>
                                     <connections>
                                         <action selector="fastForward:" destination="iN0-l3-epB" eventType="touchUpInside" id="5qh-O0-Jik"/>
