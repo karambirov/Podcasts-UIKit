@@ -22,6 +22,9 @@ final class PodcastsSearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+
+        #warning ("Delete this method after testing")
+        searchBar(searchController.searchBar, textDidChange: "Podlodka")
     }
 
 }

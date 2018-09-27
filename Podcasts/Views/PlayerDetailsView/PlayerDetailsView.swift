@@ -23,7 +23,7 @@ class PlayerDetailsView: UIView {
             setupAudioSession()
             playEpisode()
 
-            guard let url = URL(string: episode.imageUrl ?? "") else { return }
+            guard let url = URL(string: episode.imageUrl?.httpsUrlString ?? "") else { return }
             episodeImageView.sd_setImage(with: url)
             miniEpisodeImageView.sd_setImage(with: url)
 
@@ -55,6 +55,12 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var durationLabel: UILabel!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var authorLabel: UILabel!
+
+    @IBOutlet fileprivate weak var volumeSlider: UISlider! {
+        didSet {
+            volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
+        }
+    }
 
     @IBOutlet fileprivate weak var episodeImageView: UIImageView! {
         didSet {
@@ -138,6 +144,7 @@ extension PlayerDetailsView {
     }
     @IBAction fileprivate func changeVolume(_ sender: UISlider) {
         player.volume = sender.value
+        // TODO: Set value when volume change by pressing hardware buttons
     }
 
 }
@@ -151,6 +158,7 @@ extension PlayerDetailsView {
     fileprivate func seekToCurrentTime(delta: Int64) {
         let seconds = CMTimeMake(value: delta, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), seconds)
+        player.seek(to: seekTime)
     }
 
     fileprivate func setupElapsedTime(playbackRate: Float) {
@@ -170,7 +178,7 @@ extension PlayerDetailsView {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let sessionError {
-            print("Failed to activate session:", sessionError)
+            print("\n\t\tFailed to activate session:", sessionError)
         }
     }
 
@@ -178,8 +186,8 @@ extension PlayerDetailsView {
         if episode.fileUrl != nil {
             playEpisodeUsingFileUrl()
         } else {
-            print("Trying to play episode at url:", episode.streamUrl)
-            guard let url = URL(string: episode.streamUrl) else { return }
+            print("\n\t\tTrying to play episode at url:", episode.streamUrl.httpsUrlString)
+            guard let url = URL(string: episode.streamUrl.httpsUrlString) else { return }
             let playerItem = AVPlayerItem(url: url)
             player.replaceCurrentItem(with: playerItem)
             player.play()
@@ -187,14 +195,14 @@ extension PlayerDetailsView {
     }
 
     fileprivate func playEpisodeUsingFileUrl() {
-        print("Attempt to play episode with file url:", episode.fileUrl ?? "")
+        print("\n\t\tAttempt to play episode with file url:", episode.fileUrl ?? "")
 
         guard let fileUrl = URL(string: episode.fileUrl ?? "") else { return }
         let fileName = fileUrl.lastPathComponent
 
         guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         trueLocation.appendPathComponent(fileName)
-        print("True Location of episode:", trueLocation.absoluteString)
+        print("\n\t\tTrue Location of episode:", trueLocation.absoluteString)
         let playerItem = AVPlayerItem(url: trueLocation)
         player.replaceCurrentItem(with: playerItem)
         player.play()
@@ -216,7 +224,7 @@ extension PlayerDetailsView {
         let times = [NSValue(time: time)]
 
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
-            print("Episode started playing")
+            print("\n\t\tEpisode started playing")
             self?.enlargeEpisodeImageView()
             // TODO: self?.setupLockscreenDuration()
         }

@@ -63,6 +63,7 @@ extension EpisodesController {
         let episode = episodes[indexPath.row]
         let mainTabBarController = UIApplication.mainTabBarController
         mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: episodes)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

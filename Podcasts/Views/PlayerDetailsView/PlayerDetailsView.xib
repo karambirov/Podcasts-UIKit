@@ -257,6 +257,7 @@
                 <outlet property="miniPlayerView" destination="OYT-QN-SIC" id="nX0-Yh-LVJ"/>
                 <outlet property="miniTitleLabel" destination="Cdw-Yd-MYO" id="QvA-uL-Dcb"/>
                 <outlet property="titleLabel" destination="NdC-ln-Trr" id="0P4-8Z-BwF"/>
+                <outlet property="volumeSlider" destination="0am-oQ-jmf" id="H8u-UR-k5x"/>
             </connections>
             <point key="canvasLocation" x="104.8" y="52.623688155922046"/>
         </view>

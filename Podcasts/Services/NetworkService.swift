@@ -59,15 +59,13 @@ extension NetworkService {
         guard let url = URL(string: feedUrl.httpsUrlString) else { return }
 
         DispatchQueue.global(qos: .background).async {
-            print("Before parser")
             let parser = FeedParser(URL: url)
-            print("After parser")
 
             parser?.parseAsync(result: { result in
-                print("Successfully parse feed:", result.isSuccess)
+                print("\n\t\tSuccessfully parse feed:", result.isSuccess)
 
                 if let error = result.error {
-                    print("Failed to parse XML feed:", error)
+                    print("\n\t\tFailed to parse XML feed:", error)
                     return
                 }
 
