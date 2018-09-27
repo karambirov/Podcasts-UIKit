@@ -118,12 +118,13 @@ extension PlayerDetailsView {
         if player.timeControlStatus == .paused {
             player.play()
             button?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-            
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
             button?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }

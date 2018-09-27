@@ -59,11 +59,11 @@ extension EpisodesController {
     }
 
     // MARK: Navigation
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let episode = episodes[indexPath.row]
-//        let mainTabBarController = UIApplication.mainTabBarController
-//        // TODO: Maximize player
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = episodes[indexPath.row]
+        let mainTabBarController = UIApplication.mainTabBarController
+        mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: episodes)
+    }
 }
 
 
