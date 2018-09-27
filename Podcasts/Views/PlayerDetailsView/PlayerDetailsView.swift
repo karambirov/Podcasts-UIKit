@@ -10,6 +10,11 @@ import UIKit
 import AVKit
 import MediaPlayer
 
+
+// FIXME: Fix spacing between title and author labels.
+// FIXME: Extract mini player in its own class
+// FIXME: Write MediaPlayerService and AVService
+
 class PlayerDetailsView: UIView {
 
     // MARK: - Properties
@@ -18,6 +23,9 @@ class PlayerDetailsView: UIView {
             miniTitleLabel.text = episode.title
             titleLabel.text = episode.title
             authorLabel.text = episode.author
+
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
 
             setupNowPlayingInfo()
             setupAudioSession()
@@ -55,6 +63,7 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var durationLabel: UILabel!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var authorLabel: UILabel!
+    @IBOutlet weak var playPauseButton: UIButton!
 
     @IBOutlet fileprivate weak var volumeSlider: UISlider! {
         didSet {
@@ -79,14 +88,14 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var miniPlayPauseButton: UIButton! {
         didSet {
             miniPlayPauseButton.addTarget(self, action: #selector(playPause(_:)), for: .touchUpInside)
-            miniFastForwardButon.imageEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+            miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         }
     }
 
-    @IBOutlet fileprivate weak var miniFastForwardButon: UIButton! {
+    @IBOutlet fileprivate weak var miniFastForwardButton: UIButton! {
         didSet {
-            miniFastForwardButon.addTarget(self, action: #selector(fastForward(_:)), for: .touchUpInside)
-            miniFastForwardButon.imageEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+            miniFastForwardButton.addTarget(self, action: #selector(fastForward(_:)), for: .touchUpInside)
+            miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         }
     }
 

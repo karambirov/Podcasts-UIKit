@@ -43,10 +43,10 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7j-wD-vl1">
                                     <rect key="frame" x="294" y="0.0" width="48" height="47.333333333333336"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="48" id="7t6-Ys-3r7"/>
+                                        <constraint firstAttribute="width" constant="48" id="3Vr-kd-rnS"/>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button" image="pause">
+                                    <state key="normal" image="pause">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                 </button>
@@ -56,7 +56,7 @@
                                         <constraint firstAttribute="width" constant="48" id="4b0-CG-nLx"/>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button" image="fastforward15">
+                                    <state key="normal" image="fastforward15">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                 </button>
@@ -77,12 +77,12 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kDl-Fm-j1s">
                     <rect key="frame" x="24" y="20" width="366" height="692"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHv-pc-7WF">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHv-pc-7WF">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="HA9-FB-Ei5"/>
                             </constraints>
-                            <state key="normal" title="Dismiss"/>
+                            <state key="normal" image="arrowDown"/>
                             <connections>
                                 <action selector="dismiss:" destination="iN0-l3-epB" eventType="touchUpInside" id="HeM-au-lew"/>
                             </connections>
@@ -131,7 +131,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYB-T7-IbV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYB-T7-IbV">
                             <rect key="frame" x="0.0" y="543" width="366" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="6eU-Oh-ECi"/>
@@ -231,6 +231,9 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="DHv-pc-7WF" firstAttribute="centerX" secondItem="kDl-Fm-j1s" secondAttribute="centerX" id="oFq-ua-PZy"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -252,10 +255,11 @@
                 <outlet property="episodeImageView" destination="8JE-7c-6PO" id="f27-4u-03k"/>
                 <outlet property="maximizedStackView" destination="kDl-Fm-j1s" id="KXD-QW-vFe"/>
                 <outlet property="miniEpisodeImageView" destination="38l-6f-KcZ" id="tty-nP-rbN"/>
-                <outlet property="miniFastForwardButon" destination="tsG-ln-Twe" id="jwm-e3-Siz"/>
+                <outlet property="miniFastForwardButton" destination="tsG-ln-Twe" id="jwm-e3-Siz"/>
                 <outlet property="miniPlayPauseButton" destination="G7j-wD-vl1" id="vSl-mq-Yy3"/>
                 <outlet property="miniPlayerView" destination="OYT-QN-SIC" id="nX0-Yh-LVJ"/>
                 <outlet property="miniTitleLabel" destination="Cdw-Yd-MYO" id="QvA-uL-Dcb"/>
+                <outlet property="playPauseButton" destination="ply-N4-Gun" id="QWG-Tp-OGC"/>
                 <outlet property="titleLabel" destination="NdC-ln-Trr" id="0P4-8Z-BwF"/>
                 <outlet property="volumeSlider" destination="0am-oQ-jmf" id="H8u-UR-k5x"/>
             </connections>
@@ -264,7 +268,8 @@
     </objects>
     <resources>
         <image name="appicon" width="60" height="60"/>
-        <image name="fastforward15" width="45.5" height="45.5"/>
+        <image name="arrowDown" width="36" height="11"/>
+        <image name="fastforward15" width="43.680000305175781" height="43.680000305175781"/>
         <image name="max_volume" width="32.5" height="32.5"/>
         <image name="muted_volume" width="32.5" height="32.5"/>
         <image name="pause" width="57" height="57"/>
