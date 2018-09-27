@@ -70,12 +70,12 @@ extension PlayerDetailsView {
         if player.timeControlStatus == .paused {
             player.play()
             button?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-            // TODO: Animation
+            enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
             button?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
-            // TODO: Animation
+            shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }
     }
@@ -94,6 +94,10 @@ extension PlayerDetailsView {
 
 extension PlayerDetailsView {
 
+    static func initFromNib() -> PlayerDetailsView {
+        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+    }
+
     fileprivate func seekToCurrentTime(delta: Int64) {
         let seconds = CMTimeMake(value: delta, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), seconds)
@@ -103,6 +107,18 @@ extension PlayerDetailsView {
         let elapsedTime = CMTimeGetSeconds(player.currentTime())
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
+    }
+
+    fileprivate func enlargeEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = .identity
+        })
+    }
+
+    fileprivate func shrinkEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = self.shrunkenTransform
+        })
     }
 
 }
