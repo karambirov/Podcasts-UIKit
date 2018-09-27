@@ -33,6 +33,7 @@
 		AA62F62E215B608400356E3F /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */; };
 		AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F630215B751500356E3F /* PlayerDetailsView.swift */; };
 		AA62F633215B752200356E3F /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F632215B752200356E3F /* PlayerDetailsView.xib */; };
+		AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F630215B751500356E3F /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		AA62F632215B752200356E3F /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
+		AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 				AA62F629215A086B00356E3F /* String+Extensions.swift */,
 				AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */,
 				AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */,
+				AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,
 				AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */,
 				AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */,
+				AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */,
 				AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */,
 				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
 				AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */,
