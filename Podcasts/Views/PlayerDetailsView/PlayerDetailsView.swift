@@ -44,6 +44,12 @@ class PlayerDetailsView: UIView {
         }
     }
 
+    // MARK: - Mini player outlets
+    @IBOutlet weak var miniPlayerView: UIView!
+    @IBOutlet weak var miniEpisodeImageView: UIImageView!
+    @IBOutlet weak var miniTitleLabel: UILabel!
+    @IBOutlet weak var miniPlayPauseButton: UIButton!
+    @IBOutlet weak var miniFastForwardButon: UIButton!
 }
 
 // MARK: - Actions
@@ -70,6 +76,7 @@ extension PlayerDetailsView {
         if player.timeControlStatus == .paused {
             player.play()
             button?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            
             enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
