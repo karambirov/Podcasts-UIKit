@@ -29,14 +29,14 @@ class PlayerDetailsView: UIView {
     fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Outlets
-    @IBOutlet weak var maximizedStackView: UIStackView!
-    @IBOutlet weak var currentTimeSlider: UISlider!
-    @IBOutlet weak var currentTimeLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet fileprivate weak var maximizedStackView: UIStackView!
+    @IBOutlet fileprivate weak var currentTimeSlider: UISlider!
+    @IBOutlet fileprivate weak var currentTimeLabel: UILabel!
+    @IBOutlet fileprivate weak var durationLabel: UILabel!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var authorLabel: UILabel!
 
-    @IBOutlet weak var episodeImageView: UIImageView! {
+    @IBOutlet fileprivate weak var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.layer.cornerRadius = 5
             episodeImageView.clipsToBounds = true
@@ -45,17 +45,30 @@ class PlayerDetailsView: UIView {
     }
 
     // MARK: - Mini player outlets
-    @IBOutlet weak var miniPlayerView: UIView!
-    @IBOutlet weak var miniEpisodeImageView: UIImageView!
-    @IBOutlet weak var miniTitleLabel: UILabel!
-    @IBOutlet weak var miniPlayPauseButton: UIButton!
-    @IBOutlet weak var miniFastForwardButon: UIButton!
+    @IBOutlet fileprivate weak var miniPlayerView: UIView!
+    @IBOutlet fileprivate weak var miniEpisodeImageView: UIImageView!
+    @IBOutlet fileprivate weak var miniTitleLabel: UILabel!
+
+    @IBOutlet fileprivate weak var miniPlayPauseButton: UIButton! {
+        didSet {
+            miniPlayPauseButton.addTarget(self, action: #selector(playPause(_:)), for: .touchUpInside)
+            miniFastForwardButon.imageEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        }
+    }
+
+    @IBOutlet fileprivate weak var miniFastForwardButon: UIButton! {
+        didSet {
+            miniFastForwardButon.addTarget(self, action: #selector(fastForward(_:)), for: .touchUpInside)
+            miniFastForwardButon.imageEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)
+        }
+    }
+
 }
 
 // MARK: - Actions
 extension PlayerDetailsView {
 
-    @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
+    @IBAction fileprivate func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
         let durationInSeconds = CMTimeGetSeconds(duration)
@@ -66,11 +79,11 @@ extension PlayerDetailsView {
         player.seek(to: seekTime)
     }
 
-    @IBAction func dismiss(_ sender: Any) {
+    @IBAction fileprivate func dismiss(_ sender: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
         mainTabBarController?.minimizePlayerDetails()
     }
-    @IBAction func playPause(_ sender: Any) {
+    @IBAction fileprivate func playPause(_ sender: Any) {
         let button = sender as? UIButton
 
         if player.timeControlStatus == .paused {
@@ -86,14 +99,14 @@ extension PlayerDetailsView {
             setupElapsedTime(playbackRate: 0)
         }
     }
-    @IBAction func rewind(_ sender: Any) {
+    @IBAction fileprivate func rewind(_ sender: Any) {
         seekToCurrentTime(delta: -15)
     }
-    @IBAction func fastForward(_ sender: Any) {
+    @IBAction fileprivate func fastForward(_ sender: Any) {
         seekToCurrentTime(delta: 15)
 
     }
-    @IBAction func changeVolume(_ sender: UISlider) {
+    @IBAction fileprivate func changeVolume(_ sender: UISlider) {
         player.volume = sender.value
     }
 
