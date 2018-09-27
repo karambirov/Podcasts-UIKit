@@ -21,7 +21,6 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
 
         UINavigationBar.appearance().prefersLargeTitles = true
-        tabBar.tintColor = .purple
 
         setupViewControllers()
         setupPlayerDetailsView()
@@ -33,6 +32,47 @@ final class MainTabBarController: UITabBarController {
 // MARK: - Setup
 extension MainTabBarController {
 
+    // MARK: - Internal
+    @objc func minimizePlayerDetails() {
+        maximizedTopAnchorConstraint.isActive = false
+        bottomAnchorConstraint.constant = view.frame.height
+        minimizedTopAnchorConstraint.isActive = true
+
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+
+            self.view.layoutIfNeeded()
+            self.tabBar.transform = .identity
+
+            self.playerDetailsView.maximizedStackView.alpha = 0
+            self.playerDetailsView.miniPlayerView.alpha = 1
+        })
+    }
+
+    func maximizePlayerDetails(episode: Episode?, playlistEpisodes: [Episode] = []) {
+        minimizedTopAnchorConstraint.isActive = false
+        maximizedTopAnchorConstraint.isActive = true
+        maximizedTopAnchorConstraint.constant = 0
+        bottomAnchorConstraint.constant = 0
+
+        if episode != nil {
+            playerDetailsView.episode = episode
+        }
+
+        playerDetailsView.playlistEpisodes = playlistEpisodes
+
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+
+            self.view.layoutIfNeeded()
+            self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+
+            self.playerDetailsView.maximizedStackView.alpha = 1
+            self.playerDetailsView.miniPlayerView.alpha = 0
+        })
+    }
+
+    // MARK: - Fileprivate
     fileprivate func setupViewControllers() {
         let layout = UICollectionViewFlowLayout()
         let favoritesController = FavoritesController(collectionViewLayout: layout)
@@ -49,17 +89,14 @@ extension MainTabBarController {
         setupConstraintsForPlayerDetailsView()
     }
 
-    fileprivate func generateNavigationController(for rootViewController: UIViewController,
+    // MARK: - Private
+    private func generateNavigationController(for rootViewController: UIViewController,
                                                   title: String, image: UIImage) -> UIViewController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         rootViewController.navigationItem.title = title
         navigationController.tabBarItem.title   = title
         navigationController.tabBarItem.image   = image
         return navigationController
-    }
-
-    @objc func minimizePlayerDetails() {
-        fatalError("Need implementation \(#function)")
     }
 
     private func setupConstraintsForPlayerDetailsView() {

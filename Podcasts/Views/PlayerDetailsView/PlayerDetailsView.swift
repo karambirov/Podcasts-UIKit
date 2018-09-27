@@ -37,6 +37,8 @@ class PlayerDetailsView: UIView {
         }
     }
 
+    var playlistEpisodes = [Episode]()
+
     fileprivate let player: AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false
@@ -46,7 +48,8 @@ class PlayerDetailsView: UIView {
     fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Outlets
-    @IBOutlet fileprivate weak var maximizedStackView: UIStackView!
+    @IBOutlet weak var maximizedStackView: UIStackView!
+
     @IBOutlet fileprivate weak var currentTimeSlider: UISlider!
     @IBOutlet fileprivate weak var currentTimeLabel: UILabel!
     @IBOutlet fileprivate weak var durationLabel: UILabel!
@@ -62,7 +65,8 @@ class PlayerDetailsView: UIView {
     }
 
     // MARK: - Mini player outlets
-    @IBOutlet fileprivate weak var miniPlayerView: UIView!
+    @IBOutlet weak var miniPlayerView: UIView!
+
     @IBOutlet fileprivate weak var miniEpisodeImageView: UIImageView!
     @IBOutlet fileprivate weak var miniTitleLabel: UILabel!
 
