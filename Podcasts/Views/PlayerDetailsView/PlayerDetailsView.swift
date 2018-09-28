@@ -66,7 +66,13 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var durationLabel: UILabel!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var authorLabel: UILabel!
-    @IBOutlet weak var playPauseButton: UIButton!
+
+    @IBOutlet weak var playPauseButton: UIButton! {
+        didSet {
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            playPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
+        }
+    }
 
     @IBOutlet fileprivate weak var volumeSlider: UISlider! {
         didSet {
@@ -90,7 +96,7 @@ class PlayerDetailsView: UIView {
 
     @IBOutlet fileprivate weak var miniPlayPauseButton: UIButton! {
         didSet {
-            miniPlayPauseButton.addTarget(self, action: #selector(playPause(_:)), for: .touchUpInside)
+            miniPlayPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
             miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         }
     }
@@ -107,6 +113,8 @@ class PlayerDetailsView: UIView {
         super.awakeFromNib()
 
         setupGestures()
+        setupRemoteControl()
+        setupInterruptionObserver()
 
         observePlayerCurrentTime()
         observeBoundaryTime()
@@ -131,31 +139,34 @@ extension PlayerDetailsView {
     @IBAction fileprivate func dismiss(_ sender: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
         mainTabBarController?.minimizePlayerDetails()
-    }
-    @IBAction fileprivate func playPause(_ sender: Any) {
-        let button = sender as? UIButton
 
+    }
+
+    @objc fileprivate func playPause() {
         if player.timeControlStatus == .paused {
             player.play()
-            button?.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
-            button?.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }
     }
+
     @IBAction fileprivate func rewind(_ sender: Any) {
         seekToCurrentTime(delta: -15)
     }
+
     @IBAction fileprivate func fastForward(_ sender: Any) {
         seekToCurrentTime(delta: 15)
 
     }
+
     @IBAction fileprivate func changeVolume(_ sender: UISlider) {
         player.volume = sender.value
         // TODO: Set value when volume change by pressing hardware buttons
@@ -333,6 +344,89 @@ extension PlayerDetailsView {
                 }
             })
         }
+    }
+
+}
+
+
+// MARK: - Background playing and Remote control
+extension PlayerDetailsView {
+
+    fileprivate func setupRemoteControl() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.player.play()
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+
+            self.setupElapsedTime(playbackRate: 1)
+            return .success
+        }
+
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.player.pause()
+            self.playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+
+            self.setupElapsedTime(playbackRate: 0)
+            return .success
+        }
+
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        commandCenter.togglePlayPauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
+            self.playPause()
+            return .success
+        }
+
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
+    }
+
+    @objc fileprivate func handleNextTrack() {
+        if playlistEpisodes.isEmpty { return }
+
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { episode -> Bool in
+            return self.episode.title == episode.title && self.episode.author == episode.author
+        }
+
+        guard let index = currentEpisodeIndex else { return }
+
+        let nextEpisode: Episode
+        if index == playlistEpisodes.count - 1 {
+            nextEpisode = playlistEpisodes[0]
+        } else {
+            nextEpisode = playlistEpisodes[index + 1]
+        }
+
+        self.episode = nextEpisode
+    }
+
+    @objc fileprivate func handlePrevTrack() {
+        if playlistEpisodes.isEmpty { return }
+
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { episode -> Bool in
+            return self.episode.title == episode.title && self.episode.author == episode.author
+        }
+
+        guard let index = currentEpisodeIndex else { return }
+
+        let prevEpisode: Episode
+        if index == 0 {
+            let count = playlistEpisodes.count
+            prevEpisode = playlistEpisodes[count - 1]
+        } else {
+            prevEpisode = playlistEpisodes[index - 1]
+        }
+
+        self.episode = prevEpisode
+    }
+
+    fileprivate func setupInterruptionObserver() {
+
     }
 
 }
