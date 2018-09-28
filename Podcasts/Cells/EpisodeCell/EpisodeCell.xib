@@ -18,8 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="511" height="230.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37V-Io-PKY">
-                        <rect key="frame" x="136" y="82.5" width="367" height="66"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-Qi-6D3">
+                        <rect key="frame" x="16" y="65.5" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Sqf-Ge-1zj"/>
+                            <constraint firstAttribute="width" constant="100" id="bMd-cL-bUd"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="37V-Io-PKY">
+                        <rect key="frame" x="132" y="82.5" width="371" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pubDate" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBZ-0k-v1T">
                                 <rect key="frame" x="0.0" y="0.0" width="62.5" height="19.5"/>
@@ -41,15 +48,8 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="9hy-Qi-6D3">
-                        <rect key="frame" x="20" y="65.5" width="100" height="100"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="100" id="Sqf-Ge-1zj"/>
-                            <constraint firstAttribute="width" constant="100" id="bMd-cL-bUd"/>
-                        </constraints>
-                    </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whd-AA-EaP">
-                        <rect key="frame" x="32" y="98" width="76.5" height="34.5"/>
+                        <rect key="frame" x="28" y="98" width="76.5" height="34.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                     <constraint firstItem="9hy-Qi-6D3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6bm-1M-7oy"/>
                     <constraint firstAttribute="trailing" secondItem="37V-Io-PKY" secondAttribute="trailing" constant="8" id="Ims-OV-8Ez"/>
                     <constraint firstItem="37V-Io-PKY" firstAttribute="leading" secondItem="9hy-Qi-6D3" secondAttribute="trailing" constant="16" id="f20-LG-gkM"/>
-                    <constraint firstItem="9hy-Qi-6D3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tL9-Ms-hn6"/>
+                    <constraint firstItem="9hy-Qi-6D3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tL9-Ms-hn6"/>
                     <constraint firstItem="Whd-AA-EaP" firstAttribute="centerX" secondItem="9hy-Qi-6D3" secondAttribute="centerX" id="z3m-b1-w0X"/>
                 </constraints>
             </tableViewCellContentView>
