@@ -8,11 +8,42 @@
 
 import UIKit
 
-class FavoritesPodcastCell: UICollectionViewCell {
+final class FavoritesPodcastCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Properties
+    var podcast: Podcast! {
+        didSet {
+
+        }
+    }
+
+    // MARK: - Outlets
+
+
+    // MARK: - Life Cycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        stylizeUI()
+        setupViews()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+
+// MARK: - Setup
+extension FavoritesPodcastCell {
+
+    fileprivate func stylizeUI() {
+
+    }
+
+    fileprivate func setupViews() {
+
     }
 
 }
