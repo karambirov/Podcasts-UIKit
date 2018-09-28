@@ -8,12 +8,12 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
 
 final class FavoritesController: UICollectionViewController {
 
     // MARK: - Properties
     fileprivate var podcasts = UserDefaults.standard.savedPodcasts
+    fileprivate let reuseIdentifier = "FavoritesPodcastCell"
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -29,6 +29,21 @@ final class FavoritesController: UICollectionViewController {
     }
 
 }
+
+
+// MARK: - Collection View
+extension FavoritesController {
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return podcasts.count
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: reuseIdentifier, withReuseIdentifier: indexPath, for: indexPath) as! FavoritesPodcastCell
+    }
+
+}
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FavoritesController: UICollectionViewDelegateFlowLayout {
