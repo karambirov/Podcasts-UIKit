@@ -64,8 +64,13 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var currentTimeSlider: UISlider!
     @IBOutlet fileprivate weak var currentTimeLabel: UILabel!
     @IBOutlet fileprivate weak var durationLabel: UILabel!
-    @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var authorLabel: UILabel!
+
+    @IBOutlet fileprivate weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.numberOfLines = 2
+        }
+    }
 
     @IBOutlet weak var playPauseButton: UIButton! {
         didSet {
@@ -118,6 +123,10 @@ class PlayerDetailsView: UIView {
 
         observePlayerCurrentTime()
         observeBoundaryTime()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
     }
 
 }
@@ -251,7 +260,7 @@ extension PlayerDetailsView {
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
             print("\n\t\tEpisode started playing")
             self?.enlargeEpisodeImageView()
-            // TODO: self?.setupLockscreenDuration()
+            self?.setupLockscreenDuration()
         }
     }
 
@@ -328,8 +337,6 @@ extension PlayerDetailsView {
     }
 
     @objc fileprivate func handleDismissalPan(gesture: UIPanGestureRecognizer) {
-        print("\n\t\tmiximizedStackView dismissal")
-
         if gesture.state == .changed {
             let translation = gesture.translation(in: superview)
             maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
@@ -426,7 +433,32 @@ extension PlayerDetailsView {
     }
 
     fileprivate func setupInterruptionObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
+    }
 
+    @objc fileprivate func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
+
+        if type == AVAudioSession.InterruptionType.began.rawValue {
+            print("\n\t\tInterruption began")
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+        } else {
+            print("\n\t\tInterruption ended")
+            guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
+                player.play()
+                playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+                miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            }
+        }
+    }
+
+    fileprivate func setupLockscreenDuration() {
+        guard let duration = player.currentItem?.duration else { return }
+        let durationSeconds = CMTimeGetSeconds(duration)
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
     }
 
 }
