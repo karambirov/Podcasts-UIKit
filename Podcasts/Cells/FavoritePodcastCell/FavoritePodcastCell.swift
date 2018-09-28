@@ -1,5 +1,5 @@
 //
-//  FavoritesPodcastCell.swift
+//  FavoritePodcastCell.swift
 //  Podcasts
 //
 //  Created by Eugene Karambirov on 28/09/2018.
@@ -48,6 +48,7 @@ extension FavoritePodcastCell {
 
         let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, artistNameLabel])
         stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
 
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
