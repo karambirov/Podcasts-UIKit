@@ -13,7 +13,7 @@ final class FavoritesController: UICollectionViewController {
 
     // MARK: - Properties
     fileprivate var podcasts = UserDefaults.standard.savedPodcasts
-    fileprivate let reuseIdentifier = "FavoritesPodcastCell"
+    fileprivate let reuseIdentifier = "FavoritePodcastCell"
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
