@@ -83,7 +83,7 @@ extension EpisodesController {
     }
 
     private func setupNavigationBarButtons() {
-        let savedPodcasts = UserDefaults.standard.savedPodcasts()
+        let savedPodcasts = UserDefaults.standard.savedPodcasts
         let hasFavorited = savedPodcasts
             .index(where: { $0.trackName == self.podcast?.trackName &&
                    $0.artistName == self.podcast?.artistName }) != nil
@@ -112,7 +112,7 @@ extension EpisodesController {
 
         guard let podcast = self.podcast else { return }
 
-        var listOfPodcasts = UserDefaults.standard.savedPodcasts()
+        var listOfPodcasts = UserDefaults.standard.savedPodcasts
         listOfPodcasts.append(podcast)
         let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
 

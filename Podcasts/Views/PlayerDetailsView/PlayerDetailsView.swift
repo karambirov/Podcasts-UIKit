@@ -102,7 +102,7 @@ class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var miniPlayPauseButton: UIButton! {
         didSet {
             miniPlayPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
-            miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+            miniPlayPauseButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         }
     }
 
