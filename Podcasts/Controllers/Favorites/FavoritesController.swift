@@ -95,7 +95,7 @@ extension FavoritesController {
             let selectedPodcast = self.podcasts[selectedIndexPath.item]
             self.podcasts.remove(at: selectedIndexPath.item)
             self.collectionView?.deleteItems(at: [selectedIndexPath])
-            UserDefaults.standard.deletePodcast(podcast: selectedPodcast)
+            UserDefaults.standard.deletePodcast(selectedPodcast)
         }))
 
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
