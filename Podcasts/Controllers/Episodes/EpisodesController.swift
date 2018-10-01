@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Replase strings with type-safety values
 final class EpisodesController: UITableViewController {
 
     // MARK: - Properties
@@ -20,6 +19,7 @@ final class EpisodesController: UITableViewController {
     }
 
     var episodes = [Episode]()
+    fileprivate let reuseIdentifier = "EpisodeCell"
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ extension EpisodesController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell", for: indexPath) as! EpisodeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EpisodeCell
         cell.episode = episodes[indexPath.row]
         return cell
     }
@@ -77,8 +77,8 @@ extension EpisodesController {
     }
 
     private func setupTableView() {
-        let nib = UINib(nibName: "EpisodeCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "EpisodeCell")
+        let nib = UINib(nibName: reuseIdentifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
         tableView.tableFooterView = UIView()
     }
 
