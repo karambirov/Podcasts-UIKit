@@ -46,6 +46,16 @@ extension EpisodesController {
         return 134
     }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { (_, _) in
+            print("\n\t\tDownloading episode into UserDefaults")
+            let episode = self.episodes[indexPath.row]
+            UserDefaults.standard.downloadEpisode(episode)
+            NetworkService.shared.downloadEpisode(episode)
+        }
+        return [downloadAction]
+    }
+
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
