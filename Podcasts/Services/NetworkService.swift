@@ -12,6 +12,8 @@ import FeedKit
 
 final class NetworkService {
 
+    typealias EpisodeDownloadComplete = (fileUrl: String, episodeTitle: String)
+
     fileprivate let baseiTunesSearchURL = "https://itunes.apple.com/search"
 
     static let shared = NetworkService()

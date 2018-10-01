@@ -98,12 +98,27 @@ extension DownloadsController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete), name: .downloadComplete, object: nil)
     }
 
-    @objc private func handleDownloadProgress() {
+    @objc private func handleDownloadProgress(notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: Any] else { return }
+        guard let progress = userInfo["progress"] as? Double else { return }
+        guard let title = userInfo["title"] as? String else { return }
 
+        print("\n\t\t", progress, title)
+
+        guard let index = episodes.firstIndex(where: { $0.title == title }) else { return }
+        guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell else { return }
+        cell.progressLabel.text = "\(Int(progress * 100))%"
+        cell.progressLabel.isHidden = false
+
+        if progress == 1 {
+            cell.progressLabel.isHidden = true
+        }
     }
 
-    @objc private func handleDownloadComplete() {
-
+    @objc private func handleDownloadComplete(notification: Notification) {
+        guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
+        guard let index = episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
+        episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }
 
 }
