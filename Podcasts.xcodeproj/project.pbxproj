@@ -148,9 +148,9 @@
 		AA62F5F42154C92400356E3F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AA62F5FD2154CEB900356E3F /* Favorites */,
 				AA62F6002154CF1200356E3F /* PodcastsSearch */,
 				AA62F61F2159F94800356E3F /* Episodes */,
+				AA62F5FD2154CEB900356E3F /* Favorites */,
 				AA62F6032154CF3D00356E3F /* Downloads */,
 				AA62F5F52154C93000356E3F /* MainTabBar */,
 			);
