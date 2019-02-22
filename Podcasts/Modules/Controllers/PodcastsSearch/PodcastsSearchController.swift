@@ -12,12 +12,11 @@ import Alamofire
 final class PodcastsSearchController: UITableViewController {
 
     // MARK: - Properties
-    fileprivate var podcasts = [Podcast]()
+    var viewModel = PodcastsSearchViewModel()
     fileprivate var timer: Timer?
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate var dataSource: TableViewDataSource<Podcast, PodcastCell>?
 
-    // MARK: - Life Cycle
+    // MARK: - View Controller's life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -43,7 +42,7 @@ extension PodcastsSearchController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? (tableView.bounds.height / 2) : 0
+        return viewModel.podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? (tableView.bounds.height / 2) : 0
     }
 
     // MARK: Footer Setup
@@ -54,7 +53,7 @@ extension PodcastsSearchController {
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
+        return viewModel.podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
     }
 
     // MARK: Navigation
@@ -102,26 +101,26 @@ extension PodcastsSearchController {
     }
 
     private func setupTableView() {
-        tableView.dataSource = dataSource
+        tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
     }
 
     fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.podcasts = podcasts
-        dataSource = .make(for: podcasts)
-        tableView.dataSource = dataSource
+        self.viewModel.podcasts = podcasts
+        viewModel.dataSource = .make(for: podcasts)
+        tableView.dataSource = viewModel.dataSource
     }
 
     fileprivate func deleteLoadedPodcasts() {
-        podcasts.removeAll()
-        dataSource = .make(for: podcasts)
-        tableView.dataSource = dataSource
+        viewModel.podcasts.removeAll()
+        viewModel.dataSource = .make(for: viewModel.podcasts)
+        tableView.dataSource = viewModel.dataSource
     }
 
     fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
-        return podcasts[indexPath.row]
+        return viewModel.podcasts[indexPath.row]
     }
 
 }
