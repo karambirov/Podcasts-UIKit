@@ -16,7 +16,6 @@ final class Podcast: NSObject, Decodable, NSCoding {
     var trackCount: Int?
     var feedUrl: String?
 
-
     func encode(with aCoder: NSCoder) {
         print("\n\t\tTrying to transform Podcast into Data")
         aCoder.encode(trackName ?? "", forKey: "trackNameKey")
