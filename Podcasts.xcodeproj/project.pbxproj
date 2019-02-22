@@ -45,6 +45,7 @@
 		AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA712220276700838F13 /* EpisodesViewModel.swift */; };
 		AA7CDA742220661B00838F13 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */; };
 		AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */; };
+		AA7CDA78222066F500838F13 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		AA7CDA712220276700838F13 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,6 +297,7 @@
 			children = (
 				AA62F619215958B800356E3F /* NetworkService.swift */,
 				AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */,
+				AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
 				AA7CDA68221FF3F400838F13 /* Describable.swift in Sources */,
 				AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */,
+				AA7CDA78222066F500838F13 /* CollectionViewDataSource.swift in Sources */,
 				AA62F62E215B608400356E3F /* UserDefaults+Extensions.swift in Sources */,
 				AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */,
 				AA62F627215A046500356E3F /* EpisodeCell.swift in Sources */,
