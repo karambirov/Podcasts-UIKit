@@ -38,6 +38,8 @@
 		AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */; };
 		AA7CDA62221FF20100838F13 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA61221FF20000838F13 /* R.generated.swift */; };
 		AA7CDA68221FF3F400838F13 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA67221FF3F400838F13 /* Describable.swift */; };
+		AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */; };
+		AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA61221FF20000838F13 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		AA7CDA67221FF3F400838F13 /* Describable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
+		AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +200,8 @@
 				AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */,
 				AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */,
 				AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */,
+				AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */,
+				AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */,
 				AA62F61A215958B800356E3F /* NetworkService.swift in Sources */,
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
+				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,
@@ -538,6 +545,7 @@
 				AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */,
 				AA62F6212159F97700356E3F /* EpisodesController.swift in Sources */,
 				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
+				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
