@@ -113,15 +113,7 @@ extension EpisodesViewController {
     }
 
     @objc private func saveFavorite() {
-        print("\n\t\tSaving info into UserDefaults")
-
-        var listOfPodcasts = UserDefaults.standard.savedPodcasts
-        listOfPodcasts.append(viewModel.podcast)
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts,
-                                                     requiringSecureCoding: false)
-
-        UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
-
+        viewModel.saveFavorite()
         showBadgeHighlight()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain,
                                                             target: nil, action: nil)

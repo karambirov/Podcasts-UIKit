@@ -17,7 +17,11 @@ final class PodcastsSearchViewModel {
     var podcasts = [Podcast]()
     var dataSource: TableViewDataSource<Podcast, PodcastCell>?
 
-    // MARK: - Methods
+}
+
+// MARK: - Methods
+extension PodcastsSearchViewModel {
+
     func searchPodcasts(with query: String, completion: @escaping () -> Void) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
@@ -31,11 +35,6 @@ final class PodcastsSearchViewModel {
         })
     }
 
-    private func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.podcasts = podcasts
-        dataSource = .make(for: podcasts)
-    }
-
     func deleteLoadedPodcasts() {
         podcasts.removeAll()
         dataSource = .make(for: podcasts)
@@ -43,6 +42,11 @@ final class PodcastsSearchViewModel {
 
     func podcast(for indexPath: IndexPath) -> Podcast {
         return podcasts[indexPath.row]
+    }
+
+    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
+        self.podcasts = podcasts
+        dataSource = .make(for: podcasts)
     }
 
 }
