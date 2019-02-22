@@ -133,6 +133,10 @@ final class PlayerDetailsView: UIView {
 // MARK: - Actions
 extension PlayerDetailsView {
 
+    static func initFromNib() -> PlayerDetailsView {
+        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+    }
+
     @IBAction fileprivate func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }

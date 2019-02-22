@@ -11,7 +11,7 @@ import UIKit
 final class MainTabBarController: UITabBarController {
 
     // MARK: - Properties
-    fileprivate let playerDetailsView = R.nib.playerDetailsView.firstView(owner: nil)
+    fileprivate let playerDetailsView = PlayerDetailsView.initFromNib()
     fileprivate var maximizedTopAnchorConstraint: NSLayoutConstraint!
     fileprivate var minimizedTopAnchorConstraint: NSLayoutConstraint!
     fileprivate var bottomAnchorConstraint: NSLayoutConstraint!
@@ -43,8 +43,8 @@ extension MainTabBarController {
             self.view.layoutIfNeeded()
             self.tabBar.transform = .identity
 
-                        self.playerDetailsView?.maximizedStackView.alpha = 0
-                        self.playerDetailsView?.miniPlayerView.alpha = 1
+                        self.playerDetailsView.maximizedStackView.alpha = 0
+                        self.playerDetailsView.miniPlayerView.alpha = 1
         })
     }
 
@@ -55,10 +55,10 @@ extension MainTabBarController {
         bottomAnchorConstraint.constant = 0
 
         if episode != nil {
-            playerDetailsView?.episode = episode
+            playerDetailsView.episode = episode
         }
 
-        playerDetailsView?.playlistEpisodes = playlistEpisodes
+        playerDetailsView.playlistEpisodes = playlistEpisodes
 
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -66,8 +66,8 @@ extension MainTabBarController {
             self.view.layoutIfNeeded()
             self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
 
-            self.playerDetailsView?.maximizedStackView.alpha = 1
-            self.playerDetailsView?.miniPlayerView.alpha = 0
+                        self.playerDetailsView.maximizedStackView.alpha = 1
+                        self.playerDetailsView.miniPlayerView.alpha = 0
         })
     }
 
@@ -80,25 +80,24 @@ extension MainTabBarController {
         let podcastsSearchController = PodcastsSearchController(viewModel: podcastsSearchViewModel)
 
         guard let search = R.image.search(),
-              let play = R.image.play(),
+              let favorites = R.image.favorites(),
               let downloads = R.image.downloads() else { return }
 
         viewControllers = [
             makeNavigationController(for: podcastsSearchController, title: "Search", image: search),
-            makeNavigationController(for: favoritesController, title: "Favorites", image: play),
+            makeNavigationController(for: favoritesController, title: "Favorites", image: favorites),
             makeNavigationController(for: DownloadsController(), title: "Downloads", image: downloads)
         ]
     }
 
     fileprivate func setupPlayerDetailsView() {
-        guard let playerDetailsView = playerDetailsView else { return }
         view.insertSubview(playerDetailsView, belowSubview: tabBar)
         setupConstraintsForPlayerDetailsView()
     }
 
     // MARK: - Private
     private func makeNavigationController(for rootViewController: UIViewController,
-                                              title: String, image: UIImage) -> UIViewController {
+                                          title: String, image: UIImage) -> UIViewController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         rootViewController.navigationItem.title = title
         navigationController.tabBarItem.title   = title
@@ -107,20 +106,20 @@ extension MainTabBarController {
     }
 
     private func setupConstraintsForPlayerDetailsView() {
-        playerDetailsView?.translatesAutoresizingMaskIntoConstraints = false
+        playerDetailsView.translatesAutoresizingMaskIntoConstraints = false
 
-        maximizedTopAnchorConstraint = playerDetailsView?.topAnchor.constraint(equalTo: view.topAnchor,
+        maximizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor,
                                                                               constant: view.frame.height)
         maximizedTopAnchorConstraint.isActive = true
 
-        bottomAnchorConstraint = playerDetailsView?.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+        bottomAnchorConstraint = playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                                                            constant: view.frame.height)
         bottomAnchorConstraint.isActive = true
 
-        minimizedTopAnchorConstraint = playerDetailsView?.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
+        minimizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
 
-        playerDetailsView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        playerDetailsView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
 
 }
