@@ -89,7 +89,7 @@ extension EpisodesViewController {
     }
 
     private func setupTableView() {
-        let nib = UINib(nibName: EpisodeCell.typeName, bundle: nil)
+        let nib = UINib(resource: R.nib.episodeCell)
         tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
         tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
@@ -102,7 +102,7 @@ extension EpisodesViewController {
                             $0.artistName == self.viewModel.podcast.artistName }) != nil
 
         if hasFavorited {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain,
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.heart(), style: .plain,
                                                                 target: nil, action: nil)
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.favoriteNavBarButtonTitle,
@@ -114,12 +114,12 @@ extension EpisodesViewController {
     @objc private func saveFavorite() {
         viewModel.saveFavorite()
         showBadgeHighlight()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.heart(), style: .plain,
                                                             target: nil, action: nil)
     }
 
     private func showBadgeHighlight() {
-        UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = "New"
+        UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = Strings.tabBarBadgeTitle
     }
 
 }
@@ -129,6 +129,7 @@ private extension EpisodesViewController {
     enum Strings {
         static let favoriteNavBarButtonTitle = "Favorite"
         static let downloadRowActionTitle    = "Download"
+        static let tabBarBadgeTitle          = "New"
     }
 
     enum Sizes {

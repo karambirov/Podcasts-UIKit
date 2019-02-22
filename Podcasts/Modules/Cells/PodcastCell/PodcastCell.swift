@@ -18,7 +18,6 @@ final class PodcastCell: UITableViewCell {
     @IBOutlet fileprivate weak var episodeCountLabel: UILabel!
 
     // MARK: - Properties
-    // maybe force-unwrapping?
     var podcast: Podcast? {
         didSet {
             trackNameLabel.text = podcast?.trackName

@@ -73,7 +73,7 @@ extension PodcastsSearchController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let podcast = viewModel.podcast(for: indexPath)
-        let episodesViewModel = EpisodesViewModel(podcast: podcast)
+        let episodesViewModel  = EpisodesViewModel(podcast: podcast)
         let episodesController = EpisodesViewController(viewModel: episodesViewModel)
         navigationController?.pushViewController(episodesController, animated: true)
     }
@@ -125,8 +125,7 @@ extension PodcastsSearchController {
     }
 
     fileprivate func setupLoadingView() -> UIView? {
-        let podcastsSearchingView = Bundle.main.loadNibNamed(Strings.podcastsSearchingView,
-                                                             owner: self)?.first as? UIView
+        let podcastsSearchingView = R.nib.podcastsSearchingView.firstView(owner: nil)
         return podcastsSearchingView
     }
 
@@ -145,7 +144,7 @@ extension PodcastsSearchController {
     }
 
     private func setupTableView() {
-        let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
+        let nib = UINib(resource: R.nib.podcastCell)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
         tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
