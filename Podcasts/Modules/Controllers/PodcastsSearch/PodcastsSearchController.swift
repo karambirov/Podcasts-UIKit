@@ -102,6 +102,7 @@ extension PodcastsSearchController {
     }
 
     private func setupTableView() {
+        tableView.dataSource = dataSource
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
@@ -110,11 +111,13 @@ extension PodcastsSearchController {
     fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
         self.podcasts = podcasts
         dataSource = .make(for: podcasts)
+        tableView.dataSource = dataSource
     }
 
     fileprivate func deleteLoadedPodcasts() {
         podcasts.removeAll()
         dataSource = .make(for: podcasts)
+        tableView.dataSource = dataSource
     }
 
     fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
