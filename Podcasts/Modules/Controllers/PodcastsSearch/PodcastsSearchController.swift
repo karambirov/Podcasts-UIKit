@@ -35,7 +35,7 @@ extension PodcastsSearchController {
     // MARK: Header Setup
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = "Please, enter a search term."
+        label.text = Keys.enterSearchTermMessage
         label.textAlignment = .center
         label.textColor = .purple
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
@@ -48,7 +48,8 @@ extension PodcastsSearchController {
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let podcastsSearchingView = Bundle.main.loadNibNamed("PodcastsSearchingView", owner: self)?.first as? UIView
+        let podcastsSearchingView = Bundle.main.loadNibNamed(Keys.podcastsSearchingView,
+                                                             owner: self)?.first as? UIView
         return podcastsSearchingView
     }
 
@@ -118,6 +119,15 @@ extension PodcastsSearchController {
 
     fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
         return podcasts[indexPath.row]
+    }
+
+}
+
+private extension PodcastsSearchController {
+
+    enum Keys {
+        static let podcastsSearchingView = "PodcastsSearchingView"
+        static let enterSearchTermMessage = "Please, enter a search term."
     }
 
 }
