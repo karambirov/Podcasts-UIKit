@@ -37,7 +37,6 @@ final class FavoritePodcastCell: UICollectionViewCell {
 
 }
 
-
 // MARK: - Setup
 extension FavoritePodcastCell {
 

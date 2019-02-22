@@ -287,7 +287,6 @@ extension PlayerDetailsView {
 
 }
 
-
 // MARK: - Gestures
 extension PlayerDetailsView {
 
@@ -355,7 +354,6 @@ extension PlayerDetailsView {
     }
 
 }
-
 
 // MARK: - Background playing and Remote control
 extension PlayerDetailsView {
