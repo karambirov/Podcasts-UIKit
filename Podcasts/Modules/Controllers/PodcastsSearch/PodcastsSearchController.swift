@@ -12,10 +12,19 @@ import Alamofire
 final class PodcastsSearchController: UITableViewController {
 
     // MARK: - Properties
-    var viewModel = PodcastsSearchViewModel()
-    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate var viewModel: PodcastsSearchViewModel
+    fileprivate lazy var searchController = UISearchController(searchResultsController: nil)
 
     // MARK: - View Controller's life cycle
+    init(viewModel: PodcastsSearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()

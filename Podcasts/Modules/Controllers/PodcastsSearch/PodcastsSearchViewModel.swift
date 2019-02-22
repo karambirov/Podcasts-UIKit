@@ -11,7 +11,7 @@ import UIKit
 final class PodcastsSearchViewModel {
 
     // MARK: - Private
-    fileprivate var timer: Timer?
+    private var timer: Timer?
 
     // MARK: - Properties
     var podcasts = [Podcast]()
@@ -31,7 +31,7 @@ final class PodcastsSearchViewModel {
         })
     }
 
-    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
+    private func podcastsDidLoad(_ podcasts: [Podcast]) {
         self.podcasts = podcasts
         dataSource = .make(for: podcasts)
     }
