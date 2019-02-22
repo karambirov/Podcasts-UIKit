@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 final class PodcastsSearchController: UITableViewController {
 
