@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FavoritesController: UICollectionViewController {
+final class FavoritesViewController: UICollectionViewController {
 
     // MARK: - Properties
     fileprivate var podcasts = UserDefaults.standard.savedPodcasts
@@ -30,7 +30,7 @@ final class FavoritesController: UICollectionViewController {
 }
 
 // MARK: - Collection View
-extension FavoritesController {
+extension FavoritesViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return podcasts.count
@@ -54,7 +54,7 @@ extension FavoritesController {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension FavoritesController: UICollectionViewDelegateFlowLayout {
+extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 3 * 16) / 2
@@ -72,7 +72,7 @@ extension FavoritesController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Setup
-extension FavoritesController {
+extension FavoritesViewController {
 
     fileprivate func setupCollectionView() {
         collectionView.backgroundColor = .white

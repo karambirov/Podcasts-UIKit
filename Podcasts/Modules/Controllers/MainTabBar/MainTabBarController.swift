@@ -74,7 +74,7 @@ extension MainTabBarController {
     // MARK: - Fileprivate
     fileprivate func setupViewControllers() {
         let layout = UICollectionViewFlowLayout()
-        let favoritesController = FavoritesController(collectionViewLayout: layout)
+        let favoritesController = FavoritesViewController(collectionViewLayout: layout)
 
         let podcastsSearchViewModel = PodcastsSearchViewModel()
         let podcastsSearchController = PodcastsSearchController(viewModel: podcastsSearchViewModel)
