@@ -13,13 +13,22 @@ final class PodcastsSearchController: UITableViewController {
 
     // MARK: - Properties
     var viewModel = PodcastsSearchViewModel()
-    fileprivate var timer: Timer?
     fileprivate let searchController = UISearchController(searchResultsController: nil)
 
     // MARK: - View Controller's life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = true
+        super.viewDidAppear(animated)
     }
 
 }
@@ -33,12 +42,8 @@ extension PodcastsSearchController {
 
     // MARK: Header Setup
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = Keys.enterSearchTermMessage
-        label.textAlignment = .center
-        label.textColor = .purple
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        return label
+        let emptyStateView = setupEmptyStateView()
+        return emptyStateView
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -59,7 +64,7 @@ extension PodcastsSearchController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episodesController = EpisodesController()
-        episodesController.podcast = podcast(for: indexPath)
+        episodesController.podcast = viewModel.podcast(for: indexPath)
         navigationController?.pushViewController(episodesController, animated: true)
     }
 }
@@ -68,17 +73,7 @@ extension PodcastsSearchController {
 extension PodcastsSearchController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        deleteLoadedPodcasts()
-        tableView.reloadData()
-
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
-            NetworkService.shared.fetchPodcasts(searchText: searchText, completionHandler: { [weak self] podcasts in
-                guard let self = self else { return }
-                self.podcastsDidLoad(podcasts)
-                self.tableView.reloadData()
-            })
-        })
+        searchPodcasts(with: searchText)
     }
 
 }
@@ -90,6 +85,27 @@ extension PodcastsSearchController {
         view.backgroundColor = .white
         setupSearchBar()
         setupTableView()
+    }
+
+    fileprivate func searchPodcasts(with searchText: String) {
+        viewModel.deleteLoadedPodcasts()
+        tableView.reloadData()
+
+        guard searchText.count > 2 else { return }
+        viewModel.searchPodcasts(with: searchText) { [weak self] in
+            guard let self = self else { return }
+            self.tableView.dataSource = self.viewModel.dataSource
+            self.tableView.reloadData()
+        }
+    }
+
+    fileprivate func setupEmptyStateView() -> UIView? {
+        let label = UILabel()
+        label.text = Keys.enterSearchTermMessage
+        label.textAlignment = .center
+        label.textColor = .purple
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
     }
 
     private func setupSearchBar() {
@@ -105,22 +121,6 @@ extension PodcastsSearchController {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
-    }
-
-    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.viewModel.podcasts = podcasts
-        viewModel.dataSource = .make(for: podcasts)
-        tableView.dataSource = viewModel.dataSource
-    }
-
-    fileprivate func deleteLoadedPodcasts() {
-        viewModel.podcasts.removeAll()
-        viewModel.dataSource = .make(for: viewModel.podcasts)
-        tableView.dataSource = viewModel.dataSource
-    }
-
-    fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
-        return viewModel.podcasts[indexPath.row]
     }
 
 }
