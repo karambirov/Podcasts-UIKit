@@ -28,7 +28,6 @@ final class MainTabBarController: UITabBarController {
 
 }
 
-
 // MARK: - Setup
 extension MainTabBarController {
 
@@ -91,7 +90,7 @@ extension MainTabBarController {
 
     // MARK: - Private
     private func generateNavigationController(for rootViewController: UIViewController,
-                                                  title: String, image: UIImage) -> UIViewController {
+                                              title: String, image: UIImage) -> UIViewController {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         rootViewController.navigationItem.title = title
         navigationController.tabBarItem.title   = title

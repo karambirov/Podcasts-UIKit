@@ -33,7 +33,6 @@ final class DownloadsController: UITableViewController {
 
 }
 
-
 // MARK: - TableView
 extension DownloadsController {
 
@@ -77,7 +76,6 @@ extension DownloadsController {
     }
 
 }
-
 
 // MARK: - Setup
 extension DownloadsController {

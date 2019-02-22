@@ -20,7 +20,6 @@ final class NetworkService {
 
 }
 
-
 // MARK: - Fetching podcasts
 extension NetworkService {
 
@@ -53,7 +52,6 @@ extension NetworkService {
 
 }
 
-
 // MARK: - Fetching episodes
 extension NetworkService {
 
@@ -79,7 +77,6 @@ extension NetworkService {
     }
 
 }
-
 
 // MARK: - Downloading episodes
 extension NetworkService {

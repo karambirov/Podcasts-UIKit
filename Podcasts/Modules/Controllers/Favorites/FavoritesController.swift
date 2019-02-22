@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class FavoritesController: UICollectionViewController {
 
     // MARK: - Properties
@@ -29,7 +28,6 @@ final class FavoritesController: UICollectionViewController {
     }
 
 }
-
 
 // MARK: - Collection View
 extension FavoritesController {
@@ -53,7 +51,6 @@ extension FavoritesController {
 
 }
 
-
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FavoritesController: UICollectionViewDelegateFlowLayout {
 
@@ -69,9 +66,8 @@ extension FavoritesController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
-    
-}
 
+}
 
 // MARK: - Setup
 extension FavoritesController {

@@ -29,5 +29,5 @@ final class PodcastCell: UITableViewCell {
             podcastImageView.sd_setImage(with: url)
         }
     }
-    
+
 }
