@@ -43,7 +43,8 @@
 		AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */; };
 		AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */; };
 		AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA712220276700838F13 /* EpisodesViewModel.swift */; };
-		AA7CDA742220661B00838F13 /* CollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA732220661B00838F13 /* CollectionView+Extensions.swift */; };
+		AA7CDA742220661B00838F13 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */; };
+		AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,7 +87,8 @@
 		AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchViewModel.swift; sourceTree = "<group>"; };
 		AA7CDA712220276700838F13 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
-		AA7CDA732220661B00838F13 /* CollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,7 +212,8 @@
 				AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */,
 				AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */,
 				AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */,
-				AA7CDA732220661B00838F13 /* CollectionView+Extensions.swift */,
+				AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */,
+				AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -538,9 +541,10 @@
 				AA62F61A215958B800356E3F /* NetworkService.swift in Sources */,
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
 				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
+				AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
-				AA7CDA742220661B00838F13 /* CollectionView+Extensions.swift in Sources */,
+				AA7CDA742220661B00838F13 /* UICollectionView+Extensions.swift in Sources */,
 				AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */,
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,
 				AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */,
