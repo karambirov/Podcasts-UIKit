@@ -45,6 +45,12 @@ extension EpisodesViewModel {
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
     }
 
+    func download(_ episode: Episode) {
+        print("\n\t\tDownloading episode into UserDefaults")
+        UserDefaults.standard.downloadEpisode(episode)
+        NetworkService.shared.downloadEpisode(episode)
+    }
+
     func episode(for indexPath: IndexPath) -> Episode {
         return episodes[indexPath.row]
     }

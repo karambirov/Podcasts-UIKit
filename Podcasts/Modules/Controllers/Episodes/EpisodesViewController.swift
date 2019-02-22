@@ -46,11 +46,10 @@ extension EpisodesViewController {
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let downloadAction = UITableViewRowAction(style: .normal,
-                                                  title: Strings.downloadRowActionTitle) { (_, _) in
-            print("\n\t\tDownloading episode into UserDefaults")
+                                                  title: Strings.downloadRowActionTitle) { [weak self] (_, _) in
+            guard let self = self else { return }
             let episode = self.viewModel.episode(for: indexPath)
-            UserDefaults.standard.downloadEpisode(episode)
-            NetworkService.shared.downloadEpisode(episode)
+            self.viewModel.download(episode)
         }
         return [downloadAction]
     }
