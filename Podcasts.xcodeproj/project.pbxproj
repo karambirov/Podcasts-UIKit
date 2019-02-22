@@ -42,6 +42,7 @@
 		AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */; };
 		AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */; };
 		AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */; };
+		AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA712220276700838F13 /* EpisodesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchViewModel.swift; sourceTree = "<group>"; };
+		AA7CDA712220276700838F13 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F6202159F97700356E3F /* EpisodesController.swift */,
+				AA7CDA712220276700838F13 /* EpisodesViewModel.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
+				AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */,
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,
 				AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */,
 				AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */,

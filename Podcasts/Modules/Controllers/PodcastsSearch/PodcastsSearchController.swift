@@ -74,8 +74,9 @@ extension PodcastsSearchController {
 
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let episodesController = EpisodesController()
-        episodesController.podcast = viewModel.podcast(for: indexPath)
+        let podcast = viewModel.podcast(for: indexPath)
+        let episodesViewModel = EpisodesViewModel(podcast: podcast)
+        let episodesController = EpisodesController(viewModel: episodesViewModel)
         navigationController?.pushViewController(episodesController, animated: true)
     }
 }

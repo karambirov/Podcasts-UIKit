@@ -52,3 +52,20 @@ extension TableViewDataSource where Model == Podcast {
     }
 
 }
+
+extension TableViewDataSource where Model == Episode {
+
+    static func make(for episodes: [Episode],
+                     reuseIdentifier: String = EpisodeCell.typeName) -> TableViewDataSource {
+
+        return TableViewDataSource(models: episodes, reuseIdentifier: reuseIdentifier,
+                                   cellConfigurator: { episode, cell in
+            if let cell = cell as? EpisodeCell {
+                cell.episode = episode
+            }
+            cell.layoutIfNeeded()
+        })
+
+    }
+
+}
