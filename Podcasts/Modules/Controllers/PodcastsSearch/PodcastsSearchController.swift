@@ -47,18 +47,21 @@ extension PodcastsSearchController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return viewModel.podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? (tableView.bounds.height / 2) : 0
+        let height = Sizes.headerHeight(for: tableView)
+        return viewModel.podcasts.isEmpty
+            && searchController.searchBar.text?.isEmpty == true ? height : 0
     }
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let podcastsSearchingView = Bundle.main.loadNibNamed(Keys.podcastsSearchingView,
+        let podcastsSearchingView = Bundle.main.loadNibNamed(Strings.podcastsSearchingView,
                                                              owner: self)?.first as? UIView
         return podcastsSearchingView
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return viewModel.podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
+        return viewModel.podcasts.isEmpty
+            && searchController.searchBar.text?.isEmpty == false ? Sizes.footerHeight : 0
     }
 
     // MARK: Navigation
@@ -88,6 +91,7 @@ extension PodcastsSearchController {
 
     fileprivate func initialSetup() {
         view.backgroundColor = .white
+        setupNavigationBar()
         setupSearchBar()
         setupTableView()
     }
@@ -104,41 +108,54 @@ extension PodcastsSearchController {
         }
     }
 
-    fileprivate func setupEmptyStateView() -> UIView? {
+    fileprivate func setupEmptyStateView() -> UIView {
         let label = UILabel()
-        label.text = Keys.enterSearchTermMessage
+        label.text = Strings.enterSearchTermMessage
         label.textAlignment = .center
         label.textColor = .purple
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }
 
+    fileprivate func setupNavigationBar() {
+        navigationItem.searchController = searchController
+        title = Strings.title
+    }
+
     private func setupSearchBar() {
-        self.definesPresentationContext                   = true
-        navigationItem.searchController                   = searchController
-        navigationItem.hidesSearchBarWhenScrolling        = false
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate               = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation     = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.definesPresentationContext           = true
+        searchController.searchBar.placeholder                = Strings.searchBarPlaceholder
+        searchController.searchBar.delegate                   = self
     }
 
     private func setupTableView() {
-        tableView.dataSource = viewModel.dataSource
-        tableView.tableFooterView = UIView()
         let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
+        tableView.dataSource = viewModel.dataSource
+        tableView.tableFooterView = UIView()
     }
 
 }
 
 private extension PodcastsSearchController {
 
-    enum Keys {
-        static let podcastsSearchingView = "PodcastsSearchingView"
+    enum Strings {
+        static let podcastsSearchingView  = "PodcastsSearchingView"
         static let enterSearchTermMessage = "Please, enter a search term."
+        static let searchBarPlaceholder   = "Search"
+        static let title                  = "Search"
     }
 
     enum Sizes {
         static let cellHeight: CGFloat = 132
+        static let footerHeight: CGFloat = 200
+
+        static func headerHeight(for tableView: UITableView) -> CGFloat {
+             return tableView.bounds.height / 2
+        }
     }
 
 }
