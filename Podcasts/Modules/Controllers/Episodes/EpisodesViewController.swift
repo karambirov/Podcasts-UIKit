@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EpisodesController: UITableViewController {
+final class EpisodesViewController: UITableViewController {
 
     // MARK: - Properties
     fileprivate let viewModel: EpisodesViewModel
@@ -37,7 +37,7 @@ final class EpisodesController: UITableViewController {
 }
 
 // MARK: - UITableView
-extension EpisodesController {
+extension EpisodesViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Sizes.cellHeight
@@ -77,7 +77,7 @@ extension EpisodesController {
 }
 
 // MARK: - Setup
-extension EpisodesController {
+extension EpisodesViewController {
 
     fileprivate func initialSetup() {
         setupTableView()
@@ -127,7 +127,7 @@ extension EpisodesController {
 
 }
 
-private extension EpisodesController {
+private extension EpisodesViewController {
 
     enum Strings {
         static let favoriteNavBarButtonTitle = "Favorite"
