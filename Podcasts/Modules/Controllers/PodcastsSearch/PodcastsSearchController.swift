@@ -9,14 +9,13 @@
 import UIKit
 import Alamofire
 
-// TODO: Replase strings with type-safety values
-
 final class PodcastsSearchController: UITableViewController {
 
     // MARK: - Properties
     fileprivate var podcasts = [Podcast]()
     fileprivate var timer: Timer?
     fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate var dataSource: TableViewDataSource<Podcast, PodcastCell>?
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -26,19 +25,8 @@ final class PodcastsSearchController: UITableViewController {
 
 }
 
-
 // MARK: - UITableView
 extension PodcastsSearchController {
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return podcasts.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PodcastCell", for: indexPath) as! PodcastCell
-        cell.podcast = podcasts[indexPath.row]
-        return cell
-    }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 132
@@ -71,24 +59,23 @@ extension PodcastsSearchController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episodesController = EpisodesController()
-        let podcast = podcasts[indexPath.row]
-        episodesController.podcast = podcast
+        episodesController.podcast = podcast(for: indexPath)
         navigationController?.pushViewController(episodesController, animated: true)
     }
 }
-
 
 // MARK: - UISearchBarDelegate
 extension PodcastsSearchController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        podcasts = []
+        deleteLoadedPodcasts()
         tableView.reloadData()
 
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
-            NetworkService.shared.fetchPodcasts(searchText: searchText, completionHandler: { podcasts in
-                self.podcasts = podcasts
+            NetworkService.shared.fetchPodcasts(searchText: searchText, completionHandler: { [weak self] podcasts in
+                guard let self = self else { return }
+                self.podcastsDidLoad(podcasts)
                 self.tableView.reloadData()
             })
         })
@@ -96,11 +83,11 @@ extension PodcastsSearchController: UISearchBarDelegate {
 
 }
 
-
 // MARK: - Setup
 extension PodcastsSearchController {
 
     fileprivate func initialSetup() {
+        view.backgroundColor = .white
         setupSearchBar()
         setupTableView()
     }
@@ -115,7 +102,22 @@ extension PodcastsSearchController {
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
-        let nib = UINib(nibName: "PodcastCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "PodcastCell")
+        let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
     }
+
+    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
+        self.podcasts = podcasts
+        dataSource = .make(for: podcasts)
+    }
+
+    fileprivate func deleteLoadedPodcasts() {
+        podcasts.removeAll()
+        dataSource = .make(for: podcasts)
+    }
+
+    fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
+        return podcasts[indexPath.row]
+    }
+
 }

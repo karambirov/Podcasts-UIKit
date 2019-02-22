@@ -40,6 +40,7 @@
 		AA7CDA68221FF3F400838F13 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA67221FF3F400838F13 /* Describable.swift */; };
 		AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */; };
 		AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */; };
+		AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		AA7CDA67221FF3F400838F13 /* Describable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
 		AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F619215958B800356E3F /* NetworkService.swift */,
+				AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */,
 				AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */,
 				AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */,
+				AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */,
 				AA7CDA62221FF20100838F13 /* R.generated.swift in Sources */,
 				AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */,
 				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
