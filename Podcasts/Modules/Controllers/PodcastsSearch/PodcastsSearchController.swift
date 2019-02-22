@@ -37,7 +37,7 @@ final class PodcastsSearchController: UITableViewController {
 extension PodcastsSearchController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 132
+        return Sizes.cellHeight
     }
 
     // MARK: Header Setup
@@ -74,6 +74,11 @@ extension PodcastsSearchController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchPodcasts(with: searchText)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.deleteLoadedPodcasts()
+        tableView.reloadData()
     }
 
 }
@@ -130,6 +135,10 @@ private extension PodcastsSearchController {
     enum Keys {
         static let podcastsSearchingView = "PodcastsSearchingView"
         static let enterSearchTermMessage = "Please, enter a search term."
+    }
+
+    enum Sizes {
+        static let cellHeight: CGFloat = 132
     }
 
 }
