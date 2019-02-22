@@ -40,11 +40,12 @@ final class EpisodesController: UITableViewController {
 extension EpisodesController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 134
+        return Sizes.cellHeight
     }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { (_, _) in
+        let downloadAction = UITableViewRowAction(style: .normal,
+                                                  title: Strings.downloadRowActionTitle) { (_, _) in
             print("\n\t\tDownloading episode into UserDefaults")
             let episode = self.viewModel.episode(for: indexPath)
             UserDefaults.standard.downloadEpisode(episode)
@@ -62,7 +63,7 @@ extension EpisodesController {
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return viewModel.episodes.isEmpty ? 200 : 0
+        return viewModel.episodes.isEmpty ? Sizes.footerHeight : 0
     }
 
     // MARK: Navigation
@@ -99,8 +100,9 @@ extension EpisodesController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain,
                                                                 target: nil, action: nil)
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Favorite", style: .plain,
-                                                                target: self, action: #selector(saveFavorite))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: Strings.favoriteNavBarButtonTitle,
+                                                                style: .plain, target: self,
+                                                                action: #selector(saveFavorite))
         }
     }
 
@@ -121,6 +123,20 @@ extension EpisodesController {
 
     private func showBadgeHighlight() {
         UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = "New"
+    }
+
+}
+
+private extension EpisodesController {
+
+    enum Strings {
+        static let favoriteNavBarButtonTitle = "Favorite"
+        static let downloadRowActionTitle    = "Download"
+    }
+
+    enum Sizes {
+        static let cellHeight: CGFloat = 134
+        static let footerHeight: CGFloat = 200
     }
 
 }

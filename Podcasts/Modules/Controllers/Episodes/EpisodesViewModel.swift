@@ -44,4 +44,5 @@ final class EpisodesViewModel {
     func episode(for indexPath: IndexPath) -> Episode {
         return episodes[indexPath.row]
     }
+
 }
