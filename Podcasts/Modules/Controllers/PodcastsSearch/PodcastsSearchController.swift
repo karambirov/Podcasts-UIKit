@@ -62,9 +62,7 @@ extension PodcastsSearchController {
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let podcastsSearchingView = Bundle.main.loadNibNamed(Strings.podcastsSearchingView,
-                                                             owner: self)?.first as? UIView
-        return podcastsSearchingView
+        return setupLoadingView()
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -74,8 +72,9 @@ extension PodcastsSearchController {
 
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let episodesController = EpisodesController()
-        episodesController.podcast = viewModel.podcast(for: indexPath)
+        let podcast = viewModel.podcast(for: indexPath)
+        let episodesViewModel = EpisodesViewModel(podcast: podcast)
+        let episodesController = EpisodesViewController(viewModel: episodesViewModel)
         navigationController?.pushViewController(episodesController, animated: true)
     }
 }
@@ -123,6 +122,12 @@ extension PodcastsSearchController {
         label.textColor = .purple
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
+    }
+
+    fileprivate func setupLoadingView() -> UIView? {
+        let podcastsSearchingView = Bundle.main.loadNibNamed(Strings.podcastsSearchingView,
+                                                             owner: self)?.first as? UIView
+        return podcastsSearchingView
     }
 
     fileprivate func setupNavigationBar() {
