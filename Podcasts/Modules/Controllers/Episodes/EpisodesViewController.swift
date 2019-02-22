@@ -30,6 +30,7 @@ final class EpisodesViewController: UITableViewController {
         viewModel.fetchEpisodes { [weak self] in
             guard let self = self else { return }
             self.navigationItem.title = self.viewModel.podcast.trackName
+            self.tableView.dataSource = self.viewModel.dataSource
             self.tableView.reloadData()
         }
     }
@@ -56,10 +57,7 @@ extension EpisodesViewController {
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-        activityIndicatorView.color = .darkGray
-        activityIndicatorView.startAnimating()
-        return activityIndicatorView
+        return setupLoadingView()
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -84,9 +82,17 @@ extension EpisodesViewController {
         setupNavigationBarButtons()
     }
 
+    fileprivate func setupLoadingView() -> UIView {
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicatorView.color = .darkGray
+        activityIndicatorView.startAnimating()
+        return activityIndicatorView
+    }
+
     private func setupTableView() {
         let nib = UINib(nibName: EpisodeCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
+        tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
     }
 

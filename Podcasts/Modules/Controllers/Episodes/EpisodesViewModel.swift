@@ -23,8 +23,9 @@ final class EpisodesViewModel {
         print("\n\t\tLooking for episodes at feed url:", podcast.feedUrl ?? "")
 
         guard let feedURL = podcast.feedUrl else { return }
-        NetworkService.shared.fetchEpisodes(feedUrl: feedURL) { episodes in
-            self.episodes = episodes
+        NetworkService.shared.fetchEpisodes(feedUrl: feedURL) { [weak self] episodes in
+            guard let self = self else { return }
+            self.episodesDidLoad(episodes)
             DispatchQueue.main.async {
                 completion()
             }
@@ -33,11 +34,6 @@ final class EpisodesViewModel {
 
     private func episodesDidLoad(_ episodes: [Episode]) {
         self.episodes = episodes
-        dataSource = .make(for: episodes)
-    }
-
-    func deleteLoadedEpisodes() {
-        episodes.removeAll()
         dataSource = .make(for: episodes)
     }
 
