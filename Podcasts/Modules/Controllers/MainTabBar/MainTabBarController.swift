@@ -76,8 +76,11 @@ extension MainTabBarController {
         let layout = UICollectionViewFlowLayout()
         let favoritesController = FavoritesController(collectionViewLayout: layout)
 
+        let podcastsSearchViewModel = PodcastsSearchViewModel()
+        let podcastsSearchController = PodcastsSearchController(viewModel: podcastsSearchViewModel)
+
         viewControllers = [
-            generateNavigationController(for: PodcastsSearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
+            generateNavigationController(for: podcastsSearchController, title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationController(for: favoritesController, title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
             generateNavigationController(for: DownloadsController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
         ]

@@ -7,20 +7,36 @@
 //
 
 import UIKit
-import Alamofire
 
 final class PodcastsSearchController: UITableViewController {
 
     // MARK: - Properties
-    fileprivate var podcasts = [Podcast]()
-    fileprivate var timer: Timer?
-    fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate var dataSource: TableViewDataSource<Podcast, PodcastCell>?
+    fileprivate var viewModel: PodcastsSearchViewModel
+    fileprivate lazy var searchController = UISearchController(searchResultsController: nil)
 
-    // MARK: - Life Cycle
+    // MARK: - View Controller's life cycle
+    init(viewModel: PodcastsSearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = false
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        navigationItem.hidesSearchBarWhenScrolling = true
+        super.viewDidAppear(animated)
     }
 
 }
@@ -29,38 +45,37 @@ final class PodcastsSearchController: UITableViewController {
 extension PodcastsSearchController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 132
+        return Sizes.cellHeight
     }
 
     // MARK: Header Setup
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = Keys.enterSearchTermMessage
-        label.textAlignment = .center
-        label.textColor = .purple
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        return label
+        let emptyStateView = setupEmptyStateView()
+        return emptyStateView
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == true ? (tableView.bounds.height / 2) : 0
+        let height = Sizes.headerHeight(for: tableView)
+        return viewModel.podcasts.isEmpty
+            && searchController.searchBar.text?.isEmpty == true ? height : 0
     }
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let podcastsSearchingView = Bundle.main.loadNibNamed(Keys.podcastsSearchingView,
+        let podcastsSearchingView = Bundle.main.loadNibNamed(Strings.podcastsSearchingView,
                                                              owner: self)?.first as? UIView
         return podcastsSearchingView
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return podcasts.isEmpty && searchController.searchBar.text?.isEmpty == false ? 200 : 0
+        return viewModel.podcasts.isEmpty
+            && searchController.searchBar.text?.isEmpty == false ? Sizes.footerHeight : 0
     }
 
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episodesController = EpisodesController()
-        episodesController.podcast = podcast(for: indexPath)
+        episodesController.podcast = viewModel.podcast(for: indexPath)
         navigationController?.pushViewController(episodesController, animated: true)
     }
 }
@@ -69,17 +84,12 @@ extension PodcastsSearchController {
 extension PodcastsSearchController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        deleteLoadedPodcasts()
-        tableView.reloadData()
+        searchPodcasts(with: searchText)
+    }
 
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
-            NetworkService.shared.fetchPodcasts(searchText: searchText, completionHandler: { [weak self] podcasts in
-                guard let self = self else { return }
-                self.podcastsDidLoad(podcasts)
-                self.tableView.reloadData()
-            })
-        })
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.deleteLoadedPodcasts()
+        tableView.reloadData()
     }
 
 }
@@ -89,48 +99,71 @@ extension PodcastsSearchController {
 
     fileprivate func initialSetup() {
         view.backgroundColor = .white
+        setupNavigationBar()
         setupSearchBar()
         setupTableView()
     }
 
+    fileprivate func searchPodcasts(with searchText: String) {
+        viewModel.deleteLoadedPodcasts()
+        tableView.reloadData()
+
+        guard searchText.count > 2 else { return }
+        viewModel.searchPodcasts(with: searchText) { [weak self] in
+            guard let self = self else { return }
+            self.tableView.dataSource = self.viewModel.dataSource
+            self.tableView.reloadData()
+        }
+    }
+
+    fileprivate func setupEmptyStateView() -> UIView {
+        let label = UILabel()
+        label.text = Strings.enterSearchTermMessage
+        label.textAlignment = .center
+        label.textColor = .purple
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }
+
+    fileprivate func setupNavigationBar() {
+        navigationItem.searchController = searchController
+        title = Strings.title
+    }
+
     private func setupSearchBar() {
-        self.definesPresentationContext                   = true
-        navigationItem.searchController                   = searchController
-        navigationItem.hidesSearchBarWhenScrolling        = false
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.delegate               = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation     = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.definesPresentationContext           = true
+        searchController.searchBar.placeholder                = Strings.searchBarPlaceholder
+        searchController.searchBar.delegate                   = self
     }
 
     private func setupTableView() {
-        tableView.dataSource = dataSource
-        tableView.tableFooterView = UIView()
         let nib = UINib(nibName: PodcastCell.typeName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
-    }
-
-    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.podcasts = podcasts
-        dataSource = .make(for: podcasts)
-        tableView.dataSource = dataSource
-    }
-
-    fileprivate func deleteLoadedPodcasts() {
-        podcasts.removeAll()
-        dataSource = .make(for: podcasts)
-        tableView.dataSource = dataSource
-    }
-
-    fileprivate func podcast(for indexPath: IndexPath) -> Podcast {
-        return podcasts[indexPath.row]
+        tableView.dataSource = viewModel.dataSource
+        tableView.tableFooterView = UIView()
     }
 
 }
 
 private extension PodcastsSearchController {
 
-    enum Keys {
-        static let podcastsSearchingView = "PodcastsSearchingView"
+    enum Strings {
+        static let podcastsSearchingView  = "PodcastsSearchingView"
         static let enterSearchTermMessage = "Please, enter a search term."
+        static let searchBarPlaceholder   = "Search"
+        static let title                  = "Search"
+    }
+
+    enum Sizes {
+        static let cellHeight: CGFloat = 132
+        static let footerHeight: CGFloat = 200
+
+        static func headerHeight(for tableView: UITableView) -> CGFloat {
+             return tableView.bounds.height / 2
+        }
     }
 
 }
