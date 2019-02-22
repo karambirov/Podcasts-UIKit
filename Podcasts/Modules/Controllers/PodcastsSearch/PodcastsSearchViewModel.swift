@@ -11,7 +11,7 @@ import UIKit
 final class PodcastsSearchViewModel {
 
     // MARK: - Private
-    private var timer: Timer?
+    fileprivate var timer: Timer?
 
     // MARK: - Properties
     var podcasts = [Podcast]()

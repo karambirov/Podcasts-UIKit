@@ -11,17 +11,17 @@ import UIKit
 final class FavoritePodcastCell: UICollectionViewCell {
 
     // MARK: - Properties
-    var podcast: Podcast! {
+    var podcast: Podcast? {
         didSet {
-            nameLabel.text       = podcast.trackName
-            artistNameLabel.text = podcast.artistName
+            nameLabel.text       = podcast?.trackName
+            artistNameLabel.text = podcast?.artistName
 
-            let url = URL(string: podcast.artworkUrl600?.httpsUrlString ?? "")
+            let url = URL(string: podcast?.artworkUrl600?.httpsUrlString ?? "")
             imageView.sd_setImage(with: url)
         }
     }
 
-    fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "appicon"))
+    fileprivate let imageView =  UIImageView(image: R.image.appicon())
     fileprivate let nameLabel = UILabel()
     fileprivate let artistNameLabel = UILabel()
 

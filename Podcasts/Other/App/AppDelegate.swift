@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
-        window?.tintColor = #colorLiteral(red: 0.5176470588, green: 0.2549019608, blue: 0.8666666667, alpha: 1)
+        window?.tintColor = R.color.tintColor()
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
 

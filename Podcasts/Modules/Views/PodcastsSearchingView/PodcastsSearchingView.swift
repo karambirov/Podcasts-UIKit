@@ -8,6 +8,4 @@
 
 import UIKit
 
-final class PodcastsSearchingView: UIView {
-
-}
+final class PodcastsSearchingView: UIView {}

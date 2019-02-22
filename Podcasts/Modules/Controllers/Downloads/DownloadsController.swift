@@ -87,8 +87,8 @@ extension DownloadsController {
 
     private func setupTableView() {
         tableView.tableFooterView = UIView()
-        let nib = UINib(nibName: reuseIdentifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: reuseIdentifier)
+        let nib = UINib(resource: R.nib.episodeCell)
+        tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
     }
 
     private func setupObservers() {
