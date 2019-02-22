@@ -42,7 +42,7 @@ extension CollectionViewDataSource where Model == Podcast {
                      reuseIdentifier: String = FavoritePodcastCell.typeName) -> CollectionViewDataSource {
 
         return CollectionViewDataSource(models: podcasts, reuseIdentifier: reuseIdentifier,
-                                   cellConfigurator: { podcast, cell in
+                                        cellConfigurator: { podcast, cell in
             if let cell = cell as? FavoritePodcastCell {
                 cell.podcast = podcast
             }
