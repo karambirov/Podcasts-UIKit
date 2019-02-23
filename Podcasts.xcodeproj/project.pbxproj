@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23478D5A6CEDB3B61832A90D /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */; };
+		71B9A030DC584F263EA5B16D /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A8415AAED90A94DCDFD6F2A /* Pods_Podcasts.framework */; };
 		AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */; };
 		AA58FE8A215E5BE200309F97 /* FavoritePodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA58FE88215E5BE200309F97 /* FavoritePodcastCell.xib */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
@@ -17,7 +17,7 @@
 		AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */; };
 		AA62F5FF2154CF0A00356E3F /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5FE2154CF0A00356E3F /* FavoritesController.swift */; };
 		AA62F6022154CF3000356E3F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6012154CF3000356E3F /* PodcastsSearchController.swift */; };
-		AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6042154CF5000356E3F /* DownloadsController.swift */; };
+		AA62F6052154CF5000356E3F /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6042154CF5000356E3F /* DownloadsViewController.swift */; };
 		AA62F6082154D34A00356E3F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6072154D34A00356E3F /* Podcast.swift */; };
 		AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F60B2154D8C900356E3F /* PodcastCell.swift */; };
 		AA62F60E2154D8C900356E3F /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F60C2154D8C900356E3F /* PodcastCell.xib */; };
@@ -46,8 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6C8328509262E446AA9F082F /* Pods-Podcasts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.debug.xcconfig"; sourceTree = "<group>"; };
-		9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A8415AAED90A94DCDFD6F2A /* Pods_Podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		467073F73A68D8EA71B270F0 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
+		793A0141929067330B77A9B2 /* Pods-Podcasts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.debug.xcconfig"; path = "Target Support Files/Pods-Podcasts/Pods-Podcasts.debug.xcconfig"; sourceTree = "<group>"; };
 		AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		AA58FE88215E5BE200309F97 /* FavoritePodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePodcastCell.xib; sourceTree = "<group>"; };
 		AA62F5DF2154C1BF00356E3F /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +60,7 @@
 		AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F5FE2154CF0A00356E3F /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		AA62F6012154CF3000356E3F /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
-		AA62F6042154CF5000356E3F /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
+		AA62F6042154CF5000356E3F /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		AA62F6072154D34A00356E3F /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		AA62F60B2154D8C900356E3F /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		AA62F60C2154D8C900356E3F /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchViewModel.swift; sourceTree = "<group>"; };
 		AA7CDA712220276700838F13 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
-		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,26 +93,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23478D5A6CEDB3B61832A90D /* Pods_Podcasts.framework in Frameworks */,
+				71B9A030DC584F263EA5B16D /* Pods_Podcasts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22AE5620208D4FAD3A6ADC1A /* Pods */ = {
+		4F92886DA66AA53FC9997D2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C8328509262E446AA9F082F /* Pods-Podcasts.debug.xcconfig */,
-				DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		76F78994B8907A4E1F404B7A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */,
+				0A8415AAED90A94DCDFD6F2A /* Pods_Podcasts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -131,8 +122,8 @@
 			children = (
 				AA62F5E12154C1BF00356E3F /* Podcasts */,
 				AA62F5E02154C1BF00356E3F /* Products */,
-				22AE5620208D4FAD3A6ADC1A /* Pods */,
-				76F78994B8907A4E1F404B7A /* Frameworks */,
+				E03CBE95536B6674FDB1D589 /* Pods */,
+				4F92886DA66AA53FC9997D2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,7 +223,7 @@
 		AA62F6032154CF3D00356E3F /* Downloads */ = {
 			isa = PBXGroup;
 			children = (
-				AA62F6042154CF5000356E3F /* DownloadsController.swift */,
+				AA62F6042154CF5000356E3F /* DownloadsViewController.swift */,
 			);
 			path = Downloads;
 			sourceTree = "<group>";
@@ -354,6 +345,15 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		E03CBE95536B6674FDB1D589 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				793A0141929067330B77A9B2 /* Pods-Podcasts.debug.xcconfig */,
+				467073F73A68D8EA71B270F0 /* Pods-Podcasts.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,13 +361,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA62F5F12154C1C100356E3F /* Build configuration list for PBXNativeTarget "Podcasts" */;
 			buildPhases = (
-				9135D73CBF1D40545644E1BC /* [CP] Check Pods Manifest.lock */,
+				5226A8696D950B5BBD9125B6 /* [CP] Check Pods Manifest.lock */,
 				AA7CDA60221FF06200838F13 /* R.swift */,
-				AA7CDA5F221FEF0900838F13 /* SwiftLint */,
 				AA62F5DB2154C1BF00356E3F /* Sources */,
 				AA62F5DC2154C1BF00356E3F /* Frameworks */,
 				AA62F5DD2154C1BF00356E3F /* Resources */,
-				7D6D5ADDC68CA30FC7703CBE /* [CP] Embed Pods Frameworks */,
+				CDC24D5F138DABD31C3619AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -434,59 +433,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7D6D5ADDC68CA30FC7703CBE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9135D73CBF1D40545644E1BC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Podcasts-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA7CDA5F221FEF0900838F13 /* SwiftLint */ = {
+		5226A8696D950B5BBD9125B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -494,15 +441,19 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = SwiftLint;
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Podcasts-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		AA7CDA60221FF06200838F13 /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -523,6 +474,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Podcasts/Resources/R.generated.swift\"\n";
+		};
+		CDC24D5F138DABD31C3619AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Podcasts/Pods-Podcasts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -546,7 +535,7 @@
 				AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */,
 				AA7CDA62221FF20100838F13 /* R.generated.swift in Sources */,
 				AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */,
-				AA62F6052154CF5000356E3F /* DownloadsController.swift in Sources */,
+				AA62F6052154CF5000356E3F /* DownloadsViewController.swift in Sources */,
 				AA7CDA68221FF3F400838F13 /* Describable.swift in Sources */,
 				AA62F62C215B5C5D00356E3F /* RSSFeed+Extensions.swift in Sources */,
 				AA62F62E215B608400356E3F /* UserDefaults+Extensions.swift in Sources */,
@@ -694,17 +683,17 @@
 		};
 		AA62F5F22154C1C100356E3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C8328509262E446AA9F082F /* Pods-Podcasts.debug.xcconfig */;
+			baseConfigurationReference = 793A0141929067330B77A9B2 /* Pods-Podcasts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TDR3533VJS;
+				DEVELOPMENT_TEAM = 2UJUXS3JRG;
 				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Other/Config/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.karambirov.Podcasts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stayinlight.Podcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -713,17 +702,17 @@
 		};
 		AA62F5F32154C1C100356E3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */;
+			baseConfigurationReference = 467073F73A68D8EA71B270F0 /* Pods-Podcasts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TDR3533VJS;
+				DEVELOPMENT_TEAM = 2UJUXS3JRG;
 				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Other/Config/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.karambirov.Podcasts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stayinlight.Podcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -86,7 +86,7 @@ extension MainTabBarController {
         viewControllers = [
             makeNavigationController(for: podcastsSearchController, title: "Search", image: search),
             makeNavigationController(for: favoritesController, title: "Favorites", image: favorites),
-            makeNavigationController(for: DownloadsController(), title: "Downloads", image: downloads)
+            makeNavigationController(for: DownloadsViewController(), title: "Downloads", image: downloads)
         ]
     }
 

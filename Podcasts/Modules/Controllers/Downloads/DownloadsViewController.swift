@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DownloadsController: UITableViewController {
+final class DownloadsViewController: UITableViewController {
 
     // MARK: - Properties
     fileprivate let reuseIdentifier = "EpisodeCell"
@@ -34,7 +34,7 @@ final class DownloadsController: UITableViewController {
 }
 
 // MARK: - TableView
-extension DownloadsController {
+extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
@@ -78,7 +78,7 @@ extension DownloadsController {
 }
 
 // MARK: - Setup
-extension DownloadsController {
+extension DownloadsViewController {
 
     fileprivate func initialSetup() {
         setupTableView()
