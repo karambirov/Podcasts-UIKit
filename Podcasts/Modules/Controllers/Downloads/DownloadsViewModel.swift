@@ -11,7 +11,16 @@ import Foundation
 final class DownloadsViewModel {
     
     // MARK: - Properties
-    let reuseIdentifier = "EpisodeCell" 
+    let reuseIdentifier = "EpisodeCell"
     var episodes = UserDefaults.standard.downloadedEpisodes
+    
+}
+
+// MARK: - Methods
+extension DownloadsViewModel {
+    
+    func episode(for indexPath: IndexPath) -> Episode {
+        return episodes[indexPath.row]
+    }
     
 }

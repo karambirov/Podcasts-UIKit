@@ -40,7 +40,7 @@ extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as! EpisodeCell
-        cell.episode = viewModel.episodes[indexPath.row]
+        cell.episode = viewModel.episode(for: indexPath)
         return cell
     }
 
@@ -50,7 +50,7 @@ extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\n\t\tLaunch episode player")
-        let episode = viewModel.episodes[indexPath.row]
+        let episode = viewModel.episode(for: indexPath)
 
         if episode.fileUrl != nil {
             UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: viewModel.episodes)
@@ -67,7 +67,7 @@ extension DownloadsViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let episode = viewModel.episodes[indexPath.row]
+        let episode = viewModel.episode(for: indexPath)
         viewModel.episodes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         UserDefaults.standard.deleteEpisode(episode)
