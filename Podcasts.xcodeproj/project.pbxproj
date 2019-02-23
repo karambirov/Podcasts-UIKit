@@ -43,6 +43,7 @@
 		AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */; };
 		AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */; };
 		AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA712220276700838F13 /* EpisodesViewModel.swift */; };
+		FA7DB2C3222197CD00F75299 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7DB2C2222197CD00F75299 /* DownloadsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA6F2220176600838F13 /* PodcastsSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchViewModel.swift; sourceTree = "<group>"; };
 		AA7CDA712220276700838F13 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
+		FA7DB2C2222197CD00F75299 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F6042154CF5000356E3F /* DownloadsViewController.swift */,
+				FA7DB2C2222197CD00F75299 /* DownloadsViewModel.swift */,
 			);
 			path = Downloads;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
 				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
+				FA7DB2C3222197CD00F75299 /* DownloadsViewModel.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
 				AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */,
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,

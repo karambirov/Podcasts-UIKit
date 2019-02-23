@@ -10,10 +10,8 @@ import UIKit
 
 final class DownloadsViewController: UITableViewController {
 
-    // MARK: - Properties
-    fileprivate let reuseIdentifier = "EpisodeCell"
-    fileprivate var episodes = UserDefaults.standard.downloadedEpisodes
-
+    fileprivate let viewModel = DownloadsViewModel()
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +20,7 @@ final class DownloadsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        episodes = UserDefaults.standard.downloadedEpisodes
+        viewModel.episodes = UserDefaults.standard.downloadedEpisodes
         tableView.reloadData()
     }
 
@@ -37,12 +35,12 @@ final class DownloadsViewController: UITableViewController {
 extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return episodes.count
+        return viewModel.episodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! EpisodeCell
-        cell.episode = episodes[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.reuseIdentifier, for: indexPath) as! EpisodeCell
+        cell.episode = viewModel.episodes[indexPath.row]
         return cell
     }
 
@@ -52,15 +50,15 @@ extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\n\t\tLaunch episode player")
-        let episode = episodes[indexPath.row]
+        let episode = viewModel.episodes[indexPath.row]
 
         if episode.fileUrl != nil {
-            UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: episodes)
+            UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: viewModel.episodes)
         } else {
             let alertController = UIAlertController(title: "File URL not found", message: "Cannot find local file, play using stream URL instead", preferredStyle: .actionSheet)
 
             alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+                UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.viewModel.episodes)
             }))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
@@ -69,8 +67,8 @@ extension DownloadsViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let episode = episodes[indexPath.row]
-        episodes.remove(at: indexPath.row)
+        let episode = viewModel.episodes[indexPath.row]
+        viewModel.episodes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         UserDefaults.standard.deleteEpisode(episode)
     }
@@ -103,7 +101,7 @@ extension DownloadsViewController {
 
         print("\n\t\t", progress, title)
 
-        guard let index = episodes.firstIndex(where: { $0.title == title }) else { return }
+        guard let index = viewModel.episodes.firstIndex(where: { $0.title == title }) else { return }
         guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell else { return }
         cell.progressLabel.text = "\(Int(progress * 100))%"
         cell.progressLabel.isHidden = false
@@ -115,8 +113,8 @@ extension DownloadsViewController {
 
     @objc private func handleDownloadComplete(notification: Notification) {
         guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
-        guard let index = episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
-        episodes[index].fileUrl = episodeDownloadComplete.fileUrl
+        guard let index = viewModel.episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
+        viewModel.episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }
 
 }
