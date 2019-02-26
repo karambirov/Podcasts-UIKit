@@ -45,7 +45,7 @@ final class DownloadsViewController: UITableViewController {
 extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 134
+        return Sizes.cellHeight
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,21 +72,25 @@ extension DownloadsViewController {
     fileprivate func launchEpisodePlayer(for indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
         if episode.fileUrl != nil {
-            UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode,
+            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
                                                                       playlistEpisodes: viewModel.episodes)
         } else {
-            let alertController = UIAlertController(title: "File URL not found",
-                                                    message: "Cannot find local file, play using stream URL instead",
-                                                    preferredStyle: .actionSheet)
-
-            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode,
-                                                                          playlistEpisodes: self.viewModel.episodes)
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
-            present(alertController, animated: true)
+            askPermissonForPlayUsingStreaming(for: episode)
         }
+    }
+
+    fileprivate func askPermissonForPlayUsingStreaming(for episode: Episode) {
+        let alertController = UIAlertController(title: "File URL not found",
+                                                message: "Cannot find local file, play using stream URL instead",
+                                                preferredStyle: .actionSheet)
+
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
+                                                                      playlistEpisodes: self.viewModel.episodes)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(alertController, animated: true)
     }
 
     private func setupTableView() {
@@ -126,6 +130,14 @@ extension DownloadsViewController {
         guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
         guard let index = viewModel.episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
         viewModel.episodes[index].fileUrl = episodeDownloadComplete.fileUrl
+    }
+
+}
+
+private extension DownloadsViewController {
+
+    enum Sizes {
+        static let cellHeight: CGFloat = 134
     }
 
 }

@@ -67,7 +67,7 @@ extension EpisodesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
         let mainTabBarController = UIApplication.mainTabBarController
-        mainTabBarController?.maximizePlayerDetails(episode: episode,
+        mainTabBarController?.maximizePlayerDetails(for: episode,
                                                     playlistEpisodes: viewModel.episodes)
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -48,7 +48,7 @@ extension MainTabBarController {
         })
     }
 
-    func maximizePlayerDetails(episode: Episode?, playlistEpisodes: [Episode] = []) {
+    func maximizePlayerDetails(for episode: Episode?, playlistEpisodes: [Episode] = []) {
         minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
