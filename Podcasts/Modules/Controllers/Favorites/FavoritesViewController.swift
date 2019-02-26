@@ -30,6 +30,7 @@ final class FavoritesViewController: UICollectionViewController {
 
         viewModel.fetchFavorites { [weak self] in
             guard let self = self else { return }
+            self.collectionView.dataSource = self.viewModel.dataSource
             self.collectionView.reloadData()
         }
     }

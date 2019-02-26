@@ -48,7 +48,7 @@ extension MainTabBarController {
         })
     }
 
-    func maximizePlayerDetails(episode: Episode?, playlistEpisodes: [Episode] = []) {
+    func maximizePlayerDetails(for episode: Episode?, playlistEpisodes: [Episode] = []) {
         minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
@@ -74,19 +74,22 @@ extension MainTabBarController {
     // MARK: - Fileprivate
     fileprivate func setupViewControllers() {
         let podcastsSearchViewModel  = PodcastsSearchViewModel()
-        let podcastsSearchController = PodcastsSearchController(viewModel: podcastsSearchViewModel)
+        let podcastsSearchViewController = PodcastsSearchViewController(viewModel: podcastsSearchViewModel)
 
         let favoritesViewModel  = FavoritesViewModel()
-        let favoritesController = FavoritesViewController(viewModel: favoritesViewModel)
+        let favoritesViewController = FavoritesViewController(viewModel: favoritesViewModel)
+
+        let downloadsViewModel = DownloadsViewModel()
+        let downloadsViewController = DownloadsViewController(viewModel: downloadsViewModel)
 
         guard let search = R.image.search(),
               let favorites = R.image.favorites(),
               let downloads = R.image.downloads() else { return }
 
         viewControllers = [
-            makeNavigationController(for: podcastsSearchController, title: "Search", image: search),
-            makeNavigationController(for: favoritesController, title: "Favorites", image: favorites),
-            makeNavigationController(for: DownloadsController(), title: "Downloads", image: downloads)
+            makeNavigationController(for: podcastsSearchViewController, title: "Search", image: search),
+            makeNavigationController(for: favoritesViewController, title: "Favorites", image: favorites),
+            makeNavigationController(for: downloadsViewController, title: "Downloads", image: downloads)
         ]
     }
 

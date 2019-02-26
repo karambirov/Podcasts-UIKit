@@ -16,6 +16,7 @@ final class FavoritesViewModel {
 
 }
 
+// MARK: - Methods
 extension FavoritesViewModel {
 
     func fetchFavorites(_ completion: @escaping () -> Void) {
@@ -37,7 +38,6 @@ extension FavoritesViewModel {
     }
 
     fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.podcasts = podcasts
         dataSource = .make(for: podcasts)
     }
 

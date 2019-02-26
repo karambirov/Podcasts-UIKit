@@ -299,7 +299,7 @@ extension PlayerDetailsView {
     }
 
     @objc func handleMaximize() {
-        UIApplication.mainTabBarController?.maximizePlayerDetails(episode: nil)
+        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
     }
 
     // MARK: - Fileprivate
