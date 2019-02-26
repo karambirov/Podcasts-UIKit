@@ -49,25 +49,11 @@ extension DownloadsViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\n\t\tLaunch episode player")
-        let episode = viewModel.episodes[indexPath.row]
-
-        if episode.fileUrl != nil {
-            UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: viewModel.episodes)
-        } else {
-            let alertController = UIAlertController(title: "File URL not found", message: "Cannot find local file, play using stream URL instead", preferredStyle: .actionSheet)
-
-            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-                UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.viewModel.episodes)
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
-            present(alertController, animated: true)
-        }
+        launchEpisodePlayer(for: indexPath)
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let episode = viewModel.episodes[indexPath.row]
+        let episode = viewModel.episode(for: indexPath)
         viewModel.episodes.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         UserDefaults.standard.deleteEpisode(episode)
@@ -83,6 +69,26 @@ extension DownloadsViewController {
         setupObservers()
     }
 
+    fileprivate func launchEpisodePlayer(for indexPath: IndexPath) {
+        let episode = viewModel.episode(for: indexPath)
+        if episode.fileUrl != nil {
+            UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode,
+                                                                      playlistEpisodes: viewModel.episodes)
+        } else {
+            let alertController = UIAlertController(title: "File URL not found",
+                                                    message: "Cannot find local file, play using stream URL instead",
+                                                    preferredStyle: .actionSheet)
+
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+                UIApplication.mainTabBarController?.maximizePlayerDetails(episode: episode,
+                                                                          playlistEpisodes: self.viewModel.episodes)
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+            present(alertController, animated: true)
+        }
+    }
+
     private func setupTableView() {
         let nib = UINib(resource: R.nib.episodeCell)
         tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
@@ -91,8 +97,10 @@ extension DownloadsViewController {
     }
 
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete), name: .downloadComplete, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress),
+                                               name: .downloadProgress, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete),
+                                               name: .downloadComplete, object: nil)
     }
 
     @objc
