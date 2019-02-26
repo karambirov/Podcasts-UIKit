@@ -16,6 +16,7 @@ final class FavoritesViewModel {
 
 }
 
+// MARK: - Methods
 extension FavoritesViewModel {
 
     func fetchFavorites(_ completion: @escaping () -> Void) {

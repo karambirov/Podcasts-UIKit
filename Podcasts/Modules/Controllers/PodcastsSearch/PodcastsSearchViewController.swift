@@ -129,7 +129,7 @@ extension PodcastsSearchViewController {
         return podcastsSearchingView
     }
 
-    fileprivate func setupNavigationBar() {
+    private func setupNavigationBar() {
         navigationItem.searchController = searchController
         title = Strings.title
     }

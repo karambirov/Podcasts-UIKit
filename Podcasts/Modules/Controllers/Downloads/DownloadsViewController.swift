@@ -53,10 +53,8 @@ extension DownloadsViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let episode = viewModel.episode(for: indexPath)
-        viewModel.episodes.remove(at: indexPath.row)
+        viewModel.deleteEpisode(for: indexPath)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        UserDefaults.standard.deleteEpisode(episode)
     }
 
 }
@@ -103,7 +101,7 @@ extension DownloadsViewController {
     private func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress),
                                                name: .downloadProgress, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete),
+        NotificationCenter.default.addObserver(self, selector: #selector(viewModel.handleDownloadComplete),
                                                name: .downloadComplete, object: nil)
     }
 
@@ -123,13 +121,6 @@ extension DownloadsViewController {
         if progress == 1 {
             cell.progressLabel.isHidden = true
         }
-    }
-
-    @objc
-    private func handleDownloadComplete(notification: Notification) {
-        guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
-        guard let index = viewModel.episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
-        viewModel.episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }
 
 }
