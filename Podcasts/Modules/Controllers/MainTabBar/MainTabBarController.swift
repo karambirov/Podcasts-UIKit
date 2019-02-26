@@ -11,18 +11,28 @@ import UIKit
 final class MainTabBarController: UITabBarController {
 
     // MARK: - Properties
+    fileprivate let viewModel: MainTabBarViewModel
     fileprivate let playerDetailsView = PlayerDetailsView.initFromNib()
+
     fileprivate var maximizedTopAnchorConstraint: NSLayoutConstraint!
     fileprivate var minimizedTopAnchorConstraint: NSLayoutConstraint!
     fileprivate var bottomAnchorConstraint: NSLayoutConstraint!
 
-    // MARK: - Life Cycle
+    // MARK: - View Controller's life cycle
+    init(viewModel: MainTabBarViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         UINavigationBar.appearance().prefersLargeTitles = true
 
-        setupViewControllers()
+        set(items: viewModel.items)
         setupPlayerDetailsView()
     }
 
@@ -32,7 +42,8 @@ final class MainTabBarController: UITabBarController {
 extension MainTabBarController {
 
     // MARK: - Internal
-    @objc func minimizePlayerDetails() {
+    @objc
+    func minimizePlayerDetails() {
         maximizedTopAnchorConstraint.isActive = false
         bottomAnchorConstraint.constant = view.frame.height
         minimizedTopAnchorConstraint.isActive = true
@@ -65,32 +76,20 @@ extension MainTabBarController {
 
             self.view.layoutIfNeeded()
             self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
-
-                        self.playerDetailsView.maximizedStackView.alpha = 1
-                        self.playerDetailsView.miniPlayerView.alpha = 0
+            self.playerDetailsView.maximizedStackView.alpha = 1
+            self.playerDetailsView.miniPlayerView.alpha = 0
         })
     }
 
     // MARK: - Fileprivate
-    fileprivate func setupViewControllers() {
-        let podcastsSearchViewModel  = PodcastsSearchViewModel()
-        let podcastsSearchViewController = PodcastsSearchViewController(viewModel: podcastsSearchViewModel)
+    fileprivate func viewController(for itemType: MainTabBarViewModel.TabBarItem) -> UIViewController {
+        let controller = itemType.viewController
+        return controller
+    }
 
-        let favoritesViewModel  = FavoritesViewModel()
-        let favoritesViewController = FavoritesViewController(viewModel: favoritesViewModel)
-
-        let downloadsViewModel = DownloadsViewModel()
-        let downloadsViewController = DownloadsViewController(viewModel: downloadsViewModel)
-
-        guard let search = R.image.search(),
-              let favorites = R.image.favorites(),
-              let downloads = R.image.downloads() else { return }
-
-        viewControllers = [
-            makeNavigationController(for: podcastsSearchViewController, title: "Search", image: search),
-            makeNavigationController(for: favoritesViewController, title: "Favorites", image: favorites),
-            makeNavigationController(for: downloadsViewController, title: "Downloads", image: downloads)
-        ]
+    fileprivate func set(items: [MainTabBarViewModel.TabBarItem]) {
+        guard viewControllers?.count != items.count else { return }
+        viewControllers = items.map { viewController(for: $0) }
     }
 
     fileprivate func setupPlayerDetailsView() {
