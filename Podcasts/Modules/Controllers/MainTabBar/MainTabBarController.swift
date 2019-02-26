@@ -73,11 +73,11 @@ extension MainTabBarController {
 
     // MARK: - Fileprivate
     fileprivate func setupViewControllers() {
-        let layout = UICollectionViewFlowLayout()
-        let favoritesController = FavoritesController(collectionViewLayout: layout)
-
-        let podcastsSearchViewModel = PodcastsSearchViewModel()
+        let podcastsSearchViewModel  = PodcastsSearchViewModel()
         let podcastsSearchController = PodcastsSearchController(viewModel: podcastsSearchViewModel)
+
+        let favoritesViewModel  = FavoritesViewModel()
+        let favoritesController = FavoritesViewController(viewModel: favoritesViewModel)
 
         guard let search = R.image.search(),
               let favorites = R.image.favorites(),
