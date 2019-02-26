@@ -37,7 +37,6 @@ extension FavoritesViewModel {
     }
 
     fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
-        self.podcasts = podcasts
         dataSource = .make(for: podcasts)
     }
 

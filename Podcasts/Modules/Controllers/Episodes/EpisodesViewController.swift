@@ -111,7 +111,8 @@ extension EpisodesViewController {
         }
     }
 
-    @objc private func saveFavorite() {
+    @objc
+    private func saveFavorite() {
         viewModel.saveFavorite()
         showBadgeHighlight()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.heart(), style: .plain,

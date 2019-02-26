@@ -44,16 +44,6 @@ final class DownloadsViewController: UITableViewController {
 // MARK: - TableView
 extension DownloadsViewController {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.episodes.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EpisodeCell.typeName, for: indexPath) as! EpisodeCell
-        cell.episode = viewModel.episodes[indexPath.row]
-        return cell
-    }
-
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 134
     }
@@ -94,9 +84,10 @@ extension DownloadsViewController {
     }
 
     private func setupTableView() {
-        tableView.tableFooterView = UIView()
         let nib = UINib(resource: R.nib.episodeCell)
         tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
+        tableView.dataSource = viewModel.dataSource
+        tableView.tableFooterView = UIView()
     }
 
     private func setupObservers() {
@@ -104,7 +95,8 @@ extension DownloadsViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadComplete), name: .downloadComplete, object: nil)
     }
 
-    @objc private func handleDownloadProgress(notification: Notification) {
+    @objc
+    private func handleDownloadProgress(notification: Notification) {
         guard let userInfo = notification.userInfo as? [String: Any] else { return }
         guard let progress = userInfo["progress"] as? Double else { return }
         guard let title = userInfo["title"] as? String else { return }
@@ -121,7 +113,8 @@ extension DownloadsViewController {
         }
     }
 
-    @objc private func handleDownloadComplete(notification: Notification) {
+    @objc
+    private func handleDownloadComplete(notification: Notification) {
         guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
         guard let index = viewModel.episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
         viewModel.episodes[index].fileUrl = episodeDownloadComplete.fileUrl
