@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PodcastsSearchController: UITableViewController {
+final class PodcastsSearchViewController: UITableViewController {
 
     // MARK: - Properties
     fileprivate var viewModel: PodcastsSearchViewModel
@@ -42,7 +42,7 @@ final class PodcastsSearchController: UITableViewController {
 }
 
 // MARK: - UITableView
-extension PodcastsSearchController {
+extension PodcastsSearchViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Sizes.cellHeight
@@ -80,7 +80,7 @@ extension PodcastsSearchController {
 }
 
 // MARK: - UISearchBarDelegate
-extension PodcastsSearchController: UISearchBarDelegate {
+extension PodcastsSearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchPodcasts(with: searchText)
@@ -94,7 +94,7 @@ extension PodcastsSearchController: UISearchBarDelegate {
 }
 
 // MARK: - Setup
-extension PodcastsSearchController {
+extension PodcastsSearchViewController {
 
     fileprivate func initialSetup() {
         view.backgroundColor = .white
@@ -152,7 +152,7 @@ extension PodcastsSearchController {
 
 }
 
-private extension PodcastsSearchController {
+private extension PodcastsSearchViewController {
 
     enum Strings {
         static let podcastsSearchingView  = "PodcastsSearchingView"

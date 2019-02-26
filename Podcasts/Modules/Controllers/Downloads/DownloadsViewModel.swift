@@ -9,5 +9,8 @@
 import Foundation
 
 final class DownloadsViewModel {
-    
+
+    // MARK: - Properties
+    var episodes = UserDefaults.standard.downloadedEpisodes
+
 }
