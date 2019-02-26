@@ -20,7 +20,9 @@ extension FavoritesViewModel {
 
     func fetchFavorites(_ completion: @escaping () -> Void) {
         podcastsDidLoad(podcasts)
-        completion()
+        DispatchQueue.main.async {
+            completion()
+        }
     }
 
     func podcast(for indexPath: IndexPath) -> Podcast {

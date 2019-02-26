@@ -91,7 +91,8 @@ extension FavoritesViewController {
         UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = nil
     }
 
-    @objc private func handleLongPress(gesture: UILongPressGestureRecognizer) {
+    @objc
+    private func handleLongPress(gesture: UILongPressGestureRecognizer) {
         let location = gesture.location(in: collectionView)
         guard let selectedIndexPath = collectionView?.indexPathForItem(at: location) else { return }
         print(selectedIndexPath.item)
