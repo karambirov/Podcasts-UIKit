@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23478D5A6CEDB3B61832A90D /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */; };
 		AA28B60F222590320090B0A8 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */; };
+		AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */; };
 		AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */; };
 		AA58FE8A215E5BE200309F97 /* FavoritePodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA58FE88215E5BE200309F97 /* FavoritePodcastCell.xib */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		6C8328509262E446AA9F082F /* Pods-Podcasts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.debug.xcconfig"; sourceTree = "<group>"; };
 		9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
+		AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		AA58FE88215E5BE200309F97 /* FavoritePodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePodcastCell.xib; sourceTree = "<group>"; };
 		AA62F5DF2154C1BF00356E3F /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F5F62154C95900356E3F /* MainTabBarController.swift */,
+				AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
 				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesViewController.swift in Sources */,
+				AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
