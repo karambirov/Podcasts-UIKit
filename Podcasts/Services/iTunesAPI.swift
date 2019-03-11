@@ -39,7 +39,8 @@ extension ITunesAPI: TargetType {
     var task: Task {
         switch self {
         case .search(let term):
-            return .requestParameters(parameters: ["term": term.URLEscapedString, "media": "podcast"], encoding: URLEncoding.default)
+            let parameters = ["term": term.URLEscapedString, "media": "podcast"]
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }
 
