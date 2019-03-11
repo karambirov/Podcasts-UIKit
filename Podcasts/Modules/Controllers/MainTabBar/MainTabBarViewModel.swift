@@ -10,13 +10,13 @@ import UIKit
 
 final class MainTabBarViewModel {
 
-    var items: [TabBarItem]
-
     enum TabBarItem {
         case search
         case favorites
         case downloads
     }
+
+    var items: [TabBarItem]
 
     init(items: [TabBarItem]) {
         self.items = items

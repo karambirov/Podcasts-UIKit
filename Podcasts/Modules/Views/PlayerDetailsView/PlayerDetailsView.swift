@@ -11,8 +11,8 @@ import AVKit
 import MediaPlayer
 
 // FIXME: Fix spacing between title and author labels.
-// FIXME: Extract mini player in its own class
-// FIXME: Write MediaPlayerService and AVService
+// TODO: Extract mini player in its own class
+// TODO: Write MediaPlayerService and AVService
 
 final class PlayerDetailsView: UIView {
 
