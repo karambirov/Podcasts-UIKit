@@ -49,6 +49,8 @@
 		AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */; };
 		AA7CDA78222066F500838F13 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */; };
 		AA7CDA7A2220694800838F13 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA792220694800838F13 /* FavoritesViewModel.swift */; };
+		AA9081042236E45C005F42E9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081032236E45C005F42E9 /* NetworkingService.swift */; };
+		AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081052236E493005F42E9 /* iTunesAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,8 @@
 		AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA792220694800838F13 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		AA9081032236E45C005F42E9 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		AA9081052236E493005F42E9 /* iTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPI.swift; sourceTree = "<group>"; };
 		DFE75AFB88FBDD2833AB21C6 /* Pods-Podcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Podcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Podcasts/Pods-Podcasts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,8 +168,8 @@
 				AA62F5FA2154CA5C00356E3F /* Extensions */,
 				AA62F6062154D33F00356E3F /* Models */,
 				AA62F6182159589700356E3F /* Services */,
-				AA62F5F92154C99800356E3F /* Other */,
 				AA62F5F82154C98700356E3F /* Resources */,
+				AA62F5F92154C99800356E3F /* Other */,
 			);
 			path = Podcasts;
 			sourceTree = "<group>";
@@ -307,6 +311,8 @@
 				AA62F619215958B800356E3F /* NetworkService.swift */,
 				AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */,
 				AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */,
+				AA9081032236E45C005F42E9 /* NetworkingService.swift */,
+				AA9081052236E493005F42E9 /* iTunesAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -538,7 +544,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Podcasts/Resources/R.generated.swift",
+				$SRCROOT/Podcasts/Resources/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -556,6 +562,7 @@
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
 				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
 				AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */,
+				AA9081042236E45C005F42E9 /* NetworkingService.swift in Sources */,
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
 				AA7CDA742220661B00838F13 /* UICollectionView+Extensions.swift in Sources */,
@@ -578,6 +585,7 @@
 				AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */,
 				AA62F627215A046500356E3F /* EpisodeCell.swift in Sources */,
 				AA62F6022154CF3000356E3F /* PodcastsSearchViewController.swift in Sources */,
+				AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */,
 				AA62F6232159FD1000356E3F /* Episode.swift in Sources */,
 				AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */,
 				AA62F6212159F97700356E3F /* EpisodesViewController.swift in Sources */,
