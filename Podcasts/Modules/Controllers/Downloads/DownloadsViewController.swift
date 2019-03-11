@@ -111,7 +111,7 @@ extension DownloadsViewController {
         guard let progress = userInfo["progress"] as? Double else { return }
         guard let title = userInfo["title"] as? String else { return }
 
-        print("\n\t\t", progress, title)
+        print(progress, title)
 
         guard let index = viewModel.episodes.firstIndex(where: { $0.title == title }) else { return }
         guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell else { return }

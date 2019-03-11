@@ -212,7 +212,7 @@ extension PlayerDetailsView {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let sessionError {
-            print("\n\t\tFailed to activate session:", sessionError)
+            print("Failed to activate session:", sessionError)
         }
     }
 
@@ -220,7 +220,7 @@ extension PlayerDetailsView {
         if episode.fileUrl != nil {
             playEpisodeUsingFileUrl()
         } else {
-            print("\n\t\tTrying to play episode at url:", episode.streamUrl.httpsUrlString)
+            print("Trying to play episode at url:", episode.streamUrl.httpsUrlString)
             guard let url = URL(string: episode.streamUrl.httpsUrlString) else { return }
             let playerItem = AVPlayerItem(url: url)
             player.replaceCurrentItem(with: playerItem)
@@ -229,14 +229,14 @@ extension PlayerDetailsView {
     }
 
     fileprivate func playEpisodeUsingFileUrl() {
-        print("\n\t\tAttempt to play episode with file url:", episode.fileUrl ?? "")
+        print("Attempt to play episode with file url:", episode.fileUrl ?? "")
 
         guard let fileUrl = URL(string: episode.fileUrl ?? "") else { return }
         let fileName = fileUrl.lastPathComponent
 
         guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         trueLocation.appendPathComponent(fileName)
-        print("\n\t\tTrue Location of episode:", trueLocation.absoluteString)
+        print("True Location of episode:", trueLocation.absoluteString)
         let playerItem = AVPlayerItem(url: trueLocation)
         player.replaceCurrentItem(with: playerItem)
         player.play()
@@ -258,7 +258,7 @@ extension PlayerDetailsView {
         let times = [NSValue(time: time)]
 
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
-            print("\n\t\tEpisode started playing")
+            print("Episode started playing")
             self?.enlargeEpisodeImageView()
             self?.setupLockscreenDuration()
         }
@@ -322,7 +322,7 @@ extension PlayerDetailsView {
     fileprivate func handlePanEnded(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: self.superview)
         let velocity = gesture.velocity(in: self.superview)
-        print("\n\t\tEnded:", velocity.y)
+        print("Ended:", velocity.y)
 
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.transform = .identity
@@ -439,11 +439,11 @@ extension PlayerDetailsView {
         guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
 
         if type == AVAudioSession.InterruptionType.began.rawValue {
-            print("\n\t\tInterruption began")
+            print("Interruption began")
             playPauseButton.setImage(R.image.play(), for: .normal)
             miniPlayPauseButton.setImage(R.image.play(), for: .normal)
         } else {
-            print("\n\t\tInterruption ended")
+            print("Interruption ended")
             guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
                 player.play()

@@ -26,7 +26,7 @@ extension UserDefaults {
         do {
             return try JSONDecoder().decode([Episode].self, from: episodesData)
         } catch let decodeError {
-            print("\n\t\tFailed to decode:", decodeError)
+            print("Failed to decode:", decodeError)
         }
 
         return []
@@ -49,7 +49,7 @@ extension UserDefaults {
             let data = try JSONEncoder().encode(episodes)
             UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodesKey)
         } catch let encodeError {
-            print("\n\t\tFailed to encode episode:", encodeError)
+            print("Failed to encode episode:", encodeError)
         }
     }
 
@@ -63,7 +63,7 @@ extension UserDefaults {
             let data = try JSONEncoder().encode(filteredEpisodes)
             UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodesKey)
         } catch let encodeError {
-            print("\n\t\tFailed to encode episode:", encodeError)
+            print("Failed to encode episode:", encodeError)
         }
     }
 }
