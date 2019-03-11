@@ -10,6 +10,9 @@ import Foundation
 
 final class DownloadsViewModel {
 
+    // MARK: - Private
+    fileprivate let networkingService = NetworkingService()
+
     // MARK: - Properties
     var episodes = UserDefaults.standard.downloadedEpisodes
     var dataSource: TableViewDataSource<Episode, EpisodeCell>?
@@ -39,7 +42,7 @@ extension DownloadsViewModel {
 
     @objc
     func handleDownloadComplete(notification: Notification) {
-        guard let  episodeDownloadComplete = notification.object as? NetworkService.EpisodeDownloadComplete else { return }
+        guard let  episodeDownloadComplete = notification.object as? NetworkingService.EpisodeDownloadComplete else { return }
         guard let index = episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
         episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }

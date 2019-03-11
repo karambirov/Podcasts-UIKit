@@ -10,6 +10,9 @@ import Foundation
 
 final class EpisodesViewModel {
 
+    // MARK: - Private
+    fileprivate let networkingService = NetworkingService()
+
     // MARK: - Properties
     let podcast: Podcast
     var episodes = [Episode]()
@@ -25,9 +28,9 @@ final class EpisodesViewModel {
 extension EpisodesViewModel {
 
     func fetchEpisodes(_ completion: @escaping () -> Void) {
-        print("\n\t\tLooking for episodes at feed url:", podcast.feedUrl ?? "")
+        print("Looking for episodes at feed url:", podcast.feedUrl ?? "")
         guard let feedURL = podcast.feedUrl else { return }
-        NetworkService.shared.fetchEpisodes(feedUrl: feedURL) { [weak self] episodes in
+        networkingService.fetchEpisodes(feedUrl: feedURL) { [weak self] episodes in
             guard let self = self else { return }
             self.episodesDidLoad(episodes)
             DispatchQueue.main.async {
@@ -37,7 +40,7 @@ extension EpisodesViewModel {
     }
 
     func saveFavorite() {
-        print("\n\t\tSaving info into UserDefaults")
+        print("Saving info into UserDefaults")
         var listOfPodcasts = UserDefaults.standard.savedPodcasts
         listOfPodcasts.append(podcast)
         let data = try! NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts,
@@ -46,9 +49,9 @@ extension EpisodesViewModel {
     }
 
     func download(_ episode: Episode) {
-        print("\n\t\tDownloading episode into UserDefaults")
+        print("Downloading episode into UserDefaults")
         UserDefaults.standard.downloadEpisode(episode)
-        NetworkService.shared.downloadEpisode(episode)
+        networkingService.downloadEpisode(episode)
     }
 
     func episode(for indexPath: IndexPath) -> Episode {
