@@ -5,8 +5,6 @@ target 'Podcasts' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Podcasts
-
   # Networking
   pod 'Moya' # https://github.com/Moya/Moya
   pod 'AlamofireNetworkActivityIndicator' # https://github.com/Alamofire/AlamofireNetworkActivityIndicator
@@ -16,6 +14,9 @@ target 'Podcasts' do
 
   # UI
   pod 'SnapKit' # https://github.com/SnapKit/SnapKit
+
+  # Persistence
+  pod 'Disk' # https://github.com/saoudrizwan/Disk
 
   # Code quality
   pod 'R.swift' # https://github.com/mac-cain13/R.swift
@@ -33,4 +34,5 @@ post_install do |installer|
     content.gsub!(/set -e/, "set -e\nKG_FILE=\"#{file}\"\nif [ -f \"$KG_FILE\" ]; then exit 0; fi\nmkdir -p \"#{folder}\"\ntouch \"$KG_FILE\"")
     File.write(script, content)
   end
+
 end

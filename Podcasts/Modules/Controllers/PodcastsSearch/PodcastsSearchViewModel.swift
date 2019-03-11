@@ -12,6 +12,7 @@ final class PodcastsSearchViewModel {
 
     // MARK: - Private
     fileprivate var timer: Timer?
+    fileprivate let networkingService = NetworkingService()
 
     // MARK: - Properties
     var podcasts = [Podcast]()
@@ -24,8 +25,9 @@ extension PodcastsSearchViewModel {
 
     func searchPodcasts(with query: String, completion: @escaping () -> Void) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { timer in
-            NetworkService.shared.fetchPodcasts(searchText: query) { [weak self] podcasts in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] timer in
+            guard let self = self else { return }
+            self.networkingService.fetchPodcasts(searchText: query) { [weak self] podcasts in
                 guard let self = self else { return }
                 self.podcastsDidLoad(podcasts)
                 DispatchQueue.main.async {
