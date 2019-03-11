@@ -25,7 +25,6 @@
 		AA62F60E2154D8C900356E3F /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F60C2154D8C900356E3F /* PodcastCell.xib */; };
 		AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6112154E04D00356E3F /* PodcastsSearchingView.swift */; };
 		AA62F6142154E05600356E3F /* PodcastsSearchingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */; };
-		AA62F61A215958B800356E3F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F619215958B800356E3F /* NetworkService.swift */; };
 		AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61B215958F200356E3F /* Notification+Extensions.swift */; };
 		AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61D21595C2C00356E3F /* SearchResult.swift */; };
 		AA62F6212159F97700356E3F /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6202159F97700356E3F /* EpisodesViewController.swift */; };
@@ -75,7 +74,6 @@
 		AA62F60C2154D8C900356E3F /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		AA62F6112154E04D00356E3F /* PodcastsSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchingView.swift; sourceTree = "<group>"; };
 		AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsSearchingView.xib; sourceTree = "<group>"; };
-		AA62F619215958B800356E3F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AA62F61B215958F200356E3F /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F61D21595C2C00356E3F /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		AA62F6202159F97700356E3F /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
@@ -308,11 +306,8 @@
 		AA62F6182159589700356E3F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AA62F619215958B800356E3F /* NetworkService.swift */,
-				AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */,
-				AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */,
-				AA9081032236E45C005F42E9 /* NetworkingService.swift */,
-				AA9081052236E493005F42E9 /* iTunesAPI.swift */,
+				AAC7FEA32236F130004DCDFB /* Networking */,
+				AAC7FEA42236F14C004DCDFB /* DataSources */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -376,6 +371,24 @@
 				AA62F5EE2154C1C100356E3F /* Info.plist */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		AAC7FEA32236F130004DCDFB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AA9081032236E45C005F42E9 /* NetworkingService.swift */,
+				AA9081052236E493005F42E9 /* iTunesAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		AAC7FEA42236F14C004DCDFB /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */,
+				AA7CDA6D2220009A00838F13 /* TableViewDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +571,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */,
-				AA62F61A215958B800356E3F /* NetworkService.swift in Sources */,
 				AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */,
 				AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */,
 				AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */,
