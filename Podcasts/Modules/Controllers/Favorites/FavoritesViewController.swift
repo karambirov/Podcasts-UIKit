@@ -16,6 +16,7 @@ final class FavoritesViewController: UICollectionViewController {
     // MARK: - View Controller's life cycle
     init(viewModel: FavoritesViewModel,
          collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
+        // FIXME: - Crash due to collection view layout is nil
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
