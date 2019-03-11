@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.1)
   - AlamofireNetworkActivityIndicator (2.3.0):
     - Alamofire (~> 4.7)
+  - Disk (0.4.0)
   - FeedKit (7.0.1)
   - Kingfisher (5.1.1)
   - Moya (12.0.1):
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireNetworkActivityIndicator
+  - Disk
   - FeedKit
   - Kingfisher
   - Moya
@@ -33,6 +35,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireNetworkActivityIndicator
+    - Disk
     - FeedKit
     - Kingfisher
     - Moya
@@ -46,6 +49,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  Disk: ef2956657d5bb56034b38b29b352170165226440
   FeedKit: 9be69ab57ef0eb922ee4b6c31cb6b8840a5bbb29
   Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
@@ -56,6 +60,6 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
 
-PODFILE CHECKSUM: ea6d52e33e7a60f8af8fc2c0c518081f3aaddd9f
+PODFILE CHECKSUM: 2c72a8bad0c3424cb431c19aa10512e49866639c
 
 COCOAPODS: 1.6.1
