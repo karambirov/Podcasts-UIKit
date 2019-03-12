@@ -21,16 +21,6 @@ final class PodcastCell: UITableViewCell {
     fileprivate lazy var episodeCountLabel = UILabel()
 
     // MARK: - Life cycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupViews()
-    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         viewModel?.podcast.observer = nil
@@ -38,6 +28,7 @@ final class PodcastCell: UITableViewCell {
 
 }
 
+// MARK: - Setup
 extension PodcastCell {
 
     func setup(with viewModel: PodcastCellViewModel) {
@@ -53,20 +44,20 @@ extension PodcastCell {
             self.trackNameLabel.text    = podcast?.trackName
             self.artistNameLabel.text   = podcast?.artistName
             self.episodeCountLabel.text = "\(podcast?.trackCount ?? 0) Episodes"
-
             self.podcastImageView.sd_setImage(with: self.viewModel?.podcastImageURL)
         }
 
+        setupViews()
         setNeedsLayout()
     }
 
-    func setupViews() {
+    private func setupViews() {
         self.accessoryType = .disclosureIndicator
         setupLabels()
         setupLayout()
     }
 
-    fileprivate func setupLabels() {
+    private func setupLabels() {
         trackNameLabel.numberOfLines = 0
         trackNameLabel.font = .boldSystemFont(ofSize: 17)
         artistNameLabel.numberOfLines = 0
@@ -75,7 +66,7 @@ extension PodcastCell {
         episodeCountLabel.font = .systemFont(ofSize: 15)
     }
 
-    fileprivate func setupLayout() {
+    private func setupLayout() {
         self.addSubview(podcastImageView)
         podcastImageView.contentMode = .scaleAspectFit
         podcastImageView.snp.makeConstraints { make in

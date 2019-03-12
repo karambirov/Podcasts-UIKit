@@ -22,16 +22,6 @@ final class EpisodeCell: UITableViewCell {
     fileprivate lazy var descriptionLabel = UILabel()
 
     // MARK: - Life cycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupViews()
-    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         viewModel?.episode.observer = nil
@@ -39,6 +29,7 @@ final class EpisodeCell: UITableViewCell {
 
 }
 
+// MARK: - Setup
 extension EpisodeCell {
 
     func setup(with viewModel: EpisodeCellViewModel) {
@@ -54,20 +45,20 @@ extension EpisodeCell {
             self.titleLabel.text        = episode?.title
             self.descriptionLabel.text  = episode?.description
             self.pubDateLabel.text      = viewModel.pubDate
-
             self.episodeImageView.sd_setImage(with: self.viewModel?.episodeImageURL)
         }
 
+        setupViews()
         setNeedsLayout()
     }
 
-    func setupViews() {
+    private func setupViews() {
         self.accessoryType = .disclosureIndicator
         setupLabels()
         setupLayout()
     }
 
-    fileprivate func setupLabels() {
+    private func setupLabels() {
         titleLabel.numberOfLines = 0
         titleLabel.font = .boldSystemFont(ofSize: 17)
         descriptionLabel.numberOfLines = 0
@@ -76,7 +67,7 @@ extension EpisodeCell {
         pubDateLabel.font = .systemFont(ofSize: 15)
     }
 
-    fileprivate func setupLayout() {
+    private func setupLayout() {
         self.addSubview(episodeImageView)
         episodeImageView.contentMode = .scaleAspectFit
         episodeImageView.snp.makeConstraints { make in

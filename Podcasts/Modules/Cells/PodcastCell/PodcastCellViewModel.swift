@@ -14,7 +14,7 @@ final class PodcastCellViewModel {
     var podcast = Observable<Podcast>()
 
     var podcastImageURL: URL {
-        guard let url = URL(string: podcast.value?.artworkUrl600 ?? "") else {
+        guard let url = URL(string: podcast.value?.artworkUrl600?.httpsUrlString ?? "") else {
             preconditionFailure("Failed to load image URL.")
         }
         return url
@@ -24,6 +24,5 @@ final class PodcastCellViewModel {
     init(podcast: Podcast) {
         self.podcast.value = podcast
     }
-
 
 }
