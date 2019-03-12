@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import SnapKit
 
 final class EpisodeCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var episodeImageView: UIImageView!
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var pubDateLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    fileprivate lazy var episodeImageView = UIImageView()
+    fileprivate lazy var progressLabel    = UILabel()
+    fileprivate lazy var pubDateLabel     = UILabel()
+    fileprivate lazy var titleLabel       = UILabel()
+    fileprivate lazy var descriptionLabel = UILabel()
 
     // MARK: - Properties
     var episode: Episode? {

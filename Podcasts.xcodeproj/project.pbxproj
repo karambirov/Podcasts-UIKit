@@ -47,6 +47,7 @@
 		AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */; };
 		AA7CDA78222066F500838F13 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */; };
 		AA7CDA7A2220694800838F13 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA792220694800838F13 /* FavoritesViewModel.swift */; };
+		AA815F79223807D6001B4817 /* EpisodesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F78223807D6001B4817 /* EpisodesCellViewModel.swift */; };
 		AA9081042236E45C005F42E9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081032236E45C005F42E9 /* NetworkingService.swift */; };
 		AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081052236E493005F42E9 /* iTunesAPI.swift */; };
 		AAC7FEA622377995004DCDFB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7FEA522377995004DCDFB /* Observable.swift */; };
@@ -97,6 +98,7 @@
 		AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA792220694800838F13 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		AA815F78223807D6001B4817 /* EpisodesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesCellViewModel.swift; sourceTree = "<group>"; };
 		AA9081032236E45C005F42E9 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		AA9081052236E493005F42E9 /* iTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPI.swift; sourceTree = "<group>"; };
 		AAC7FEA522377995004DCDFB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				AA62F625215A046500356E3F /* EpisodeCell.swift */,
 				AA62F626215A046500356E3F /* EpisodeCell.xib */,
+				AA815F78223807D6001B4817 /* EpisodesCellViewModel.swift */,
 			);
 			path = EpisodeCell;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */,
 				AA62F6232159FD1000356E3F /* Episode.swift in Sources */,
 				AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */,
+				AA815F79223807D6001B4817 /* EpisodesCellViewModel.swift in Sources */,
 				AA62F6212159F97700356E3F /* EpisodesViewController.swift in Sources */,
 				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
 				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
