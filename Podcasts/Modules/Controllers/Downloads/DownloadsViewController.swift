@@ -92,8 +92,7 @@ extension DownloadsViewController {
     }
 
     private func setupTableView() {
-        let nib = UINib(resource: R.nib.episodeCell)
-        tableView.register(nib, forCellReuseIdentifier: EpisodeCell.typeName)
+        tableView.register(EpisodeCell.self, forCellReuseIdentifier: EpisodeCell.typeName)
         tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
     }
