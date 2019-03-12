@@ -62,19 +62,36 @@ extension PodcastCell {
 
     func setupViews() {
         self.accessoryType = .disclosureIndicator
+        setupLabels()
+        setupLayout()
+    }
 
+    fileprivate func setupLabels() {
+        trackNameLabel.numberOfLines = 0
+        trackNameLabel.font = .boldSystemFont(ofSize: 17)
+        artistNameLabel.numberOfLines = 0
+        artistNameLabel.font = .systemFont(ofSize: 15)
+        episodeCountLabel.textColor = UIColor(white: 0.5, alpha: 1.0)
+        episodeCountLabel.font = .systemFont(ofSize: 15)
+    }
+
+    fileprivate func setupLayout() {
         self.addSubview(podcastImageView)
         podcastImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
+            make.leading.equalTo(self.snp.leadingMargin)
+            make.top.equalTo(self.snp.topMargin)
+            make.bottom.equalTo(self.snp.bottomMargin)
         }
 
         let stackView = UIStackView(arrangedSubviews: [trackNameLabel, artistNameLabel, episodeCountLabel])
-        stackView.spacing = 2
+        stackView.spacing = 4
+        stackView.axis = .vertical
         self.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(8)
-            make.leading.equalTo(podcastImageView).offset(12)
+            make.trailing.equalTo(self.snp.trailingMargin)
+            make.leading.equalTo(podcastImageView.snp.trailing).offset(12)
         }
     }
 
