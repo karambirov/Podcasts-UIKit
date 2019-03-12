@@ -77,6 +77,7 @@ extension PodcastCell {
 
     fileprivate func setupLayout() {
         self.addSubview(podcastImageView)
+        podcastImageView.contentMode = .scaleAspectFit
         podcastImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
             make.leading.equalTo(self.snp.leadingMargin)

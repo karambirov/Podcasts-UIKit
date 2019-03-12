@@ -15,7 +15,8 @@ final class EpisodeCell: UITableViewCell {
     var viewModel: EpisodeCellViewModel?
 
     fileprivate lazy var episodeImageView = UIImageView()
-    lazy var progressLabel                = UILabel() // TODO: - Handle progress text using view model
+    // TODO: - Handle progress text using view model
+    lazy var progressLabel                = UILabel()
     fileprivate lazy var pubDateLabel     = UILabel()
     fileprivate lazy var titleLabel       = UILabel()
     fileprivate lazy var descriptionLabel = UILabel()
@@ -77,6 +78,7 @@ extension EpisodeCell {
 
     fileprivate func setupLayout() {
         self.addSubview(episodeImageView)
+        episodeImageView.contentMode = .scaleAspectFit
         episodeImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
             make.leading.equalTo(self.snp.leadingMargin)
@@ -97,6 +99,8 @@ extension EpisodeCell {
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.snp.trailingMargin)
             make.leading.equalTo(episodeImageView.snp.trailing).offset(12)
+            make.top.equalTo(self.snp.topMargin)
+            make.bottom.equalTo(self.snp.bottomMargin)
         }
     }
 
