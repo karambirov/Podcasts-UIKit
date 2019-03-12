@@ -10,6 +10,7 @@ import Foundation
 
 final class PodcastCellViewModel {
 
+    // MARK: - Properties
     var podcast = Observable<Podcast>()
 
     var podcastImageURL: URL {
@@ -19,6 +20,7 @@ final class PodcastCellViewModel {
         return url
     }
 
+    // MARK: - Life cycle
     init(podcast: Podcast) {
         self.podcast.value = podcast
     }

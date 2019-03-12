@@ -11,26 +11,95 @@ import SnapKit
 
 final class EpisodeCell: UITableViewCell {
 
-    // MARK: - Outlets
+    // MARK: - Properties
+    var viewModel: EpisodeCellViewModel?
+
     fileprivate lazy var episodeImageView = UIImageView()
     fileprivate lazy var progressLabel    = UILabel()
     fileprivate lazy var pubDateLabel     = UILabel()
     fileprivate lazy var titleLabel       = UILabel()
     fileprivate lazy var descriptionLabel = UILabel()
 
-    // MARK: - Properties
     var episode: Episode? {
         didSet {
-            titleLabel.text = episode?.title
-            descriptionLabel.text = episode?.description
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM dd, yyyy"
-            pubDateLabel.text = dateFormatter.string(from: episode?.pubDate ?? Date())
-
-            let url = URL(string: episode?.imageUrl?.httpsUrlString ?? "")
-            episodeImageView.sd_setImage(with: url)
         }
     }
+
+    // MARK: - Life cycle
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewModel?.episode.observer = nil
+    }
+
+}
+
+extension EpisodeCell {
+
+    func setup(with viewModel: EpisodeCellViewModel) {
+        self.viewModel = viewModel
+        let episode = viewModel.episode.value
+
+        titleLabel.text        = episode?.title
+        descriptionLabel.text  = episode?.description
+        pubDateLabel.text      = viewModel.pubDate
+
+        viewModel.episode.bind { [weak self] episode in
+            guard let self = self else { return }
+            self.titleLabel.text        = episode?.title
+            self.descriptionLabel.text  = episode?.description
+            self.pubDateLabel.text      = viewModel.pubDate
+
+            self.episodeImageView.sd_setImage(with: self.viewModel?.episodeImageURL)
+        }
+
+        setNeedsLayout()
+    }
+
+    func setupViews() {
+        self.accessoryType = .disclosureIndicator
+        setupLabels()
+        setupLayout()
+    }
+
+    fileprivate func setupLabels() {
+        titleLabel.numberOfLines = 0
+        titleLabel.font = .boldSystemFont(ofSize: 17)
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.font = .systemFont(ofSize: 15)
+        pubDateLabel.textColor = UIColor(white: 0.5, alpha: 1.0)
+        pubDateLabel.font = .systemFont(ofSize: 15)
+    }
+
+    fileprivate func setupLayout() {
+        self.addSubview(podcastImageView)
+        podcastImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(100)
+            make.leading.equalTo(self.snp.leadingMargin)
+            make.top.equalTo(self.snp.topMargin)
+            make.bottom.equalTo(self.snp.bottomMargin)
+        }
+
+        let stackView = UIStackView(arrangedSubviews: [trackNameLabel, artistNameLabel, episodeCountLabel])
+        stackView.spacing = 4
+        stackView.axis = .vertical
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalTo(self.snp.trailingMargin)
+            make.leading.equalTo(podcastImageView.snp.trailing).offset(12)
+        }
+    }
+
 
 }
