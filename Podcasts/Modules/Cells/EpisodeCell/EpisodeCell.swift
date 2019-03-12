@@ -82,22 +82,27 @@ extension EpisodeCell {
     }
 
     fileprivate func setupLayout() {
-        self.addSubview(podcastImageView)
-        podcastImageView.snp.makeConstraints { make in
+        self.addSubview(episodeImageView)
+        episodeImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
             make.leading.equalTo(self.snp.leadingMargin)
             make.top.equalTo(self.snp.topMargin)
             make.bottom.equalTo(self.snp.bottomMargin)
         }
 
-        let stackView = UIStackView(arrangedSubviews: [trackNameLabel, artistNameLabel, episodeCountLabel])
+        self.addSubview(progressLabel)
+        progressLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(episodeImageView.snp.center)
+        }
+
+        let stackView = UIStackView(arrangedSubviews: [pubDateLabel, titleLabel, descriptionLabel])
         stackView.spacing = 4
         stackView.axis = .vertical
         self.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.snp.trailingMargin)
-            make.leading.equalTo(podcastImageView.snp.trailing).offset(12)
+            make.leading.equalTo(episodeImageView.snp.trailing).offset(12)
         }
     }
 
