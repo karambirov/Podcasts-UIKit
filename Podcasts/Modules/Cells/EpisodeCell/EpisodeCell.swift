@@ -15,16 +15,10 @@ final class EpisodeCell: UITableViewCell {
     var viewModel: EpisodeCellViewModel?
 
     fileprivate lazy var episodeImageView = UIImageView()
-    fileprivate lazy var progressLabel    = UILabel()
+    lazy var progressLabel                = UILabel() // TODO: - Handle progress text using view model
     fileprivate lazy var pubDateLabel     = UILabel()
     fileprivate lazy var titleLabel       = UILabel()
     fileprivate lazy var descriptionLabel = UILabel()
-
-    var episode: Episode? {
-        didSet {
-
-        }
-    }
 
     // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -105,6 +99,5 @@ extension EpisodeCell {
             make.leading.equalTo(episodeImageView.snp.trailing).offset(12)
         }
     }
-
 
 }

@@ -61,8 +61,9 @@ extension TableViewDataSource where Model == Episode {
 
         return TableViewDataSource(models: episodes, reuseIdentifier: reuseIdentifier,
                                    cellConfigurator: { episode, cell in
+            let cellViewModel = EpisodeCellViewModel(episode: episode)
             if let cell = cell as? EpisodeCell {
-                cell.episode = episode
+                cell.setup(with: cellViewModel)
             }
             cell.layoutIfNeeded()
         })
