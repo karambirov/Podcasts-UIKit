@@ -144,8 +144,7 @@ extension PodcastsSearchViewController {
     }
 
     private func setupTableView() {
-        let nib = UINib(resource: R.nib.podcastCell)
-        tableView.register(nib, forCellReuseIdentifier: PodcastCell.typeName)
+        tableView.register(PodcastCell.self, forCellReuseIdentifier: PodcastCell.typeName)
         tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
     }
