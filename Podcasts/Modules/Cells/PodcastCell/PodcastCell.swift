@@ -11,11 +11,11 @@ import SDWebImage
 
 final class PodcastCell: UITableViewCell {
 
-    // MARK: - Outlets
-    @IBOutlet fileprivate weak var podcastImageView: UIImageView!
-    @IBOutlet fileprivate weak var trackNameLabel: UILabel!
-    @IBOutlet fileprivate weak var artistNameLabel: UILabel!
-    @IBOutlet fileprivate weak var episodeCountLabel: UILabel!
+    // MARK: - Properties
+    fileprivate lazy var podcastImageView  = UIImageView()
+    fileprivate lazy var trackNameLabel    = UILabel()
+    fileprivate lazy var artistNameLabel   = UILabel()
+    fileprivate lazy var episodeCountLabel = UILabel()
 
     // MARK: - Properties
     var podcast: Podcast? {
