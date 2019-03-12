@@ -79,8 +79,7 @@ extension FavoritesViewController {
 
     fileprivate func setupCollectionView() {
         collectionView.backgroundColor = .white
-        let nib = UINib(resource: R.nib.favoritePodcastCell)
-        collectionView.register(nib, forCellWithReuseIdentifier: FavoritePodcastCell.typeName)
+        collectionView.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: FavoritePodcastCell.typeName)
         collectionView.dataSource = viewModel.dataSource
 
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))

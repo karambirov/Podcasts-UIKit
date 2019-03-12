@@ -43,8 +43,9 @@ extension CollectionViewDataSource where Model == Podcast {
 
         return CollectionViewDataSource(models: podcasts, reuseIdentifier: reuseIdentifier,
                                         cellConfigurator: { podcast, cell in
+            let cellViewModel = FavoritePodcastCellViewModel(podcast: podcast)
             if let cell = cell as? FavoritePodcastCell {
-                cell.podcast = podcast
+                cell.setup(with: cellViewModel)
             }
             cell.layoutIfNeeded()
         })

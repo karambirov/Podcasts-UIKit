@@ -43,8 +43,9 @@ extension TableViewDataSource where Model == Podcast {
 
         return TableViewDataSource(models: podcasts, reuseIdentifier: reuseIdentifier,
                                    cellConfigurator: { podcast, cell in
+            let cellViewModel = PodcastCellViewModel(podcast: podcast)
             if let cell = cell as? PodcastCell {
-                cell.podcast = podcast
+                cell.setup(with: cellViewModel)
             }
             cell.layoutIfNeeded()
         })
@@ -60,8 +61,9 @@ extension TableViewDataSource where Model == Episode {
 
         return TableViewDataSource(models: episodes, reuseIdentifier: reuseIdentifier,
                                    cellConfigurator: { episode, cell in
+            let cellViewModel = EpisodeCellViewModel(episode: episode)
             if let cell = cell as? EpisodeCell {
-                cell.episode = episode
+                cell.setup(with: cellViewModel)
             }
             cell.layoutIfNeeded()
         })
