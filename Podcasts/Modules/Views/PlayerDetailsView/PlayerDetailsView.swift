@@ -9,7 +9,6 @@
 import UIKit
 import AVKit
 import MediaPlayer
-import SDWebImage
 
 // FIXME: Fix spacing between title and author labels.
 // TODO: Extract mini player in its own class
@@ -36,7 +35,7 @@ final class PlayerDetailsView: UIView {
             episodeImageView.setImage(from: url)
             miniEpisodeImageView.setImage(from: url)
 
-            miniEpisodeImageView.sd_setImage(with: url) { (image, _, _, _) in
+            miniEpisodeImageView.setImage(from: url) { image in
                 let image = self.episodeImageView.image ?? UIImage()
                 let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { size -> UIImage in
                     return image

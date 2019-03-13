@@ -45,7 +45,7 @@ extension EpisodeCell {
             self.titleLabel.text        = episode?.title
             self.descriptionLabel.text  = episode?.description
             self.pubDateLabel.text      = viewModel.pubDate
-            self.episodeImageView.sd_setImage(with: self.viewModel?.episodeImageURL)
+            self.episodeImageView.setImage(from: self.viewModel?.episodeImageURL)
         }
 
         setupViews()
