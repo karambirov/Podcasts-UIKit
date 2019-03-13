@@ -32,10 +32,10 @@ final class PlayerDetailsView: UIView {
             playEpisode()
 
             guard let url = URL(string: episode.imageUrl?.httpsUrlString ?? "") else { return }
-            episodeImageView.sd_setImage(with: url)
-            miniEpisodeImageView.sd_setImage(with: url)
+            episodeImageView.setImage(from: url)
+            miniEpisodeImageView.setImage(from: url)
 
-            miniEpisodeImageView.sd_setImage(with: url) { (image, _, _, _) in
+            miniEpisodeImageView.setImage(from: url) { image in
                 let image = self.episodeImageView.image ?? UIImage()
                 let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { size -> UIImage in
                     return image
