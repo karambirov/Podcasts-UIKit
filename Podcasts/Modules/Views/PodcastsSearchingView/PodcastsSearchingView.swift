@@ -12,8 +12,8 @@ final class PodcastsSearchingView: UIView {
 
     // MARK: - Properties
     fileprivate lazy var activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-    fileprivate lazy var textLabel      = UILabel()
-    fileprivate lazy var stackView   = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
+    fileprivate lazy var textLabel             = UILabel()
+    fileprivate lazy var stackView             = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
