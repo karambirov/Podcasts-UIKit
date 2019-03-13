@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 import SnapKit
 
 final class PodcastCell: UITableViewCell {
@@ -44,7 +43,7 @@ extension PodcastCell {
             self.trackNameLabel.text    = podcast?.trackName
             self.artistNameLabel.text   = podcast?.artistName
             self.episodeCountLabel.text = "\(podcast?.trackCount ?? 0) Episodes"
-            self.podcastImageView.sd_setImage(with: self.viewModel?.podcastImageURL)
+            self.podcastImageView.setImage(from: self.viewModel?.podcastImageURL)
         }
 
         setupViews()

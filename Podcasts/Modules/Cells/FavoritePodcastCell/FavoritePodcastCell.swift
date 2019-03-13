@@ -39,7 +39,7 @@ extension FavoritePodcastCell {
             guard let self = self else { return }
             self.nameLabel.text         = podcast?.trackName
             self.artistNameLabel.text   = podcast?.artistName
-            self.imageView.sd_setImage(with: self.viewModel?.podcastImageURL)
+            self.imageView.setImage(from: self.viewModel?.podcastImageURL)
         }
 
         setupViews()
