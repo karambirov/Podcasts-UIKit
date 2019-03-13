@@ -125,7 +125,7 @@ extension PodcastsSearchViewController {
     }
 
     fileprivate func setupLoadingView() -> UIView? {
-        let podcastsSearchingView = R.nib.podcastsSearchingView.firstView(owner: nil)
+        let podcastsSearchingView = PodcastsSearchingView()
         return podcastsSearchingView
     }
 

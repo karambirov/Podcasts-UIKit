@@ -41,6 +41,7 @@ extension PodcastsSearchingView {
         textLabel.textColor = R.color.tintColor()
         textLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         textLabel.text = "Currently searching, please wait"
+        textLabel.textAlignment = .center
     }
 
     private func setupLayout() {
