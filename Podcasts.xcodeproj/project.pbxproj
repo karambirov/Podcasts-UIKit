@@ -22,7 +22,6 @@
 		AA62F6082154D34A00356E3F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6072154D34A00356E3F /* Podcast.swift */; };
 		AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F60B2154D8C900356E3F /* PodcastCell.swift */; };
 		AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6112154E04D00356E3F /* PodcastsSearchingView.swift */; };
-		AA62F6142154E05600356E3F /* PodcastsSearchingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */; };
 		AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61B215958F200356E3F /* Notification+Extensions.swift */; };
 		AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F61D21595C2C00356E3F /* SearchResult.swift */; };
 		AA62F6212159F97700356E3F /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F6202159F97700356E3F /* EpisodesViewController.swift */; };
@@ -73,7 +72,6 @@
 		AA62F6072154D34A00356E3F /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		AA62F60B2154D8C900356E3F /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		AA62F6112154E04D00356E3F /* PodcastsSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchingView.swift; sourceTree = "<group>"; };
-		AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsSearchingView.xib; sourceTree = "<group>"; };
 		AA62F61B215958F200356E3F /* Notification+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extensions.swift"; sourceTree = "<group>"; };
 		AA62F61D21595C2C00356E3F /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		AA62F6202159F97700356E3F /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				AA62F6112154E04D00356E3F /* PodcastsSearchingView.swift */,
-				AA62F6132154E05600356E3F /* PodcastsSearchingView.xib */,
 			);
 			path = PodcastsSearchingView;
 			sourceTree = "<group>";
@@ -467,7 +464,6 @@
 				AA62F633215B752200356E3F /* PlayerDetailsView.xib in Resources */,
 				AA62F5ED2154C1C100356E3F /* LaunchScreen.storyboard in Resources */,
 				AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */,
-				AA62F6142154E05600356E3F /* PodcastsSearchingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

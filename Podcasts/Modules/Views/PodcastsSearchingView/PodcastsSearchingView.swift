@@ -26,6 +26,7 @@ final class PodcastsSearchingView: UIView {
 extension PodcastsSearchingView {
 
     fileprivate func setupViews() {
+        setupActivityIndicatorView()
         setupLabel()
         setupLayout()
     }
@@ -43,7 +44,13 @@ extension PodcastsSearchingView {
     }
 
     private func setupLayout() {
-        
+        stackView.spacing = 12
+        stackView.axis = .vertical
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalTo(200)
+        }
     }
 
 }
