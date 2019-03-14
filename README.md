@@ -15,5 +15,31 @@ This is a clone of Apple's Podcasts. Final version will be built with RxSwift us
 
 ## Screen recording
 <p align="center">
-  <img src = "https://user-images.githubusercontent.com/6949755/54339127-f42fbb00-4644-11e9-96e3-18ff515e5323.gif" width="250"/>
+  <img src = "https://user-images.githubusercontent.com/6949755/54339127-f42fbb00-4644-11e9-96e3-18ff515e5323.gif" width="200"/>
 </p>
+
+## App Features
+- [x] Searching for podcasts using iTunes API.
+- [x] Saving info about favorite podcasts on disk, so a user can see them offline.
+- [x] Downloading episodes for listening to without an Internet connection.
+
+## Technologies
+- [x] Networking REST API v3 ([Moya](https://github.com/Moya/Moya)).
+- [x] JSON parsing using `Codable`.
+- [x] XML parsing podcasts' meta information ([FeedKit](https://github.com/nmdias/FeedKit)).
+- [x] Programmatically UI ([SnapKit](https://github.com/SnapKit/SnapKit)).
+- [x] [SwiftLint](https://github.com/realm/SwiftLint) - A tool to enforce Swift style and conventions.
+- [x] [R.swift](https://github.com/mac-cain13/R.swift) - Get strong typed, autocompleted resources like images, fonts and segues in Swift projects.
+
+## Building and Running
+Make sure you have Xcode installed from the App Store. Then run the following commands in Terminal:
+
+```sh
+clone https://github.com/Karambirov/Podcasts.git
+cd Podcasts
+pod install
+open Podcasts.xcworkspace
+```
+
+## License
+MIT License. See [LICENSE](https://github.com/Karambirov/Podcasts/blob/develop/LICENSE).
