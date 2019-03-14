@@ -47,6 +47,7 @@
 		AA815F79223807D6001B4817 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F78223807D6001B4817 /* EpisodeCellViewModel.swift */; };
 		AA815F7B2238115A001B4817 /* FavoritePodcastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */; };
 		AA815F7D22384324001B4817 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */; };
+		AA815F7F223A45B3001B4817 /* PodcastsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7E223A45B3001B4817 /* PodcastsService.swift */; };
 		AA9081042236E45C005F42E9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081032236E45C005F42E9 /* NetworkingService.swift */; };
 		AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081052236E493005F42E9 /* iTunesAPI.swift */; };
 		AAC7FEA622377995004DCDFB /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7FEA522377995004DCDFB /* Observable.swift */; };
@@ -97,6 +98,7 @@
 		AA815F78223807D6001B4817 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
 		AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCellViewModel.swift; sourceTree = "<group>"; };
 		AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		AA815F7E223A45B3001B4817 /* PodcastsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsService.swift; sourceTree = "<group>"; };
 		AA9081032236E45C005F42E9 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		AA9081052236E493005F42E9 /* iTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPI.swift; sourceTree = "<group>"; };
 		AAC7FEA522377995004DCDFB /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -217,17 +219,17 @@
 		AA62F5FA2154CA5C00356E3F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */,
-				AA62F61B215958F200356E3F /* Notification+Extensions.swift */,
-				AA62F629215A086B00356E3F /* String+Extensions.swift */,
-				AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */,
-				AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */,
 				AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */,
-				AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */,
-				AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */,
+				AA62F61B215958F200356E3F /* Notification+Extensions.swift */,
+				AA62F62B215B5C5D00356E3F /* RSSFeed+Extensions.swift */,
+				AA62F629215A086B00356E3F /* String+Extensions.swift */,
+				AA62F5FB2154CA7000356E3F /* UIApplication+Extensions.swift */,
 				AA7CDA732220661B00838F13 /* UICollectionView+Extensions.swift */,
 				AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */,
 				AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */,
+				AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */,
+				AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */,
+				AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +313,7 @@
 			children = (
 				AAC7FEA32236F130004DCDFB /* Networking */,
 				AAC7FEA42236F14C004DCDFB /* DataSources */,
+				AA815F7E223A45B3001B4817 /* PodcastsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */,
 				AA62F627215A046500356E3F /* EpisodeCell.swift in Sources */,
 				AA62F6022154CF3000356E3F /* PodcastsSearchViewController.swift in Sources */,
+				AA815F7F223A45B3001B4817 /* PodcastsService.swift in Sources */,
 				AA815F7D22384324001B4817 /* UIImageView+Extensions.swift in Sources */,
 				AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */,
 				AA62F6232159FD1000356E3F /* Episode.swift in Sources */,
