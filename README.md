@@ -1,5 +1,5 @@
 # Podcasts
-This is a clone of Apple's Podcasts. Final version will be built with RxSwift using MVVM and Coordinator.
+This is a clone of Apple's Podcasts. Final version **will be** built with RxSwift using MVVM and Coordinator.
 
 ## App Features
 - [x] Searching for podcasts using iTunes API.
