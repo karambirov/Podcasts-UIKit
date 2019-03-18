@@ -30,8 +30,10 @@ final class DownloadsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.episodes = UserDefaults.standard.downloadedEpisodes
-        tableView.reloadData()
+        viewModel.fetchDownloads { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+        }
     }
 
     deinit {

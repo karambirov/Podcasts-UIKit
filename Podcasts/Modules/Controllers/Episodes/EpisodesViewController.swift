@@ -95,10 +95,7 @@ extension EpisodesViewController {
     }
 
     private func setupNavigationBarButtons() {
-        let savedPodcasts = UserDefaults.standard.savedPodcasts
-        let hasFavorited = savedPodcasts
-            .index(where: { $0.trackName  == self.viewModel.podcast.trackName &&
-                            $0.artistName == self.viewModel.podcast.artistName }) != nil
+        let hasFavorited = viewModel.checkIfPodcastHasFavorited()
 
         if hasFavorited {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.heart(), style: .plain,
