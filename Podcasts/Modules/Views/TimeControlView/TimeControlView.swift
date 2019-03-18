@@ -34,12 +34,20 @@ extension TimeControlView {
         self.addSubview(currentTimeSlider)
         self.addSubview(timeStackView)
 
-        
+        currentTimeSlider.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(36)
+        }
+
+        timeStackView.snp.makeConstraints { make in
+            make.top.equalTo(currentTimeSlider).offset(4)
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(22)
+        }
     }
 
     fileprivate func setupSlider() {
         currentTimeSlider.value = 0
-        currentTimeSlider.snp.makeConstraints { $0.height.equalTo(36) }
     }
 
     fileprivate func setupLabels() {
