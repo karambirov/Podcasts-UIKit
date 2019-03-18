@@ -17,6 +17,7 @@ final class MiniPlayerView: UIView {
     fileprivate lazy var titleLabel        = UILabel()
     fileprivate lazy var playPauseButton   = UIButton(type: .system)
     fileprivate lazy var fastForwardButton = UIButton(type: .system)
+    fileprivate lazy var stackView         = UIStackView(arrangedSubviews: [imageView, titleLabel, playPauseButton, fastForwardButton])
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -33,11 +34,28 @@ extension MiniPlayerView {
         setupTitleLabel()
         setupPlayPauseButton()
         setupFastForwardButton()
+        setupStackView()
         setupLayout()
     }
 
     private func setupLayout() {
-        
+        self.addSubview(separatorView)
+        self.addSubview(stackView)
+
+        separatorView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(0.5)
+        }
+
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview().offset(8)
+            make.top.equalTo(separatorView).offset(8)
+        }
+
+        self.snp.makeConstraints { make in
+            make.leading.trailing.top.equalTo(safeAreaLayoutGuide)
+            make.height.equalTo(64)
+        }
     }
 
     private func setupImageView() {
@@ -62,6 +80,11 @@ extension MiniPlayerView {
         fastForwardButton.setTitle("", for: .normal)
         fastForwardButton.setImage(R.image.fastforward15(), for: .normal)
         fastForwardButton.snp.makeConstraints { $0.width.equalTo(48) }
+    }
+
+    private func setupStackView() {
+        stackView.addArrangedSubview(imageView)
+
     }
 
 }
