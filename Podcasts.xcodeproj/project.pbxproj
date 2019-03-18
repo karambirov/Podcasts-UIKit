@@ -12,6 +12,7 @@
 		AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */; };
 		AA341C02223FFB6500931C36 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C01223FFB6500931C36 /* PlayerView.swift */; };
 		AA341C06223FFBB900931C36 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C05223FFBB900931C36 /* MiniPlayerView.swift */; };
+		AA341C0922401F7500931C36 /* TimeControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0822401F7500931C36 /* TimeControlView.swift */; };
 		AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
 		AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5E92154C1C100356E3F /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		AA341C01223FFB6500931C36 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		AA341C05223FFBB900931C36 /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
+		AA341C0822401F7500931C36 /* TimeControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeControlView.swift; sourceTree = "<group>"; };
 		AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		AA62F5DF2154C1BF00356E3F /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA62F5E22154C1BF00356E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 				AA341C05223FFBB900931C36 /* MiniPlayerView.swift */,
 			);
 			path = MiniPlayerView;
+			sourceTree = "<group>";
+		};
+		AA341C0722401F4400931C36 /* TimeControlView */ = {
+			isa = PBXGroup;
+			children = (
+				AA341C0822401F7500931C36 /* TimeControlView.swift */,
+			);
+			path = TimeControlView;
 			sourceTree = "<group>";
 		};
 		AA58FE86215E5BC100309F97 /* FavoritePodcastCell */ = {
@@ -314,6 +324,7 @@
 		AA62F60F2154E01400356E3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA341C0722401F4400931C36 /* TimeControlView */,
 				AA341C04223FFBA800931C36 /* MiniPlayerView */,
 				AA341C03223FFB8300931C36 /* PlayerView */,
 				AA62F62F215B74DC00356E3F /* PlayerDetailsView */,
@@ -609,6 +620,7 @@
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,
 				AA7CDA702220176600838F13 /* PodcastsSearchViewModel.swift in Sources */,
 				AA62F5F72154C95900356E3F /* MainTabBarController.swift in Sources */,
+				AA341C0922401F7500931C36 /* TimeControlView.swift in Sources */,
 				AA62F5FC2154CA7000356E3F /* UIApplication+Extensions.swift in Sources */,
 				AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */,
 				AA28B60F222590320090B0A8 /* DownloadsViewModel.swift in Sources */,
