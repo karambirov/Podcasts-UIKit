@@ -87,8 +87,11 @@ extension FavoritesViewController {
     }
 
     fileprivate func refreshFavorites() {
-        viewModel.podcasts = UserDefaults.standard.savedPodcasts
-        collectionView?.reloadData()
+        viewModel.fetchFavorites { [weak self] in
+            guard let self = self else { return }
+            self.collectionView.dataSource = self.viewModel.dataSource
+            self.collectionView.reloadData()
+        }
         UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = nil
     }
 

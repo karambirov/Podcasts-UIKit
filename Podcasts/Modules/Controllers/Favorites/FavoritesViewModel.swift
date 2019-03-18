@@ -10,8 +10,11 @@ import Foundation
 
 final class FavoritesViewModel {
 
+    // MARK: - Private
+    fileprivate let podcastsService = PodcastsService()
+
     // MARK: - Properties
-    var podcasts = UserDefaults.standard.savedPodcasts
+    lazy var podcasts = podcastsService.savedPodcasts
     var dataSource: CollectionViewDataSource<Podcast, FavoritePodcastCell>?
 
 }
@@ -33,7 +36,7 @@ extension FavoritesViewModel {
     func deletePodcast(for indexPath: IndexPath) {
         podcasts.remove(at: indexPath.item)
         let selectedPodcast = podcast(for: indexPath)
-        UserDefaults.standard.deletePodcast(selectedPodcast)
+        podcastsService.deletePodcast(selectedPodcast)
         dataSource = .make(for: podcasts)
     }
 

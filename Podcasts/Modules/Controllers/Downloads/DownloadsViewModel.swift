@@ -12,9 +12,10 @@ final class DownloadsViewModel {
 
     // MARK: - Private
     fileprivate let networkingService = NetworkingService()
+    fileprivate let podcastsService   = PodcastsService()
 
     // MARK: - Properties
-    var episodes = UserDefaults.standard.downloadedEpisodes
+    lazy var episodes = podcastsService.downloadedEpisodes
     var dataSource: TableViewDataSource<Episode, EpisodeCell>?
 
 }
@@ -36,7 +37,7 @@ extension DownloadsViewModel {
     func deleteEpisode(for indexPath: IndexPath) {
         episodes.remove(at: indexPath.row)
         let selectedEpisode = episode(for: indexPath)
-        UserDefaults.standard.deleteEpisode(selectedEpisode)
+        podcastsService.deleteEpisode(selectedEpisode)
         dataSource = .make(for: episodes)
     }
 

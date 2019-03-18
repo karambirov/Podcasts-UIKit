@@ -13,9 +13,12 @@ import FeedKit
 final class NetworkingService {
 
     private var provider: MoyaProvider<ITunesAPI>?
+    fileprivate var podcastsService: PodcastsService?
 
-    init(provider: MoyaProvider<ITunesAPI> = .init()) {
+    init(provider: MoyaProvider<ITunesAPI> = .init(),
+         podcastsService: PodcastsService = .init()) {
         self.provider = provider
+        self.podcastsService = podcastsService
     }
 
 }
@@ -88,10 +91,10 @@ extension NetworkingService {
                                                                       episode.title)
                 NotificationCenter.default.post(name: .downloadComplete, object: episodeDownloadComplete, userInfo: nil)
 
-                var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes
-                guard let index = downloadedEpisodes.firstIndex(where: { $0.title == episode.title
+                var downloadedEpisodes = self.podcastsService?.downloadedEpisodes
+                guard let index = downloadedEpisodes?.firstIndex(where: { $0.title == episode.title
                                                                 && $0.author == episode.author }) else { return }
-                downloadedEpisodes[index].fileUrl = response.destinationURL?.absoluteString ?? ""
+                downloadedEpisodes?[index].fileUrl = response.destinationURL?.absoluteString ?? ""
 
                 do {
                     let data = try JSONEncoder().encode(downloadedEpisodes)

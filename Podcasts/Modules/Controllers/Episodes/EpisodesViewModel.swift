@@ -12,6 +12,7 @@ final class EpisodesViewModel {
 
     // MARK: - Private
     fileprivate let networkingService = NetworkingService()
+    fileprivate let podcastsService   = PodcastsService()
 
     // MARK: - Properties
     let podcast: Podcast
@@ -41,7 +42,7 @@ extension EpisodesViewModel {
 
     func saveFavorite() {
         print("Saving info into UserDefaults")
-        var listOfPodcasts = UserDefaults.standard.savedPodcasts
+        var listOfPodcasts = podcastsService.savedPodcasts
         listOfPodcasts.append(podcast)
         let data = try! NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts,
                                                      requiringSecureCoding: false)
@@ -50,12 +51,20 @@ extension EpisodesViewModel {
 
     func download(_ episode: Episode) {
         print("Downloading episode into UserDefaults")
-        UserDefaults.standard.downloadEpisode(episode)
+        podcastsService.downloadEpisode(episode)
         networkingService.downloadEpisode(episode)
     }
 
     func episode(for indexPath: IndexPath) -> Episode {
         return episodes[indexPath.row]
+    }
+
+    func checkIfPodcastHasFavorited() -> Bool {
+        let savedPodcasts = podcastsService.savedPodcasts
+        let hasFavorited = savedPodcasts
+            .index(where: { $0.trackName  == self.podcast.trackName &&
+                            $0.artistName == self.podcast.artistName }) != nil
+        return hasFavorited
     }
 
     fileprivate func episodesDidLoad(_ episodes: [Episode]) {
