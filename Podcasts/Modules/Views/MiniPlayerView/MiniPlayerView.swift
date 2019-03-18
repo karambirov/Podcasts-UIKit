@@ -24,6 +24,8 @@ final class MiniPlayerView: UIView {
         setupViews()
     }
 
+    // TODO: - Configure init to set label text and actions for buttons
+
 }
 
 // MARK: - Setup
@@ -66,8 +68,8 @@ extension MiniPlayerView {
 
     private func setupTitleLabel() {
         titleLabel.text      = "Episode Title"
-        titleLabel.font      = UIFont.systemFont(ofSize: 15, weight: .medium)
-        titleLabel.textColor = UIColor.darkText
+        titleLabel.font      = .systemFont(ofSize: 15, weight: .medium)
+        titleLabel.textColor = .darkText
     }
 
     private func setupPlayPauseButton() {
