@@ -8,12 +8,20 @@
 
 import UIKit
 
-final class TimeControlStackView: UIStackView {
+final class TimeControlView: UIView {
 
     // MARK: - Properties
     fileprivate lazy var currentTimeSlider = UISlider()
     fileprivate lazy var currentTimeLabel = UILabel()
     fileprivate lazy var durationLabel = UILabel()
-    fileprivate
+
+
+
+}
+
+// MARK: - Setup
+extension TimeControlView {
+
+    fileprivate func setupArrangedSubviews()
 
 }
