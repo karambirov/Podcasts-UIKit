@@ -10,7 +10,7 @@
 		23478D5A6CEDB3B61832A90D /* Pods_Podcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */; };
 		AA28B60F222590320090B0A8 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */; };
 		AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */; };
-		AA341C02223FFB6500931C36 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C01223FFB6500931C36 /* PlayerView.swift */; };
+		AA341C02223FFB6500931C36 /* PlayerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C01223FFB6500931C36 /* PlayerStackView.swift */; };
 		AA341C06223FFBB900931C36 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C05223FFBB900931C36 /* MiniPlayerView.swift */; };
 		AA341C0922401F7500931C36 /* TimeControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0822401F7500931C36 /* TimeControlStackView.swift */; };
 		AA341C0C22401FAF00931C36 /* PlayingControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */; };
@@ -64,7 +64,7 @@
 		9F3CB9C9AC1A1EEBC4BF6BDE /* Pods_Podcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Podcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
 		AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
-		AA341C01223FFB6500931C36 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		AA341C01223FFB6500931C36 /* PlayerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStackView.swift; sourceTree = "<group>"; };
 		AA341C05223FFBB900931C36 /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		AA341C0822401F7500931C36 /* TimeControlStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeControlStackView.swift; sourceTree = "<group>"; };
 		AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingControlsStackView.swift; sourceTree = "<group>"; };
@@ -145,12 +145,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AA341C03223FFB8300931C36 /* PlayerView */ = {
+		AA341C03223FFB8300931C36 /* PlayerStackView */ = {
 			isa = PBXGroup;
 			children = (
-				AA341C01223FFB6500931C36 /* PlayerView.swift */,
+				AA341C01223FFB6500931C36 /* PlayerStackView.swift */,
 			);
-			path = PlayerView;
+			path = PlayerStackView;
 			sourceTree = "<group>";
 		};
 		AA341C04223FFBA800931C36 /* MiniPlayerView */ = {
@@ -344,13 +344,13 @@
 		AA62F60F2154E01400356E3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AA341C0D22412B4700931C36 /* VolumeControlStackView */,
 				AA341C04223FFBA800931C36 /* MiniPlayerView */,
 				AA62F62F215B74DC00356E3F /* PlayerDetailsView */,
-				AA341C03223FFB8300931C36 /* PlayerView */,
+				AA341C03223FFB8300931C36 /* PlayerStackView */,
 				AA341C0A22401F9800931C36 /* PlayingControlsStackView */,
 				AA62F6102154E02300356E3F /* PodcastsSearchingView */,
 				AA341C0722401F4400931C36 /* TimeControlStackView */,
+				AA341C0D22412B4700931C36 /* VolumeControlStackView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -636,7 +636,7 @@
 				AA62F6082154D34A00356E3F /* Podcast.swift in Sources */,
 				AA62F60D2154D8C900356E3F /* PodcastCell.swift in Sources */,
 				AAC7FEA8223779D4004DCDFB /* PodcastCellViewModel.swift in Sources */,
-				AA341C02223FFB6500931C36 /* PlayerView.swift in Sources */,
+				AA341C02223FFB6500931C36 /* PlayerStackView.swift in Sources */,
 				AA7CDA742220661B00838F13 /* UICollectionView+Extensions.swift in Sources */,
 				AA7CDA722220276700838F13 /* EpisodesViewModel.swift in Sources */,
 				AA62F62A215A086B00356E3F /* String+Extensions.swift in Sources */,

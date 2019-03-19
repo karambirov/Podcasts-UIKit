@@ -1,5 +1,5 @@
 //
-//  PlayerView.swift
+//  PlayerStackView.swift
 //  Podcasts
 //
 //  Created by Eugene Karambirov on 18/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PlayerView: UIView {
+final class PlayerStackView: UIStackView {
 
     // MARK: - Properties
     fileprivate lazy var closeButton              = UIButton(type: .system)
