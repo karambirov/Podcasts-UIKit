@@ -43,7 +43,8 @@ extension TimeControlStackView {
         currentTimeLabel.text      = "00:00:00"
         currentTimeLabel.font      = .systemFont(ofSize: 12)
         currentTimeLabel.textColor = .lightGray
-        currentTimeLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
+        // FIXME: Find out if it's necessary
+//        currentTimeLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
 
         durationLabel.text      = "--:--:--"
         durationLabel.font      = .systemFont(ofSize: 12)

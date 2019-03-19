@@ -12,6 +12,31 @@ import SnapKit
 final class VolumeControlStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var currentVolumeSlider = UISlider()
+    fileprivate lazy var currentVolumeSlider  = UISlider()
+    fileprivate lazy var mutedVolumeImageView = UIImageView()
+    fileprivate lazy var maxVolumeImageView   = UIImageView()
+
+    // MARK: - Life cycle
+    convenience init() {
+        self.init()
+        setupImageViews()
+        setupLayout()
+    }
+
+}
+
+// MARK: - Setup
+extension VolumeControlStackView {
+
+    fileprivate func setupLayout() {
+        self.addArrangedSubview(mutedVolumeImageView)
+        self.addArrangedSubview(currentVolumeSlider)
+        self.addArrangedSubview(maxVolumeImageView)
+    }
+
+    fileprivate func setupImageViews() {
+        mutedVolumeImageView.image = R.image.mutedVolume()
+        maxVolumeImageView.image   = R.image.maxVolume()
+    }
 
 }

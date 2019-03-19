@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -169,7 +169,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5F5-wA-Wpb">
                             <rect key="frame" x="0.0" y="660" width="366" height="32"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="muted_volume" translatesAutoresizingMaskIntoConstraints="NO" id="kdt-Ii-LqC">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mutedVolume" translatesAutoresizingMaskIntoConstraints="NO" id="kdt-Ii-LqC">
                                     <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                 </imageView>
                                 <slider opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0am-oQ-jmf">
@@ -178,7 +178,7 @@
                                         <action selector="changeVolume:" destination="iN0-l3-epB" eventType="valueChanged" id="ldl-dm-9OE"/>
                                     </connections>
                                 </slider>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="max_volume" translatesAutoresizingMaskIntoConstraints="NO" id="xdj-kX-w5e">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maxVolume" translatesAutoresizingMaskIntoConstraints="NO" id="xdj-kX-w5e">
                                     <rect key="frame" x="334" y="0.0" width="32" height="32"/>
                                 </imageView>
                             </subviews>
@@ -220,8 +220,8 @@
         <image name="appicon" width="60" height="60"/>
         <image name="arrowDown" width="36" height="11"/>
         <image name="fastforward15" width="43.680000305175781" height="43.680000305175781"/>
-        <image name="max_volume" width="32.5" height="32.5"/>
-        <image name="muted_volume" width="32.5" height="32.5"/>
+        <image name="maxVolume" width="32.5" height="32.5"/>
+        <image name="mutedVolume" width="32.5" height="32.5"/>
         <image name="pause" width="57" height="57"/>
         <image name="rewind15" width="45.5" height="45.5"/>
     </resources>
