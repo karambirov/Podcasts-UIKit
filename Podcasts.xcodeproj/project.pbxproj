@@ -14,6 +14,7 @@
 		AA341C06223FFBB900931C36 /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C05223FFBB900931C36 /* MiniPlayerView.swift */; };
 		AA341C0922401F7500931C36 /* TimeControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0822401F7500931C36 /* TimeControlStackView.swift */; };
 		AA341C0C22401FAF00931C36 /* PlayingControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */; };
+		AA341C0F22412B5E00931C36 /* VolumeControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0E22412B5E00931C36 /* VolumeControlStackView.swift */; };
 		AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
 		AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5E92154C1C100356E3F /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		AA341C05223FFBB900931C36 /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		AA341C0822401F7500931C36 /* TimeControlStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeControlStackView.swift; sourceTree = "<group>"; };
 		AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingControlsStackView.swift; sourceTree = "<group>"; };
+		AA341C0E22412B5E00931C36 /* VolumeControlStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeControlStackView.swift; sourceTree = "<group>"; };
 		AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		AA62F5DF2154C1BF00356E3F /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA62F5E22154C1BF00356E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 				AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */,
 			);
 			path = PlayingControlsStackView;
+			sourceTree = "<group>";
+		};
+		AA341C0D22412B4700931C36 /* VolumeControlStackView */ = {
+			isa = PBXGroup;
+			children = (
+				AA341C0E22412B5E00931C36 /* VolumeControlStackView.swift */,
+			);
+			path = VolumeControlStackView;
 			sourceTree = "<group>";
 		};
 		AA58FE86215E5BC100309F97 /* FavoritePodcastCell */ = {
@@ -334,6 +344,7 @@
 		AA62F60F2154E01400356E3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA341C0D22412B4700931C36 /* VolumeControlStackView */,
 				AA341C04223FFBA800931C36 /* MiniPlayerView */,
 				AA62F62F215B74DC00356E3F /* PlayerDetailsView */,
 				AA341C03223FFB8300931C36 /* PlayerView */,
@@ -661,6 +672,7 @@
 				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesViewController.swift in Sources */,
 				AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */,
+				AA341C0F22412B5E00931C36 /* VolumeControlStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
