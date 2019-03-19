@@ -1,5 +1,5 @@
 //
-//  PlayingControlView.swift
+//  PlayingControlsStackView.swift
 //  Podcasts
 //
 //  Created by Eugene Karambirov on 18/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PlayingControlView: UIView {
+final class PlayingControlsStackView: UIView {
 
 
 

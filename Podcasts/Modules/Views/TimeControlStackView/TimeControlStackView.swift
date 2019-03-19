@@ -28,7 +28,7 @@ final class TimeControlStackView: UIStackView {
 }
 
 // MARK: - Setup
-extension TimeControlView {
+extension TimeControlStackView {
 
     fileprivate func setupLayout() {
         self.axis    = .vertical
