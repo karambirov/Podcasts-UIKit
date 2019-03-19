@@ -21,7 +21,6 @@ final class TimeControlStackView: UIStackView {
     // MARK: - Life cycle
     convenience init() {
         self.init()
-        setupSlider()
         setupLabels()
         setupLayout()
     }
@@ -38,10 +37,6 @@ extension TimeControlStackView {
         self.addArrangedSubview(timeStackView)
         currentTimeSlider.snp.makeConstraints { $0.height.equalTo(36) }
         timeStackView.snp.makeConstraints { $0 .height.equalTo(22) }
-    }
-
-    fileprivate func setupSlider() {
-        currentTimeSlider.value = 0
     }
 
     fileprivate func setupLabels() {
