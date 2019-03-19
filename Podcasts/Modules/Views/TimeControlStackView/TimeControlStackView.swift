@@ -18,6 +18,7 @@ final class TimeControlStackView: UIStackView {
     fileprivate lazy var timeStackView     = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
 
     // TODO: - Configure init to set labels text and value for slider
+    // MARK: - Life cycle
     convenience init() {
         self.init()
         setupSlider()

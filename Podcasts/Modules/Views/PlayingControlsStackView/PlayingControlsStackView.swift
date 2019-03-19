@@ -8,8 +8,38 @@
 
 import UIKit
 
-final class PlayingControlsStackView: UIView {
+final class PlayingControlsStackView: UIStackView {
 
+    // MARK: - Properties
+    fileprivate lazy var rewindButton      = UIButton(type: .system)
+    fileprivate lazy var playPauseButton   = UIButton(type: .system)
+    fileprivate lazy var fastForwardButton = UIButton(type: .system)
 
+    // MARK: - Life cycle
+    convenience init() {
+        self.init()
+        setupButtons()
+        setupLayout()
+    }
+
+}
+
+// MARK: - Setup
+extension PlayingControlsStackView {
+
+    fileprivate func setupLayout() {
+        self.addArrangedSubview(rewindButton)
+        self.addArrangedSubview(playPauseButton)
+        self.addArrangedSubview(fastForwardButton)
+        self.alignment    = .center
+        self.distribution = .fillEqually
+
+    }
+
+    fileprivate func setupButtons() {
+        rewindButton.setImage(R.image.rewind15(), for: .normal)
+        playPauseButton.setImage(R.image.pause(), for: .normal)
+        fastForwardButton.setImage(R.image.fastforward15(), for: .normal)
+    }
 
 }
