@@ -1,5 +1,5 @@
 //
-//  TimeControlView.swift
+//  TimeControlStackView.swift
 //  Podcasts
 //
 //  Created by Eugene Karambirov on 18/03/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-final class TimeControlView: UIView {
+final class TimeControlStackView: UIStackView {
 
     // MARK: - Properties
     fileprivate lazy var currentTimeSlider = UISlider()
@@ -31,19 +31,12 @@ final class TimeControlView: UIView {
 extension TimeControlView {
 
     fileprivate func setupLayout() {
-        self.addSubview(currentTimeSlider)
-        self.addSubview(timeStackView)
-
-        currentTimeSlider.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(36)
-        }
-
-        timeStackView.snp.makeConstraints { make in
-            make.top.equalTo(currentTimeSlider).offset(4)
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(22)
-        }
+        self.axis    = .vertical
+        self.spacing = 4
+        self.addArrangedSubview(currentTimeSlider)
+        self.addArrangedSubview(timeStackView)
+        currentTimeSlider.snp.makeConstraints { $0.height.equalTo(36) }
+        timeStackView.snp.makeConstraints { $0 .height.equalTo(22) }
     }
 
     fileprivate func setupSlider() {
