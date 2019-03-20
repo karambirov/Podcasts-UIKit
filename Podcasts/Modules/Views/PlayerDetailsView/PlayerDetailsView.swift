@@ -14,6 +14,7 @@ import MediaPlayer
 // TODO: Extract mini player in its own class
 // TODO: Write MediaPlayerService and AVService
 
+@available(*, deprecated, message: "It will be replaced with an equivalent view controller")
 final class PlayerDetailsView: UIView {
 
     // MARK: - Properties
