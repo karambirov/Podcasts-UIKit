@@ -1,7 +1,7 @@
 # Podcasts
 This is a clone of Apple's Podcasts. Final version **will be** built with RxSwift using MVVM and Coordinator.
 
-## App Features
+## Features
 - [x] Searching for podcasts using iTunes API.
 - [x] Saving info about favorite podcasts on disk, so a user can see them offline.
 - [x] Downloading episodes for listening to without an Internet connection.
