@@ -12,6 +12,9 @@ target 'Podcasts' do
   pod 'Kingfisher' # https://github.com/onevcat/Kingfisher
   pod 'FeedKit' # https://github.com/nmdias/FeedKit
 
+  # Audio
+  pod 'ModernAVPlayer'
+
   # UI
   pod 'SnapKit' # https://github.com/SnapKit/SnapKit
   pod 'SPStorkController' # https://github.com/IvanVorobei/SPStorkController
