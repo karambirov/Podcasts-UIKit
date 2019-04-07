@@ -71,7 +71,7 @@ extension EpisodesViewController {
 //        mainTabBarController?.maximizePlayerDetails(for: episode,
 //                                                    playlistEpisodes: viewModel.episodes)
         let playerVM = PlayerDetailsViewModel()
-        let playerVC = PlayerViewController(viewModel: playerVM)
+        let playerVC = PlayerDetailsViewController(viewModel: playerVM)
         self.presentAsStork(playerVC)
         tableView.deselectRow(at: indexPath, animated: true)
     }

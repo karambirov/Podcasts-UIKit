@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerViewController: UIViewController {
+class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate var viewModel: PlayerDetailsViewModel
@@ -32,7 +32,7 @@ class PlayerViewController: UIViewController {
 }
 
 // MARK: - Setup
-extension PlayerViewController {
+extension PlayerDetailsViewController {
 
     fileprivate func initialSetup() {
         view.backgroundColor = .white
