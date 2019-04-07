@@ -8,23 +8,39 @@
 
 import UIKit
 
-class PlayerDetailsViewController: UIViewController {
+class PlayerViewController: UIViewController {
+
+    // MARK: - Properties
+    fileprivate var viewModel: PlayerDetailsViewModel
+    fileprivate lazy var playerView = PlayerStackView()
+
+    // MARK: - View Controller's life cycle
+    init(viewModel: PlayerDetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialSetup()
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - Setup
+extension PlayerViewController {
+
+    fileprivate func initialSetup() {
+        view.backgroundColor = .white
+        setupLayout()
     }
-    */
 
+    private func setupLayout() {
+        view.addSubview(playerView)
+        playerView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
 }

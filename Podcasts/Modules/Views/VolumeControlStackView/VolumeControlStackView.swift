@@ -17,8 +17,7 @@ final class VolumeControlStackView: UIStackView {
     fileprivate lazy var maxVolumeImageView   = UIImageView()
 
     // MARK: - Life cycle
-    convenience init() {
-        self.init()
+    override func didMoveToSuperview() {
         setupImageViews()
         setupLayout()
     }

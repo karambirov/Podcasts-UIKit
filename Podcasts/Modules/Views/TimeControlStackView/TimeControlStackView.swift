@@ -19,8 +19,7 @@ final class TimeControlStackView: UIStackView {
 
     // TODO: - Configure init to set labels text and value for slider
     // MARK: - Life cycle
-    convenience init() {
-        self.init()
+    override func didMoveToSuperview() {
         setupLabels()
         setupLayout()
     }

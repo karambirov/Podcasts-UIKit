@@ -16,8 +16,7 @@ final class PlayingControlsStackView: UIStackView {
     fileprivate lazy var fastForwardButton = UIButton(type: .system)
 
     // MARK: - Life cycle
-    convenience init() {
-        self.init()
+    override func didMoveToSuperview() {
         setupButtons()
         setupLayout()
     }

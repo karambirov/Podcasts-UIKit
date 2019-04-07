@@ -30,9 +30,11 @@ extension MainTabBarViewModel.TabBarItem {
         switch self {
         case .search:
             guard let search = R.image.search() else { fatalError() }
-            let podcastsSearchViewModel  = PodcastsSearchViewModel()
-            let podcastsSearchViewController = PodcastsSearchViewController(viewModel: podcastsSearchViewModel)
-            let controller = makeNavigationController(for: podcastsSearchViewController, title: "Search", image: search)
+            let playerVM = PlayerDetailsViewModel()
+            let playerVC = PlayerViewController(viewModel: playerVM)
+//            let podcastsSearchViewModel  = PodcastsSearchViewModel()
+//            let podcastsSearchViewController = PodcastsSearchViewController(viewModel: podcastsSearchViewModel)
+            let controller = makeNavigationController(for: playerVC, title: "Search", image: search)
             return controller
 
         case .favorites:

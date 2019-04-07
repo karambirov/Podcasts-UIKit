@@ -9,5 +9,9 @@
 import Foundation
 
 final class PlayerDetailsViewModel {
-    
+
+    init() {
+        print("PlayerDetailsViewModel is inited")
+    }
+
 }

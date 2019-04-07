@@ -20,8 +20,7 @@ final class PlayerStackView: UIStackView {
     fileprivate lazy var volumeControlStackView   = VolumeControlStackView()
 
     // MARK: - Life cycle
-    convenience init() {
-        self.init()
+    override func didMoveToSuperview() {
         setupCloseButton()
         setupEpisodeImageView()
         setupLabels()
