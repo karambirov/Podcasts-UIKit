@@ -21,7 +21,6 @@ final class PlayerStackView: UIStackView {
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
-        setupCloseButton()
         setupEpisodeImageView()
         setupLabels()
         setupLayout()
@@ -37,11 +36,6 @@ extension PlayerStackView {
         self.spacing = 5
         let arrangedSubviews = [closeButton, episodeImageView, timeControlStackView, titleLabel, authorLabel, playingControlsStackView, volumeControlStackView]
         arrangedSubviews.forEach { self.addArrangedSubview($0) }
-    }
-
-    fileprivate func setupCloseButton() {
-        closeButton.setImage(R.image.arrowDown(), for: .normal)
-        closeButton.snp.makeConstraints { $0.height.equalTo(44) }
     }
 
     fileprivate func setupEpisodeImageView() {

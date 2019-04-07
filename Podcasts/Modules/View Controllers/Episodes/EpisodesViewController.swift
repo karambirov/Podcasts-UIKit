@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SPStorkController
 
 final class EpisodesViewController: UITableViewController {
 
@@ -66,9 +67,12 @@ extension EpisodesViewController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
-        let mainTabBarController = UIApplication.mainTabBarController
-        mainTabBarController?.maximizePlayerDetails(for: episode,
-                                                    playlistEpisodes: viewModel.episodes)
+//        let mainTabBarController = UIApplication.mainTabBarController
+//        mainTabBarController?.maximizePlayerDetails(for: episode,
+//                                                    playlistEpisodes: viewModel.episodes)
+        let playerVM = PlayerDetailsViewModel()
+        let playerVC = PlayerViewController(viewModel: playerVM)
+        self.presentAsStork(playerVC)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

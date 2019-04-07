@@ -151,7 +151,7 @@ extension PlayerDetailsView {
 
     @IBAction fileprivate func dismiss(_ sender: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
-        mainTabBarController?.minimizePlayerDetails()
+//        mainTabBarController?.minimizePlayerDetails()
 
     }
 
@@ -300,7 +300,7 @@ extension PlayerDetailsView {
     }
 
     @objc func handleMaximize() {
-        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
+//        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
     }
 
     // MARK: - Fileprivate
@@ -347,7 +347,7 @@ extension PlayerDetailsView {
                 self.maximizedStackView.transform = .identity
 
                 if translation.y > 50 {
-                    UIApplication.mainTabBarController?.minimizePlayerDetails()
+//                    UIApplication.mainTabBarController?.minimizePlayerDetails()
                 }
             })
         }

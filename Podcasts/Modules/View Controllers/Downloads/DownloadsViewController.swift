@@ -72,8 +72,8 @@ extension DownloadsViewController {
     fileprivate func launchEpisodePlayer(for indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
         if episode.fileUrl != nil {
-            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
-                                                                      playlistEpisodes: viewModel.episodes)
+//            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
+//                                                                      playlistEpisodes: viewModel.episodes)
         } else {
             askPermissonForPlayUsingStreaming(for: episode)
         }
@@ -85,8 +85,8 @@ extension DownloadsViewController {
                                                 preferredStyle: .actionSheet)
 
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
-                                                                      playlistEpisodes: self.viewModel.episodes)
+//            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
+//                                                                      playlistEpisodes: self.viewModel.episodes)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 

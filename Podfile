@@ -14,6 +14,7 @@ target 'Podcasts' do
 
   # UI
   pod 'SnapKit' # https://github.com/SnapKit/SnapKit
+  pod 'SPStorkController' # https://github.com/IvanVorobei/SPStorkController
 
   # Persistence
   pod 'Disk' # https://github.com/saoudrizwan/Disk
