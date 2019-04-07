@@ -52,6 +52,7 @@
 		AA815F7B2238115A001B4817 /* FavoritePodcastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */; };
 		AA815F7D22384324001B4817 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */; };
 		AA815F7F223A45B3001B4817 /* PodcastsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7E223A45B3001B4817 /* PodcastsService.swift */; };
+		AA9070C9225A59B40033155E /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9070C8225A59B40033155E /* PlayerService.swift */; };
 		AA9081042236E45C005F42E9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081032236E45C005F42E9 /* NetworkingService.swift */; };
 		AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9081052236E493005F42E9 /* iTunesAPI.swift */; };
 		AABC9416225A41C50034FEA2 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AABC9415225A41C50034FEA2 /* PlayerDetailsViewController.swift */; };
@@ -110,6 +111,7 @@
 		AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCellViewModel.swift; sourceTree = "<group>"; };
 		AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		AA815F7E223A45B3001B4817 /* PodcastsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsService.swift; sourceTree = "<group>"; };
+		AA9070C8225A59B40033155E /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 		AA9081032236E45C005F42E9 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		AA9081052236E493005F42E9 /* iTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPI.swift; sourceTree = "<group>"; };
 		AABC9415225A41C50034FEA2 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -372,9 +374,10 @@
 		AA62F6182159589700356E3F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AAC7FEA32236F130004DCDFB /* Networking */,
 				AAC7FEA42236F14C004DCDFB /* DataSources */,
-				AA815F7E223A45B3001B4817 /* PodcastsService.swift */,
+				AAC7FEA32236F130004DCDFB /* Networking */,
+				AABC941B225A597E0034FEA2 /* PlayerService */,
+				AA9070CA225A59C50033155E /* PodcastsService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -439,6 +442,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		AA9070CA225A59C50033155E /* PodcastsService */ = {
+			isa = PBXGroup;
+			children = (
+				AA815F7E223A45B3001B4817 /* PodcastsService.swift */,
+			);
+			path = PodcastsService;
+			sourceTree = "<group>";
+		};
 		AABC9414225A41A10034FEA2 /* PlayerDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +457,14 @@
 				AABC9417225A41D30034FEA2 /* PlayerDetailsViewModel.swift */,
 			);
 			path = PlayerDetails;
+			sourceTree = "<group>";
+		};
+		AABC941B225A597E0034FEA2 /* PlayerService */ = {
+			isa = PBXGroup;
+			children = (
+				AA9070C8225A59B40033155E /* PlayerService.swift */,
+			);
+			path = PlayerService;
 			sourceTree = "<group>";
 		};
 		AAC7FEA32236F130004DCDFB /* Networking */ = {
@@ -689,6 +708,7 @@
 				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
 				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
 				AABC941A225A56A60034FEA2 /* UIViewController+Extensions.swift in Sources */,
+				AA9070C9225A59B40033155E /* PlayerService.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesViewController.swift in Sources */,
 				AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */,
 				AA341C0F22412B5E00931C36 /* VolumeControlStackView.swift in Sources */,
