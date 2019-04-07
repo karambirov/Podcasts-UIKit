@@ -62,7 +62,7 @@ extension EpisodesViewModel {
     func checkIfPodcastHasFavorited() -> Bool {
         let savedPodcasts = podcastsService.savedPodcasts
         let hasFavorited = savedPodcasts
-            .index(where: { $0.trackName  == self.podcast.trackName &&
+            .firstIndex(where: { $0.trackName  == self.podcast.trackName &&
                             $0.artistName == self.podcast.artistName }) != nil
         return hasFavorited
     }
