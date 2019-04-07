@@ -14,6 +14,7 @@ import MediaPlayer
 // TODO: Extract mini player in its own class
 // TODO: Write MediaPlayerService and AVService
 
+@available(*, deprecated, message: "It will be replaced with an equivalent view controller")
 final class PlayerDetailsView: UIView {
 
     // MARK: - Properties
@@ -150,7 +151,7 @@ extension PlayerDetailsView {
 
     @IBAction fileprivate func dismiss(_ sender: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
-        mainTabBarController?.minimizePlayerDetails()
+//        mainTabBarController?.minimizePlayerDetails()
 
     }
 
@@ -299,7 +300,7 @@ extension PlayerDetailsView {
     }
 
     @objc func handleMaximize() {
-        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
+//        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
     }
 
     // MARK: - Fileprivate
@@ -346,7 +347,7 @@ extension PlayerDetailsView {
                 self.maximizedStackView.transform = .identity
 
                 if translation.y > 50 {
-                    UIApplication.mainTabBarController?.minimizePlayerDetails()
+//                    UIApplication.mainTabBarController?.minimizePlayerDetails()
                 }
             })
         }
