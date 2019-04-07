@@ -41,6 +41,9 @@ extension PlayerViewController {
 
     private func setupLayout() {
         view.addSubview(playerView)
-        playerView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        playerView.snp.makeConstraints { make in
+            make.top.left.equalTo(self.view.safeAreaLayoutGuide).offset(24)
+            make.bottom.right.equalTo(self.view.safeAreaLayoutGuide).offset(-24)
+        }
     }
 }

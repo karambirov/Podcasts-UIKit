@@ -46,6 +46,7 @@ extension TimeControlStackView {
 //        currentTimeLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
 
         durationLabel.text      = "--:--:--"
+        durationLabel.textAlignment = .right
         durationLabel.font      = .systemFont(ofSize: 12)
         durationLabel.textColor = .lightGray
     }

@@ -45,18 +45,22 @@ extension PlayerStackView {
     }
 
     fileprivate func setupEpisodeImageView() {
-        episodeImageView.image = R.image.appicon()
+        episodeImageView.image              = R.image.appicon()
+        episodeImageView.layer.cornerRadius = 5
+        episodeImageView.clipsToBounds      = true
         episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1/1) }
     }
 
     fileprivate func setupLabels() {
-        titleLabel.text = "Episode Title"
-        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.text          = "Episode Title"
+        titleLabel.textAlignment = .center
+        titleLabel.font          = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.snp.makeConstraints { $0.height.greaterThanOrEqualTo(20) }
 
-        authorLabel.text      = "Author"
-        authorLabel.font      = .systemFont(ofSize: 16, weight: .medium)
-        authorLabel.textColor = R.color.tintColor()
+        authorLabel.text          = "Author"
+        authorLabel.textAlignment = .center
+        authorLabel.font          = .systemFont(ofSize: 16, weight: .medium)
+        authorLabel.textColor     = R.color.tintColor()
         authorLabel.snp.makeConstraints { $0.height.equalTo(20) }
     }
 
