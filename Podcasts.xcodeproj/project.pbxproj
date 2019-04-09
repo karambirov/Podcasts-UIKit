@@ -48,6 +48,7 @@
 		AA7CDA762220669B00838F13 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */; };
 		AA7CDA78222066F500838F13 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */; };
 		AA7CDA7A2220694800838F13 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA792220694800838F13 /* FavoritesViewModel.swift */; };
+		AA7E4908225D0D6F00C9D215 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E4907225D0D6F00C9D215 /* Double+Extensions.swift */; };
 		AA815F79223807D6001B4817 /* EpisodeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F78223807D6001B4817 /* EpisodeCellViewModel.swift */; };
 		AA815F7B2238115A001B4817 /* FavoritePodcastCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */; };
 		AA815F7D22384324001B4817 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */; };
@@ -107,6 +108,7 @@
 		AA7CDA752220669B00838F13 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		AA7CDA77222066F500838F13 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		AA7CDA792220694800838F13 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		AA7E4907225D0D6F00C9D215 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		AA815F78223807D6001B4817 /* EpisodeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCellViewModel.swift; sourceTree = "<group>"; };
 		AA815F7A2238115A001B4817 /* FavoritePodcastCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCellViewModel.swift; sourceTree = "<group>"; };
 		AA815F7C22384324001B4817 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */,
 				AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */,
 				AABC9419225A56A60034FEA2 /* UIViewController+Extensions.swift */,
+				AA7E4907225D0D6F00C9D215 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -651,7 +654,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Podcasts/Resources/R.generated.swift",
+				$SRCROOT/Podcasts/Resources/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -703,6 +706,7 @@
 				AA815F7F223A45B3001B4817 /* PodcastsService.swift in Sources */,
 				AA815F7D22384324001B4817 /* UIImageView+Extensions.swift in Sources */,
 				AA9081062236E493005F42E9 /* iTunesAPI.swift in Sources */,
+				AA7E4908225D0D6F00C9D215 /* Double+Extensions.swift in Sources */,
 				AA62F6232159FD1000356E3F /* Episode.swift in Sources */,
 				AA62F6122154E04D00356E3F /* PodcastsSearchingView.swift in Sources */,
 				AA815F79223807D6001B4817 /* EpisodeCellViewModel.swift in Sources */,

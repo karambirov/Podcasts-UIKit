@@ -28,7 +28,6 @@ final class PlayerDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-
         viewModel.playEpisode()
     }
 
@@ -44,6 +43,8 @@ extension PlayerDetailsViewController {
     }
 
     fileprivate func setupViews() {
+        playerView.timeControlStackView.currentTimeLabel.text = viewModel.currentTime.toDisplayString()
+
         playerView.titleLabel.text = viewModel.episode.title
         playerView.authorLabel.text = viewModel.episode.author
 

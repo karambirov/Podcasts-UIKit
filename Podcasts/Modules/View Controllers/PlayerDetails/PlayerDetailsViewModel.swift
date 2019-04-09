@@ -17,6 +17,10 @@ final class PlayerDetailsViewModel {
         self.episode = episode
     }
 
+    var currentTime: Double {
+        return playerService.currentTime
+    }
+
     func playEpisode() {
         playerService.load(episode: episode)
     }

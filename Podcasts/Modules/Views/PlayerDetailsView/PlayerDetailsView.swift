@@ -121,7 +121,6 @@ extension PlayerDetailsView {
 
     @IBAction fileprivate func fastForward(_ sender: Any) {
         seekToCurrentTime(delta: 15)
-
     }
 
     @IBAction fileprivate func changeVolume(_ sender: UISlider) {
