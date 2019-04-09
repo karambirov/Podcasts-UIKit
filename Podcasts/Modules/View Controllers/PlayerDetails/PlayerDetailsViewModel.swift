@@ -17,4 +17,8 @@ final class PlayerDetailsViewModel {
         self.episode = episode
     }
 
+    func playEpisode() {
+        playerService.load(episode: episode)
+    }
+
 }

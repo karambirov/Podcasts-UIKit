@@ -10,13 +10,14 @@ import ModernAVPlayer
 
 final class PlayerService {
 
+    private var metadata: ModernAVPlayerMediaMetadata?
     private var media: ModernAVPlayerMedia?
     private var player = ModernAVPlayer(loggerDomains: [.state, .error])
 
     func load(episode: Episode) {
         // TODO: - Add playing from fileURL
         guard let episodeURL = URL(string: episode.streamUrl.httpsUrlString ?? "") else { return }
-        let metadata = ModernAVPlayerMediaMetadata(title: episode.title, artist: episode.author)
+        metadata = ModernAVPlayerMediaMetadata(title: episode.title, artist: episode.author)
         media = ModernAVPlayerMedia(url: episodeURL, type: .stream(isLive: true), metadata: metadata)
         guard let media = media else { return }
         player.load(media: media, autostart: true)
@@ -29,6 +30,10 @@ final class PlayerService {
 
     func pause() {
         player.pause()
+    }
+
+    func stop() {
+        player.stop()
     }
 
     func rewind() {

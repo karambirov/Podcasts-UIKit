@@ -67,14 +67,19 @@ extension EpisodesViewController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
-//        let mainTabBarController = UIApplication.mainTabBarController
-//        mainTabBarController?.maximizePlayerDetails(for: episode,
-//                                                    playlistEpisodes: viewModel.episodes)
-        let playerVM = PlayerDetailsViewModel(episode: episode)
-        let playerVC = PlayerDetailsViewController(viewModel: playerVM)
-        self.presentAsStork(playerVC)
+        presentPlayer(with: episode)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    private func presentPlayer(with episode: Episode) {
+        //        let mainTabBarController = UIApplication.mainTabBarController
+        //        mainTabBarController?.maximizePlayerDetails(for: episode,
+        //                                                    playlistEpisodes: viewModel.episodes)
+        let viewModel = PlayerDetailsViewModel(episode: episode)
+        let playerViewController = PlayerDetailsViewController(viewModel: viewModel)
+        self.presentAsStork(playerViewController)
+    }
+
 }
 
 // MARK: - Setup

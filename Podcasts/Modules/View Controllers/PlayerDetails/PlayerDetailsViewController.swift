@@ -29,8 +29,7 @@ final class PlayerDetailsViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
 
-        viewModel.playerService.load(episode: viewModel.episode)
-        viewModel.playerService.play()
+        viewModel.playEpisode()
     }
 
 }
