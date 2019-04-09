@@ -20,16 +20,6 @@ final class PlayerDetailsView: UIView {
             setupNowPlayingInfo()
             setupAudioSession()
             playEpisode()
-
-            guard let url = URL(string: episode.imageUrl?.httpsUrlString ?? "") else { return }
-
-            miniEpisodeImageView.setImage(from: url) { image in
-                let image = self.episodeImageView.image ?? UIImage()
-                let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { size -> UIImage in
-                    return image
-                })
-                MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] = artworkItem
-            }
         }
     }
 
@@ -41,8 +31,6 @@ final class PlayerDetailsView: UIView {
         avPlayer.automaticallyWaitsToMinimizeStalling = false
         return avPlayer
     }()
-
-    fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Outlets
     @IBOutlet weak var maximizedStackView: UIStackView!
@@ -61,14 +49,6 @@ final class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var volumeSlider: UISlider! {
         didSet {
             volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
-        }
-    }
-
-    @IBOutlet fileprivate weak var episodeImageView: UIImageView! {
-        didSet {
-            episodeImageView.layer.cornerRadius = 5
-            episodeImageView.clipsToBounds = true
-            episodeImageView.transform = shrunkenTransform
         }
     }
 
@@ -123,20 +103,14 @@ extension PlayerDetailsView {
         player.seek(to: seekTime)
     }
 
-    @IBAction fileprivate func dismiss(_ sender: Any) {
-        let mainTabBarController = UIApplication.mainTabBarController
-//        mainTabBarController?.minimizePlayerDetails()
-
-    }
-
     @objc fileprivate func playPause() {
         if player.timeControlStatus == .paused {
             player.play()
-            enlargeEpisodeImageView()
+//            enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
-            shrinkEpisodeImageView()
+//            shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }
     }
@@ -230,7 +204,7 @@ extension PlayerDetailsView {
 
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
             print("Episode started playing")
-            self?.enlargeEpisodeImageView()
+//            self?.enlargeEpisodeImageView()
             self?.setupLockscreenDuration()
         }
     }
@@ -241,18 +215,6 @@ extension PlayerDetailsView {
         let percentage = currentTimeSeconds / durationSeconds
 
         self.currentTimeSlider.value = Float(percentage)
-    }
-
-    fileprivate func enlargeEpisodeImageView() {
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.episodeImageView.transform = .identity
-        })
-    }
-
-    fileprivate func shrinkEpisodeImageView() {
-        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.episodeImageView.transform = self.shrunkenTransform
-        })
     }
 
 }

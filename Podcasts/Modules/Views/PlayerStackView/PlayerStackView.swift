@@ -19,11 +19,25 @@ final class PlayerStackView: UIStackView {
     lazy var playingControlsStackView = PlayingControlsStackView()
     lazy var volumeControlStackView   = VolumeControlStackView()
 
+    fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+
     // MARK: - Life cycle
     override func didMoveToSuperview() {
         setupEpisodeImageView()
         setupLabels()
         setupLayout()
+    }
+
+    func enlargeEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = .identity
+        })
+    }
+
+    func shrinkEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.episodeImageView.transform = self.shrunkenTransform
+        })
     }
 
 }
