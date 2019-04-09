@@ -11,10 +11,11 @@ import ModernAVPlayer
 final class PlayerService {
 
     private var media: ModernAVPlayerMedia?
-    private var player = ModernAVPlayer(loggerDomains: [.state, .error, .lifecycleService, .lifecycleState])
+    private var player = ModernAVPlayer(loggerDomains: [.state, .error])
 
     func load(episode: Episode) {
-        guard let episodeURL = URL(string: episode.fileUrl?.httpsUrlString ?? "") else { return }
+        // TODO: - Add playing from fileURL
+        guard let episodeURL = URL(string: episode.streamUrl.httpsUrlString ?? "") else { return }
         let metadata = ModernAVPlayerMediaMetadata(title: episode.title, artist: episode.author)
         media = ModernAVPlayerMedia(url: episodeURL, type: .stream(isLive: true), metadata: metadata)
         guard let media = media else { return }

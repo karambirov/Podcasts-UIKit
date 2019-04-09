@@ -17,20 +17,11 @@ final class PlayerDetailsView: UIView {
     // MARK: Internal
     var episode: Episode! {
         didSet {
-            miniTitleLabel.text = episode.title
-            titleLabel.text = episode.title
-            authorLabel.text = episode.author
-
-            playPauseButton.setImage(R.image.pause(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
-
             setupNowPlayingInfo()
             setupAudioSession()
             playEpisode()
 
             guard let url = URL(string: episode.imageUrl?.httpsUrlString ?? "") else { return }
-            episodeImageView.setImage(from: url)
-            miniEpisodeImageView.setImage(from: url)
 
             miniEpisodeImageView.setImage(from: url) { image in
                 let image = self.episodeImageView.image ?? UIImage()
@@ -43,7 +34,6 @@ final class PlayerDetailsView: UIView {
     }
 
     var playlistEpisodes = [Episode]()
-    var panGesture: UIPanGestureRecognizer!
 
     // MARK: Fileprivate
     fileprivate let player: AVPlayer = {
@@ -65,13 +55,6 @@ final class PlayerDetailsView: UIView {
     @IBOutlet fileprivate weak var titleLabel: UILabel! {
         didSet {
             titleLabel.numberOfLines = 2
-        }
-    }
-
-    @IBOutlet weak var playPauseButton: UIButton! {
-        didSet {
-            playPauseButton.setImage(R.image.pause(), for: .normal)
-            playPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
         }
     }
 
@@ -129,10 +112,6 @@ final class PlayerDetailsView: UIView {
 // MARK: - Actions
 extension PlayerDetailsView {
 
-    static func initFromNib() -> PlayerDetailsView {
-        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
-    }
-
     @IBAction fileprivate func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
@@ -153,14 +132,10 @@ extension PlayerDetailsView {
     @objc fileprivate func playPause() {
         if player.timeControlStatus == .paused {
             player.play()
-            playPauseButton.setImage(R.image.pause(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
             enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
-            playPauseButton.setImage(R.image.play(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.play(), for: .normal)
             shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }
@@ -292,9 +267,6 @@ extension PlayerDetailsView {
         commandCenter.playCommand.isEnabled = true
         commandCenter.playCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
             self.player.play()
-            self.playPauseButton.setImage(R.image.pause(), for: .normal)
-            self.miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
-
             self.setupElapsedTime(playbackRate: 1)
             return .success
         }
@@ -302,9 +274,6 @@ extension PlayerDetailsView {
         commandCenter.pauseCommand.isEnabled = true
         commandCenter.pauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
             self.player.pause()
-            self.playPauseButton.setImage(R.image.play(), for: .normal)
-            self.miniPlayPauseButton.setImage(R.image.play(), for: .normal)
-
             self.setupElapsedTime(playbackRate: 0)
             return .success
         }
@@ -368,15 +337,11 @@ extension PlayerDetailsView {
 
         if type == AVAudioSession.InterruptionType.began.rawValue {
             print("Interruption began")
-            playPauseButton.setImage(R.image.play(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.play(), for: .normal)
         } else {
             print("Interruption ended")
             guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
                 player.play()
-                playPauseButton.setImage(R.image.pause(), for: .normal)
-                miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
             }
         }
     }
