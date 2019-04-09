@@ -10,10 +10,6 @@ import UIKit
 import AVKit
 import MediaPlayer
 
-// FIXME: Fix spacing between title and author labels.
-// TODO: Extract mini player in its own class
-// TODO: Write MediaPlayerService and AVService
-
 @available(*, deprecated, message: "It will be replaced with an equivalent view controller")
 final class PlayerDetailsView: UIView {
 
@@ -117,7 +113,6 @@ final class PlayerDetailsView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupGestures()
         setupRemoteControl()
         setupInterruptionObserver()
 
@@ -283,74 +278,6 @@ extension PlayerDetailsView {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.episodeImageView.transform = self.shrunkenTransform
         })
-    }
-
-}
-
-// MARK: - Gestures
-extension PlayerDetailsView {
-
-    // MARK: - Internal
-    @objc func handlePan(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .changed {
-            handlePanChanged(gesture: gesture)
-        } else if gesture.state == .ended {
-            handlePanEnded(gesture: gesture)
-        }
-    }
-
-    @objc func handleMaximize() {
-//        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
-    }
-
-    // MARK: - Fileprivate
-    fileprivate func setupGestures() {
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMaximize)))
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
-        miniPlayerView.addGestureRecognizer(panGesture)
-
-        maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self,
-                                                                       action: #selector(handleDismissalPan(gesture:))))
-    }
-
-    fileprivate func handlePanChanged(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
-        self.miniPlayerView.alpha = 1 + translation.y / 200
-        self.maximizedStackView.alpha = -translation.y / 200
-    }
-
-    fileprivate func handlePanEnded(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        let velocity = gesture.velocity(in: self.superview)
-        print("Ended:", velocity.y)
-
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.transform = .identity
-            if translation.y < -200 || velocity.y < -500 {
-                self.handleMaximize()
-            } else {
-                self.miniPlayerView.alpha = 1
-                self.maximizedStackView.alpha = 0
-            }
-        })
-    }
-
-    @objc fileprivate func handleDismissalPan(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .changed {
-            let translation = gesture.translation(in: superview)
-            maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-        } else if gesture.state == .ended {
-            let translation = gesture.translation(in: superview)
-
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-                self.maximizedStackView.transform = .identity
-
-                if translation.y > 50 {
-//                    UIApplication.mainTabBarController?.minimizePlayerDetails()
-                }
-            })
-        }
     }
 
 }

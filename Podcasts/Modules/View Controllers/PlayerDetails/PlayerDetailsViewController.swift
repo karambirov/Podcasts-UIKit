@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ModernAVPlayer
 
-class PlayerDetailsViewController: UIViewController {
+final class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
     fileprivate var viewModel: PlayerDetailsViewModel
@@ -27,6 +28,8 @@ class PlayerDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+
+        viewModel.playerService.load(episode: viewModel.episode)
     }
 
 }
@@ -37,6 +40,15 @@ extension PlayerDetailsViewController {
     fileprivate func initialSetup() {
         view.backgroundColor = .white
         setupLayout()
+        setupViews()
+    }
+
+    fileprivate func setupViews() {
+        playerView.titleLabel.text = viewModel.episode.title
+        playerView.authorLabel.text = viewModel.episode.author
+
+        guard let url = URL(string: viewModel.episode.imageUrl?.httpsUrlString ?? "") else { return }
+        playerView.episodeImageView.setImage(from: url)
     }
 
     private func setupLayout() {
