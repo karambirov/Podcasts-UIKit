@@ -11,13 +11,13 @@ import UIKit
 final class PlayerStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var closeButton              = UIButton(type: .system)
+    lazy var closeButton              = UIButton(type: .system)
     lazy var episodeImageView         = UIImageView()
-    fileprivate lazy var timeControlStackView     = TimeControlStackView()
+    lazy var timeControlStackView     = TimeControlStackView()
     lazy var titleLabel               = UILabel()
     lazy var authorLabel              = UILabel()
-    fileprivate lazy var playingControlsStackView = PlayingControlsStackView()
-    fileprivate lazy var volumeControlStackView   = VolumeControlStackView()
+    lazy var playingControlsStackView = PlayingControlsStackView()
+    lazy var volumeControlStackView   = VolumeControlStackView()
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -32,8 +32,8 @@ final class PlayerStackView: UIStackView {
 extension PlayerStackView {
 
     fileprivate func setupLayout() {
-        self.axis    = .vertical
-        self.spacing = 5
+        self.axis            = .vertical
+        self.spacing         = 5
         let arrangedSubviews = [closeButton, episodeImageView, timeControlStackView, titleLabel, authorLabel, playingControlsStackView, volumeControlStackView]
         arrangedSubviews.forEach { self.addArrangedSubview($0) }
     }
@@ -46,12 +46,10 @@ extension PlayerStackView {
     }
 
     fileprivate func setupLabels() {
-        titleLabel.text          = "Episode Title"
         titleLabel.textAlignment = .center
         titleLabel.font          = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.snp.makeConstraints { $0.height.greaterThanOrEqualTo(20) }
 
-        authorLabel.text          = "Author"
         authorLabel.textAlignment = .center
         authorLabel.font          = .systemFont(ofSize: 16, weight: .medium)
         authorLabel.textColor     = R.color.tintColor()

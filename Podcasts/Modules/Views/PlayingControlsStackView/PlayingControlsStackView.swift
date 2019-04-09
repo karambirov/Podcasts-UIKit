@@ -11,9 +11,9 @@ import UIKit
 final class PlayingControlsStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var rewindButton      = UIButton(type: .system)
-    fileprivate lazy var playPauseButton   = UIButton(type: .system)
-    fileprivate lazy var fastForwardButton = UIButton(type: .system)
+    lazy var rewindButton      = UIButton(type: .system)
+    lazy var playPauseButton   = UIButton(type: .system)
+    lazy var fastForwardButton = UIButton(type: .system)
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {

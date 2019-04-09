@@ -30,6 +30,7 @@ final class PlayerDetailsViewController: UIViewController {
         initialSetup()
 
         viewModel.playerService.load(episode: viewModel.episode)
+        viewModel.playerService.play()
     }
 
 }

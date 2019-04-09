@@ -12,9 +12,9 @@ import SnapKit
 final class TimeControlStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var currentTimeSlider = UISlider()
-    fileprivate lazy var currentTimeLabel  = UILabel()
-    fileprivate lazy var durationLabel     = UILabel()
+    lazy var currentTimeSlider = UISlider()
+    lazy var currentTimeLabel  = UILabel()
+    lazy var durationLabel     = UILabel()
     fileprivate lazy var timeStackView     = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
 
     // TODO: - Configure init to set labels text and value for slider

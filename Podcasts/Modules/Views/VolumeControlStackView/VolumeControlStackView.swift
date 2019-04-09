@@ -12,7 +12,7 @@ import SnapKit
 final class VolumeControlStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var currentVolumeSlider  = UISlider()
+    lazy var currentVolumeSlider  = UISlider()
     fileprivate lazy var mutedVolumeImageView = UIImageView()
     fileprivate lazy var maxVolumeImageView   = UIImageView()
 
