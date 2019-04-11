@@ -5,9 +5,6 @@ PODS:
   - Disk (0.4.0)
   - FeedKit (7.0.1)
   - Kingfisher (5.1.1)
-  - ModernAVPlayer (1.1.3):
-    - ModernAVPlayer/Core (= 1.1.3)
-  - ModernAVPlayer/Core (1.1.3)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya/Core (12.0.1):
@@ -22,20 +19,17 @@ PODS:
   - SDWebImage/Core (4.4.2)
   - SnapKit (4.2.0)
   - SPStorkController (1.6)
-  - SwiftLint (0.30.1)
 
 DEPENDENCIES:
   - AlamofireNetworkActivityIndicator
   - Disk
   - FeedKit
   - Kingfisher
-  - ModernAVPlayer
   - Moya
   - R.swift
   - SDWebImage
   - SnapKit
   - SPStorkController
-  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -44,7 +38,6 @@ SPEC REPOS:
     - Disk
     - FeedKit
     - Kingfisher
-    - ModernAVPlayer
     - Moya
     - R.swift
     - R.swift.Library
@@ -52,7 +45,6 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - SPStorkController
-    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -60,7 +52,6 @@ SPEC CHECKSUMS:
   Disk: ef2956657d5bb56034b38b29b352170165226440
   FeedKit: 9be69ab57ef0eb922ee4b6c31cb6b8840a5bbb29
   Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
-  ModernAVPlayer: c206d1ca710e3b2d6c9f0e632b4202eeaffb2b2d
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
@@ -68,8 +59,7 @@ SPEC CHECKSUMS:
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SPStorkController: 54293a8a1ca3c691a09eb6274b6e487b602e975a
-  SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
 
-PODFILE CHECKSUM: ba0b3b38d524665a4238a1dd5b71988fb2d0b421
+PODFILE CHECKSUM: c3e42966e5a428f87677197a56ed6be97e6aa750
 
 COCOAPODS: 1.6.1

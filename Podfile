@@ -24,7 +24,7 @@ target 'Podcasts' do
 
   # Code quality
   pod 'R.swift' # https://github.com/mac-cain13/R.swift
-  pod 'SwiftLint' # https://github.com/realm/SwiftLint
+#  pod 'SwiftLint' # https://github.com/realm/SwiftLint
 
 end
 
