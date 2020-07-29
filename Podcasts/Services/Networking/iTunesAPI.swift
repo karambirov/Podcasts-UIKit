@@ -7,6 +7,7 @@
 //
 
 import Moya
+import Foundation
 
 enum ITunesAPI {
     case search(term: String)
@@ -28,7 +29,7 @@ extension ITunesAPI: TargetType {
         }
     }
 
-    var method: Method {
+	var method: Moya.Method {
         return .get
     }
 
