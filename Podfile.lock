@@ -1,26 +1,65 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (4.8.1)
+  - AlamofireNetworkActivityIndicator (2.3.0):
+    - Alamofire (~> 4.7)
+  - Disk (0.4.0)
   - FeedKit (7.0.1)
+  - Kingfisher (5.1.1)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - R.swift (5.0.2):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.0)
+  - Result (4.1.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
+  - SnapKit (4.2.0)
+  - SPStorkController (1.6)
 
 DEPENDENCIES:
-  - Alamofire
+  - AlamofireNetworkActivityIndicator
+  - Disk
   - FeedKit
+  - Kingfisher
+  - Moya
+  - R.swift
   - SDWebImage
+  - SnapKit
+  - SPStorkController
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AlamofireNetworkActivityIndicator
+    - Disk
     - FeedKit
+    - Kingfisher
+    - Moya
+    - R.swift
+    - R.swift.Library
+    - Result
     - SDWebImage
+    - SnapKit
+    - SPStorkController
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  Disk: ef2956657d5bb56034b38b29b352170165226440
   FeedKit: 9be69ab57ef0eb922ee4b6c31cb6b8840a5bbb29
+  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
+  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SPStorkController: 54293a8a1ca3c691a09eb6274b6e487b602e975a
 
-PODFILE CHECKSUM: 410cc1aa30efdcbafe78308d050a5704457888b1
+PODFILE CHECKSUM: c3e42966e5a428f87677197a56ed6be97e6aa750
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1
