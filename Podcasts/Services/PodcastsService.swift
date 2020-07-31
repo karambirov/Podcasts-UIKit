@@ -18,7 +18,6 @@ final class PodcastsService {
     var downloadedEpisodes: [Episode] {
         fetchDownloadedEpisodes()
     }
-
 }
 
 // MARK: - Methods
@@ -60,10 +59,10 @@ extension PodcastsService {
             print("Failed to encode episode:", encodeError)
         }
     }
-
 }
 
 // MARK: - Private
+
 extension PodcastsService {
 
     private func fetchSavedPodcasts() -> [Podcast] {
@@ -88,5 +87,4 @@ extension PodcastsService {
 
         return []
     }
-
 }

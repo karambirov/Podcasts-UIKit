@@ -26,7 +26,6 @@ final class EpisodeCell: UITableViewCell {
         super.prepareForReuse()
         viewModel?.episode.observer = nil
     }
-
 }
 
 // MARK: - Setup
@@ -94,5 +93,4 @@ extension EpisodeCell {
             make.bottom.equalTo(self.snp.bottomMargin)
         }
     }
-
 }

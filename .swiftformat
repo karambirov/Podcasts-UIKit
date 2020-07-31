@@ -8,10 +8,11 @@
 --wraparguments before-first # wrapArguments
 --wrapparameters before-first # wrapArguments
 --wrapcollections before-first # wrapArguments
---closingparen same-line # wrapArguments
+--closingparen balanced # wrapArguments
 --funcattributes prev-line # wrapAttributes
 --typeattributes prev-line # wrapAttributes
 --swiftversion 5.1
+--stripunusedargs closure-only
 
 # rules
---rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes
+--rules anyObjectProtocol,blankLinesBetweenScopes,consecutiveBlankLines,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingclosures,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes

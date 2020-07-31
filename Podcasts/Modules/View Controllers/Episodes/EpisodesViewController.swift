@@ -20,6 +20,7 @@ final class EpisodesViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,7 +36,6 @@ final class EpisodesViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
 }
 
 // MARK: - UITableView
@@ -48,10 +48,11 @@ extension EpisodesViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let downloadAction = UITableViewRowAction(
             style: .normal,
-            title: Strings.downloadRowActionTitle) { [weak self] _, _ in
-                guard let self = self else { return }
-                let episode = self.viewModel.episode(for: indexPath)
-                self.viewModel.download(episode)
+            title: Strings.downloadRowActionTitle
+        ) { [weak self] _, _ in
+            guard let self = self else { return }
+            let episode = self.viewModel.episode(for: indexPath)
+            self.viewModel.download(episode)
         }
         return [downloadAction]
     }
@@ -87,7 +88,7 @@ extension EpisodesViewController {
     }
 
     private func setupLoadingView() -> UIView {
-        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.color = .darkGray
         activityIndicatorView.startAnimating()
         return activityIndicatorView
@@ -99,21 +100,24 @@ extension EpisodesViewController {
         tableView.tableFooterView = UIView()
     }
 
+    // TODO: There's no way to unfavorite. Add deleteFavorite() and refactor below logic
     private func setupNavigationBarButtons() {
         let hasFavorited = viewModel.checkIfPodcastHasFavorited()
 
         if hasFavorited {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                image: R.image.heart(),
+                image: UIImage(systemSymbol: .heartFill),
                 style: .plain,
                 target: nil,
-                action: nil)
+                action: nil
+            )
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: Strings.favoriteNavBarButtonTitle,
+                image: UIImage(systemSymbol: .heart),
                 style: .plain,
                 target: self,
-                action: #selector(saveFavorite))
+                action: #selector(saveFavorite)
+            )
         }
     }
 
@@ -122,29 +126,28 @@ extension EpisodesViewController {
         viewModel.saveFavorite()
         showBadgeHighlight()
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: R.image.heart(),
+            image: UIImage(systemSymbol: .heart),
             style: .plain,
             target: nil,
-            action: nil)
+            action: nil
+        )
     }
 
     private func showBadgeHighlight() {
         UIApplication.mainTabBarController?.viewControllers?[1].tabBarItem.badgeValue = Strings.tabBarBadgeTitle
     }
-
 }
 
 private extension EpisodesViewController {
 
     enum Strings {
         static let favoriteNavBarButtonTitle = "Favorite"
-        static let downloadRowActionTitle    = "Download"
-        static let tabBarBadgeTitle          = "New"
+        static let downloadRowActionTitle = "Download"
+        static let tabBarBadgeTitle = "New"
     }
 
     enum Sizes {
         static let cellHeight: CGFloat = 134
         static let footerHeight: CGFloat = 200
     }
-
 }

@@ -19,6 +19,7 @@ final class DownloadsViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,7 +41,6 @@ final class DownloadsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: .downloadProgress, object: nil)
         NotificationCenter.default.removeObserver(self, name: .downloadComplete, object: nil)
     }
-
 }
 
 // MARK: - TableView
@@ -58,7 +58,6 @@ extension DownloadsViewController {
         viewModel.deleteEpisode(for: indexPath)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
-
 }
 
 // MARK: - Setup
@@ -83,7 +82,8 @@ extension DownloadsViewController {
         let alertController = UIAlertController(
             title: "File URL not found",
             message: "Cannot find local file, play using stream URL instead",
-            preferredStyle: .actionSheet)
+            preferredStyle: .actionSheet
+        )
 
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
 //            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
@@ -105,12 +105,14 @@ extension DownloadsViewController {
             self,
             selector: #selector(handleDownloadProgress),
             name: .downloadProgress,
-            object: nil)
+            object: nil
+        )
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(viewModel.handleDownloadComplete),
             name: .downloadComplete,
-            object: nil)
+            object: nil
+        )
     }
 
     @objc
@@ -130,7 +132,6 @@ extension DownloadsViewController {
             cell.progressLabel.isHidden = true
         }
     }
-
 }
 
 private extension DownloadsViewController {
@@ -138,5 +139,4 @@ private extension DownloadsViewController {
     enum Sizes {
         static let cellHeight: CGFloat = 134
     }
-
 }

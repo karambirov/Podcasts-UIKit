@@ -20,6 +20,7 @@ class PlayerDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,12 +29,10 @@ class PlayerDetailsViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
     }
-
 }
 
 // MARK: - Setup
 extension PlayerDetailsViewController {
-
     private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()

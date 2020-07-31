@@ -18,12 +18,12 @@ final class TimeControlStackView: UIStackView {
     private lazy var timeStackView = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
 
     // TODO: - Configure init to set labels text and value for slider
+
     // MARK: - Life cycle
     override func didMoveToSuperview() {
         setupLabels()
         setupLayout()
     }
-
 }
 
 // MARK: - Setup
@@ -35,20 +35,19 @@ extension TimeControlStackView {
         addArrangedSubview(currentTimeSlider)
         addArrangedSubview(timeStackView)
         currentTimeSlider.snp.makeConstraints { $0.height.equalTo(36) }
-        timeStackView.snp.makeConstraints { $0 .height.equalTo(22) }
+        timeStackView.snp.makeConstraints { $0.height.equalTo(22) }
     }
 
     private func setupLabels() {
-        currentTimeLabel.text      = "00:00:00"
-        currentTimeLabel.font      = .systemFont(ofSize: 12)
+        currentTimeLabel.text = "00:00:00"
+        currentTimeLabel.font = .systemFont(ofSize: 12)
         currentTimeLabel.textColor = .lightGray
         // FIXME: Find out if it's necessary
 //        currentTimeLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
 
-        durationLabel.text      = "--:--:--"
+        durationLabel.text = "--:--:--"
         durationLabel.textAlignment = .right
-        durationLabel.font      = .systemFont(ofSize: 12)
+        durationLabel.font = .systemFont(ofSize: 12)
         durationLabel.textColor = .lightGray
     }
-
 }

@@ -26,6 +26,7 @@ final class MainTabBarController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -36,12 +37,10 @@ final class MainTabBarController: UITabBarController {
         set(items: viewModel.items)
 //        setupPlayerDetailsView()
     }
-
 }
 
 // MARK: - Setup
 extension MainTabBarController {
-
 //    @objc
 //    func minimizePlayerDetails() {
 //        maximizedTopAnchorConstraint.isActive = false
@@ -112,5 +111,4 @@ extension MainTabBarController {
 //        playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 //        playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 //    }
-
 }

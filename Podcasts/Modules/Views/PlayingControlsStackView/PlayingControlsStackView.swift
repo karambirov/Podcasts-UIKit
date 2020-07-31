@@ -6,6 +6,7 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
+import SFSafeSymbols
 import UIKit
 
 final class PlayingControlsStackView: UIStackView {
@@ -20,7 +21,6 @@ final class PlayingControlsStackView: UIStackView {
         setupButtons()
         setupLayout()
     }
-
 }
 
 // MARK: - Setup
@@ -32,13 +32,11 @@ extension PlayingControlsStackView {
         addArrangedSubview(fastForwardButton)
         alignment = .center
         distribution = .fillEqually
-
     }
 
     private func setupButtons() {
-        rewindButton.setImage(R.image.rewind15(), for: .normal)
-        playPauseButton.setImage(R.image.pause(), for: .normal)
-        fastForwardButton.setImage(R.image.fastforward15(), for: .normal)
+        rewindButton.setImage(.gobackward15, for: .normal)
+        playPauseButton.setImage(.pause, for: .normal)
+        fastForwardButton.setImage(.goforward15, for: .normal)
     }
-
 }

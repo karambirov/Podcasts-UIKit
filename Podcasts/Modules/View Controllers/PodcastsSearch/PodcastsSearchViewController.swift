@@ -20,6 +20,7 @@ final class PodcastsSearchViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +39,6 @@ final class PodcastsSearchViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
         super.viewDidAppear(animated)
     }
-
 }
 
 // MARK: - UITableView
@@ -90,7 +90,6 @@ extension PodcastsSearchViewController: UISearchBarDelegate {
         viewModel.deleteLoadedPodcasts()
         tableView.reloadData()
     }
-
 }
 
 // MARK: - Setup
@@ -136,7 +135,6 @@ extension PodcastsSearchViewController {
 
     private func setupSearchBar() {
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.definesPresentationContext = true
         searchController.searchBar.placeholder = Strings.searchBarPlaceholder
@@ -151,7 +149,6 @@ extension PodcastsSearchViewController {
 }
 
 private extension PodcastsSearchViewController {
-
     enum Strings {
         static let podcastsSearchingView = "PodcastsSearchingView"
         static let enterSearchTermMessage = "Please, enter a search term."

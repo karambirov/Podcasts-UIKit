@@ -16,14 +16,14 @@ final class FavoritesViewController: UICollectionViewController {
     // MARK: - View Controller's life cycle
     init(
         viewModel: FavoritesViewModel,
-        collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout())
-    {
+        collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout()
+    ) {
         // FIXME: - Crash due to collection view layout is nil
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
-
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -43,7 +43,6 @@ final class FavoritesViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         refreshFavorites()
     }
-
 }
 
 // MARK: - Collection View
@@ -56,7 +55,6 @@ extension FavoritesViewController {
         let episodesController = EpisodesViewController(viewModel: episodesViewModel)
         navigationController?.pushViewController(episodesController, animated: true)
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -74,12 +72,10 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         16
     }
-
 }
 
 // MARK: - Setup
 extension FavoritesViewController {
-
     private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: FavoritePodcastCell.typeName)
@@ -118,5 +114,4 @@ extension FavoritesViewController {
 
         present(alertController, animated: true)
     }
-
 }

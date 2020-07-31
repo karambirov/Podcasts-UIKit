@@ -14,5 +14,4 @@ extension UITableView {
         // swiftlint:disable:next force_cast
         dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! Cell
     }
-
 }

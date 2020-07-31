@@ -16,15 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
-    {
+        _: UIApplication,
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
         let mainTabBarViewModel = MainTabBarViewModel(items: [.search, .favorites, .downloads])
         window?.rootViewController = MainTabBarController(viewModel: mainTabBarViewModel)
-        window?.tintColor = R.color.tintColor()
+        window?.tintColor = AppConfig.tintColor
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
 
@@ -34,5 +34,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
-
 }

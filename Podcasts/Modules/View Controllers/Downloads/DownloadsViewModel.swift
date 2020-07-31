@@ -17,7 +17,6 @@ final class DownloadsViewModel {
     // MARK: - Properties
     lazy var episodes = podcastsService.downloadedEpisodes
     var dataSource: TableViewDataSource<Episode, EpisodeCell>?
-
 }
 
 // MARK: - Methods
@@ -43,7 +42,7 @@ extension DownloadsViewModel {
 
     @objc
     func handleDownloadComplete(notification: Notification) {
-        guard let  episodeDownloadComplete = notification.object as? NetworkingService.EpisodeDownloadComplete else { return }
+        guard let episodeDownloadComplete = notification.object as? NetworkingService.EpisodeDownloadComplete else { return }
         guard let index = episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
         episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }
@@ -51,5 +50,4 @@ extension DownloadsViewModel {
     private func episodesDidLoad(_ episodes: [Episode]) {
         dataSource = .make(for: episodes)
     }
-
 }

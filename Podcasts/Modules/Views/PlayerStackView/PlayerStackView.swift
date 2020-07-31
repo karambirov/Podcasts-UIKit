@@ -25,7 +25,6 @@ final class PlayerStackView: UIStackView {
         setupLabels()
         setupLayout()
     }
-
 }
 
 // MARK: - Setup
@@ -39,7 +38,7 @@ extension PlayerStackView {
     }
 
     private func setupEpisodeImageView() {
-        episodeImageView.image = R.image.appicon()
+        episodeImageView.image = UIImage()
         episodeImageView.layer.cornerRadius = 5
         episodeImageView.clipsToBounds = true
         episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1 / 1) }
@@ -54,8 +53,7 @@ extension PlayerStackView {
         authorLabel.text = "Author"
         authorLabel.textAlignment = .center
         authorLabel.font = .systemFont(ofSize: 16, weight: .medium)
-        authorLabel.textColor = R.color.tintColor()
+        authorLabel.textColor = AppConfig.tintColor
         authorLabel.snp.makeConstraints { $0.height.equalTo(20) }
     }
-
 }

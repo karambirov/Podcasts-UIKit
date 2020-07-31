@@ -31,16 +31,14 @@ final class Podcast: NSObject, Decodable, NSCoding {
         artworkUrl600 = aDecoder.decodeObject(forKey: Keys.artworkKey) as? String
         feedUrl = aDecoder.decodeObject(forKey: Keys.feedKey) as? String
     }
-
 }
 
 private extension Podcast {
 
     enum Keys {
-        static let trackNameKey  = "trackNameKey"
+        static let trackNameKey = "trackNameKey"
         static let artistNameKey = "artistNameKey"
-        static let artworkKey    = "artworkKey"
-        static let feedKey       = "feedKey"
+        static let artworkKey = "artworkKey"
+        static let feedKey = "feedKey"
     }
-
 }

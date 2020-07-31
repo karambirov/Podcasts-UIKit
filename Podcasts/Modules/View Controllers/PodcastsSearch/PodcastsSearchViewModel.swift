@@ -17,7 +17,6 @@ final class PodcastsSearchViewModel {
     // MARK: - Properties
     var podcasts = [Podcast]()
     var dataSource: TableViewDataSource<Podcast, PodcastCell>?
-
 }
 
 // MARK: - Methods
@@ -50,5 +49,4 @@ extension PodcastsSearchViewModel {
         self.podcasts = podcasts
         dataSource = .make(for: podcasts)
     }
-
 }

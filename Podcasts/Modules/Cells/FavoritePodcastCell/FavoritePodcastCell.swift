@@ -13,7 +13,7 @@ final class FavoritePodcastCell: UICollectionViewCell {
     // MARK: - Properties
     var viewModel: FavoritePodcastCellViewModel?
 
-    private lazy var imageView = UIImageView(image: R.image.appicon())
+    private lazy var imageView = UIImageView()
     private lazy var nameLabel = UILabel()
     private lazy var artistNameLabel = UILabel()
 
@@ -22,10 +22,10 @@ final class FavoritePodcastCell: UICollectionViewCell {
         super.prepareForReuse()
         viewModel?.podcast.observer = nil
     }
-
 }
 
 // MARK: - Setup
+
 extension FavoritePodcastCell {
 
     func setup(with viewModel: FavoritePodcastCellViewModel) {
@@ -79,5 +79,4 @@ extension FavoritePodcastCell {
             make.leading.equalTo(imageView.snp.trailing).offset(12)
         }
     }
-
 }

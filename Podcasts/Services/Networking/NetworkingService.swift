@@ -18,12 +18,11 @@ final class NetworkingService {
 
     init(
         provider: MoyaProvider<ITunesAPI> = .init(),
-        podcastsService: PodcastsService = .init())
-    {
+        podcastsService: PodcastsService = .init()
+    ) {
         self.provider = provider
         self.podcastsService = podcastsService
     }
-
 }
 
 // MARK: - Fetching podcasts
@@ -32,7 +31,7 @@ extension NetworkingService {
     func fetchPodcasts(searchText: String, completionHandler: @escaping ([Podcast]) -> Void) {
         provider?.request(.search(term: searchText)) { result in
             switch result {
-            case .success(let response):
+            case let .success(response):
                 do {
                     let searchResult = try response.map(SearchResult.self)
                     completionHandler(searchResult.results)
@@ -40,12 +39,11 @@ extension NetworkingService {
                     print("Failed to decode:", decodingError)
                 }
 
-            case .failure(let error):
+            case let .failure(error):
                 print(error.errorDescription ?? "")
             }
         }
     }
-
 }
 
 // MARK: - Fetching episodes
@@ -59,18 +57,17 @@ extension NetworkingService {
 
             parser.parseAsync { result in
                 switch result {
-                case .success(let feed):
+                case let .success(feed):
                     print("Successfully parse feed:", feed)
                     guard let rssFeed = feed.rssFeed else { return }
                     let episodes = rssFeed.toEpisodes()
                     completionHandler(episodes)
-                case .failure(let parserError):
+                case let .failure(parserError):
                     print("Failed to parse XML feed:", parserError)
                 }
             }
         }
     }
-
 }
 
 // MARK: - Downloading episodes
@@ -87,18 +84,21 @@ extension NetworkingService {
             NotificationCenter.default.post(
                 name: .downloadProgress,
                 object: nil,
-                userInfo: ["title": episode.title, "progress": progress.fractionCompleted])
+                userInfo: ["title": episode.title, "progress": progress.fractionCompleted]
+            )
         }.response { response in
             print(response.fileURL?.absoluteString ?? "")
 
             let episodeDownloadComplete = EpisodeDownloadComplete(
                 fileUrl: response.fileURL?.absoluteString ?? "",
-                episode.title)
+                episode.title
+            )
             NotificationCenter.default.post(name: .downloadComplete, object: episodeDownloadComplete, userInfo: nil)
 
             var downloadedEpisodes = self.podcastsService?.downloadedEpisodes
             guard let index = downloadedEpisodes?.firstIndex(where: { $0.title == episode.title
-                    && $0.author == episode.author }) else { return }
+                    && $0.author == episode.author
+            }) else { return }
             downloadedEpisodes?[index].fileUrl = response.fileURL?.absoluteString ?? ""
 
             do {

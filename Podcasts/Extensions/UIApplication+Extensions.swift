@@ -13,5 +13,4 @@ extension UIApplication {
     static var mainTabBarController: MainTabBarController? {
         shared.keyWindow?.rootViewController as? MainTabBarController
     }
-
 }

@@ -24,12 +24,11 @@ extension UIImageView {
         }
         kf.setImage(with: url) { result in
             switch result {
-            case .success(let retrieveImageResult):
+            case let .success(retrieveImageResult):
                 completionHandler?(retrieveImageResult.image)
-            case .failure(let error):
+            case let .failure(error):
                 assertionFailure(error.errorDescription ?? "")
             }
         }
     }
-
 }

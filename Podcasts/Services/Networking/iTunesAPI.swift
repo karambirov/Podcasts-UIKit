@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum ITunesAPI {
+
     case search(term: String)
 }
 
@@ -39,7 +40,7 @@ extension ITunesAPI: TargetType {
 
     var task: Task {
         switch self {
-        case .search(let term):
+        case let .search(term):
             let parameters = ["term": term.urlEscapedString, "media": "podcast"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
@@ -48,5 +49,4 @@ extension ITunesAPI: TargetType {
     var headers: [String: String]? {
         ["Content-type": "application/json"]
     }
-
 }

@@ -18,7 +18,6 @@ import UIKit
 final class PlayerDetailsView: UIView {
 
     // MARK: - Properties
-    // MARK: Internal
     // swiftlint:disable:next implicitly_unwrapped_optional
     var episode: Episode! {
         didSet {
@@ -26,8 +25,8 @@ final class PlayerDetailsView: UIView {
             titleLabel.text = episode.title
             authorLabel.text = episode.author
 
-            playPauseButton.setImage(R.image.pause(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
+            playPauseButton.setImage(.pause, for: .normal)
+            miniPlayPauseButton.setImage(.pause, for: .normal)
 
             setupNowPlayingInfo()
             setupAudioSession()
@@ -59,33 +58,33 @@ final class PlayerDetailsView: UIView {
     private let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Outlets
-    @IBOutlet weak var maximizedStackView: UIStackView!
+    @IBOutlet var maximizedStackView: UIStackView!
 
-    @IBOutlet private weak var currentTimeSlider: UISlider!
-    @IBOutlet private weak var currentTimeLabel: UILabel!
-    @IBOutlet private weak var durationLabel: UILabel!
-    @IBOutlet private weak var authorLabel: UILabel!
+    @IBOutlet private var currentTimeSlider: UISlider!
+    @IBOutlet private var currentTimeLabel: UILabel!
+    @IBOutlet private var durationLabel: UILabel!
+    @IBOutlet private var authorLabel: UILabel!
 
-    @IBOutlet private weak var titleLabel: UILabel! {
+    @IBOutlet private var titleLabel: UILabel! {
         didSet {
             titleLabel.numberOfLines = 2
         }
     }
 
-    @IBOutlet weak var playPauseButton: UIButton! {
+    @IBOutlet var playPauseButton: UIButton! {
         didSet {
-            playPauseButton.setImage(R.image.pause(), for: .normal)
+            playPauseButton.setImage(.pause, for: .normal)
             playPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
         }
     }
 
-    @IBOutlet private weak var volumeSlider: UISlider! {
+    @IBOutlet private var volumeSlider: UISlider! {
         didSet {
             volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
         }
     }
 
-    @IBOutlet private weak var episodeImageView: UIImageView! {
+    @IBOutlet private var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.layer.cornerRadius = 5
             episodeImageView.clipsToBounds = true
@@ -94,19 +93,20 @@ final class PlayerDetailsView: UIView {
     }
 
     // MARK: - Mini player outlets
-    @IBOutlet weak var miniPlayerView: UIView!
 
-    @IBOutlet private weak var miniEpisodeImageView: UIImageView!
-    @IBOutlet private weak var miniTitleLabel: UILabel!
+    @IBOutlet var miniPlayerView: UIView!
 
-    @IBOutlet private weak var miniPlayPauseButton: UIButton! {
+    @IBOutlet private var miniEpisodeImageView: UIImageView!
+    @IBOutlet private var miniTitleLabel: UILabel!
+
+    @IBOutlet private var miniPlayPauseButton: UIButton! {
         didSet {
             miniPlayPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
             miniPlayPauseButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         }
     }
 
-    @IBOutlet private weak var miniFastForwardButton: UIButton! {
+    @IBOutlet private var miniFastForwardButton: UIButton! {
         didSet {
             miniFastForwardButton.addTarget(self, action: #selector(fastForward(_:)), for: .touchUpInside)
             miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -114,6 +114,7 @@ final class PlayerDetailsView: UIView {
     }
 
     // MARK: - Life Cycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -128,19 +129,18 @@ final class PlayerDetailsView: UIView {
     deinit {
         NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
     }
-
 }
 
 // MARK: - Actions
-extension PlayerDetailsView {
 
+extension PlayerDetailsView {
     static func initFromNib() -> PlayerDetailsView {
         // swiftlint:disable:next force_cast
         Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
     }
 
     @IBAction
-    private func handleCurrentTimeSliderChange(_ sender: Any) {
+    private func handleCurrentTimeSliderChange(_: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
         let durationInSeconds = CMTimeGetSeconds(duration)
@@ -152,38 +152,36 @@ extension PlayerDetailsView {
     }
 
     @IBAction
-    private func dismiss(_ sender: Any) {
+    private func dismiss(_: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
 //        mainTabBarController?.minimizePlayerDetails()
-
     }
 
     @objc
     private func playPause() {
         if player.timeControlStatus == .paused {
             player.play()
-            playPauseButton.setImage(R.image.pause(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
+            playPauseButton.setImage(.pause, for: .normal)
+            miniPlayPauseButton.setImage(.pause, for: .normal)
             enlargeEpisodeImageView()
             setupElapsedTime(playbackRate: 1)
         } else {
             player.pause()
-            playPauseButton.setImage(R.image.play(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.play(), for: .normal)
+            playPauseButton.setImage(.play, for: .normal)
+            miniPlayPauseButton.setImage(.play, for: .normal)
             shrinkEpisodeImageView()
             setupElapsedTime(playbackRate: 0)
         }
     }
 
     @IBAction
-    private func rewind(_ sender: Any) {
+    private func rewind(_: Any) {
         seekToCurrentTime(delta: -15)
     }
 
     @IBAction
-    private func fastForward(_ sender: Any) {
+    private func fastForward(_: Any) {
         seekToCurrentTime(delta: 15)
-
     }
 
     @IBAction
@@ -191,11 +189,9 @@ extension PlayerDetailsView {
         player.volume = sender.value
         // TODO: Set value when volume change by pressing hardware buttons
     }
-
 }
 
 extension PlayerDetailsView {
-
     private func seekToCurrentTime(delta: Int64) {
         let seconds = CMTimeMake(value: delta, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), seconds)
@@ -291,13 +287,13 @@ extension PlayerDetailsView {
             self.episodeImageView.transform = self.shrunkenTransform
         })
     }
-
 }
 
 // MARK: - Gestures
-extension PlayerDetailsView {
 
+extension PlayerDetailsView {
     // MARK: - Internal
+
     @objc
     func handlePan(gesture: UIPanGestureRecognizer) {
         if gesture.state == .changed {
@@ -313,6 +309,7 @@ extension PlayerDetailsView {
     }
 
     // MARK: - private
+
     private func setupGestures() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMaximize)))
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
@@ -320,7 +317,8 @@ extension PlayerDetailsView {
 
         maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(
             target: self,
-            action: #selector(handleDismissalPan(gesture:))))
+            action: #selector(handleDismissalPan(gesture:))
+        ))
     }
 
     private func handlePanChanged(gesture: UIPanGestureRecognizer) {
@@ -363,12 +361,11 @@ extension PlayerDetailsView {
             })
         }
     }
-
 }
 
 // MARK: - Background playing and Remote control
-extension PlayerDetailsView {
 
+extension PlayerDetailsView {
     private func setupRemoteControl() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
 
@@ -376,8 +373,8 @@ extension PlayerDetailsView {
         commandCenter.playCommand.isEnabled = true
         commandCenter.playCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
             self.player.play()
-            self.playPauseButton.setImage(R.image.pause(), for: .normal)
-            self.miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
+            self.playPauseButton.setImage(.pause, for: .normal)
+            self.miniPlayPauseButton.setImage(.pause, for: .normal)
 
             self.setupElapsedTime(playbackRate: 1)
             return .success
@@ -386,8 +383,8 @@ extension PlayerDetailsView {
         commandCenter.pauseCommand.isEnabled = true
         commandCenter.pauseCommand.addTarget { _ -> MPRemoteCommandHandlerStatus in
             self.player.pause()
-            self.playPauseButton.setImage(R.image.play(), for: .normal)
-            self.miniPlayPauseButton.setImage(R.image.play(), for: .normal)
+            self.playPauseButton.setImage(.play, for: .normal)
+            self.miniPlayPauseButton.setImage(.play, for: .normal)
 
             self.setupElapsedTime(playbackRate: 0)
             return .success
@@ -455,15 +452,15 @@ extension PlayerDetailsView {
 
         if type == AVAudioSession.InterruptionType.began.rawValue {
             print("Interruption began")
-            playPauseButton.setImage(R.image.play(), for: .normal)
-            miniPlayPauseButton.setImage(R.image.play(), for: .normal)
+            playPauseButton.setImage(.play, for: .normal)
+            miniPlayPauseButton.setImage(.play, for: .normal)
         } else {
             print("Interruption ended")
             guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
             if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
                 player.play()
-                playPauseButton.setImage(R.image.pause(), for: .normal)
-                miniPlayPauseButton.setImage(R.image.pause(), for: .normal)
+                playPauseButton.setImage(.pause, for: .normal)
+                miniPlayPauseButton.setImage(.pause, for: .normal)
             }
         }
     }
@@ -473,5 +470,4 @@ extension PlayerDetailsView {
         let durationSeconds = CMTimeGetSeconds(duration)
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
     }
-
 }

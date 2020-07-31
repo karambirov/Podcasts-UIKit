@@ -24,7 +24,6 @@ final class PodcastCell: UITableViewCell {
         super.prepareForReuse()
         viewModel?.podcast.observer = nil
     }
-
 }
 
 // MARK: - Setup
@@ -85,5 +84,4 @@ extension PodcastCell {
             make.leading.equalTo(podcastImageView.snp.trailing).offset(12)
         }
     }
-
 }

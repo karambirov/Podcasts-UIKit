@@ -32,5 +32,4 @@ final class EpisodeCellViewModel {
     init(episode: Episode) {
         self.episode.value = episode
     }
-
 }

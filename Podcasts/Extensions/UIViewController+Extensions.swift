@@ -27,5 +27,4 @@ extension UIViewController {
         view.removeFromSuperview()
         removeFromParent()
     }
-
 }

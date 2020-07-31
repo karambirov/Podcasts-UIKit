@@ -9,11 +9,13 @@
 import Foundation
 
 protocol Describable {
+
     var typeName: String { get }
     static var typeName: String { get }
 }
 
 extension Describable {
+
     var typeName: String {
         String(describing: self)
     }
@@ -24,6 +26,7 @@ extension Describable {
 }
 
 extension Describable where Self: NSObjectProtocol {
+
     var typeName: String {
         String(describing: type(of: self))
     }

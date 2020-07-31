@@ -25,7 +25,6 @@ final class MiniPlayerView: UIView {
     }
 
     // TODO: - Configure init to set label text and actions for buttons
-
 }
 
 // MARK: - Setup
@@ -61,7 +60,7 @@ extension MiniPlayerView {
     }
 
     private func setupImageView() {
-        imageView.image = R.image.appicon()
+        imageView.image = UIImage()
         imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints { $0.width.equalTo(48) }
     }
@@ -74,19 +73,17 @@ extension MiniPlayerView {
 
     private func setupPlayPauseButton() {
         playPauseButton.setTitle("", for: .normal)
-        playPauseButton.setImage(R.image.pause(), for: .normal)
+        playPauseButton.setImage(.pause, for: .normal)
         playPauseButton.snp.makeConstraints { $0.width.equalTo(48) }
     }
 
     private func setupFastForwardButton() {
         fastForwardButton.setTitle("", for: .normal)
-        fastForwardButton.setImage(R.image.fastforward15(), for: .normal)
+        fastForwardButton.setImage(.goforward15, for: .normal)
         fastForwardButton.snp.makeConstraints { $0.width.equalTo(48) }
     }
 
     private func setupStackView() {
         stackView.addArrangedSubview(imageView)
-
     }
-
 }

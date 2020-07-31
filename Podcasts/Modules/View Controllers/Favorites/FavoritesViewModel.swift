@@ -16,7 +16,6 @@ final class FavoritesViewModel {
     // MARK: - Properties
     lazy var podcasts = podcastsService.savedPodcasts
     var dataSource: CollectionViewDataSource<Podcast, FavoritePodcastCell>?
-
 }
 
 // MARK: - Methods
@@ -43,5 +42,4 @@ extension FavoritesViewModel {
     private func podcastsDidLoad(_ podcasts: [Podcast]) {
         dataSource = .make(for: podcasts)
     }
-
 }

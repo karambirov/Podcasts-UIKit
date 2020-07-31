@@ -22,7 +22,6 @@ final class EpisodesViewModel {
     init(podcast: Podcast) {
         self.podcast = podcast
     }
-
 }
 
 // MARK: - Methods
@@ -71,5 +70,4 @@ extension EpisodesViewModel {
         self.episodes = episodes
         dataSource = .make(for: episodes)
     }
-
 }

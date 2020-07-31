@@ -23,7 +23,7 @@ final class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITable
         self.cellConfigurator = cellConfigurator
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         models.count
     }
 
@@ -33,16 +33,13 @@ final class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITable
         cellConfigurator(model, cell)
         return cell
     }
-
 }
 
 extension TableViewDataSource where Model == Podcast {
-
     static func make(
         for podcasts: [Podcast],
-        reuseIdentifier: String = PodcastCell.typeName) -> TableViewDataSource
-    {
-
+        reuseIdentifier: String = PodcastCell.typeName
+    ) -> TableViewDataSource {
         TableViewDataSource(
             models: podcasts,
             reuseIdentifier: reuseIdentifier,
@@ -52,19 +49,16 @@ extension TableViewDataSource where Model == Podcast {
                     cell.setup(with: cellViewModel)
                 }
                 cell.layoutIfNeeded()
-            })
-
+            }
+        )
     }
-
 }
 
 extension TableViewDataSource where Model == Episode {
-
     static func make(
         for episodes: [Episode],
-        reuseIdentifier: String = EpisodeCell.typeName) -> TableViewDataSource
-    {
-
+        reuseIdentifier: String = EpisodeCell.typeName
+    ) -> TableViewDataSource {
         TableViewDataSource(
             models: episodes,
             reuseIdentifier: reuseIdentifier,
@@ -74,8 +68,7 @@ extension TableViewDataSource where Model == Episode {
                     cell.setup(with: cellViewModel)
                 }
                 cell.layoutIfNeeded()
-            })
-
+            }
+        )
     }
-
 }

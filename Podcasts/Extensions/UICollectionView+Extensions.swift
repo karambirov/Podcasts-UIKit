@@ -14,5 +14,4 @@ extension UICollectionView {
         // swiftlint:disable:next force_cast
         dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! Cell
     }
-
 }

@@ -21,7 +21,6 @@ final class VolumeControlStackView: UIStackView {
         setupImageViews()
         setupLayout()
     }
-
 }
 
 // MARK: - Setup
@@ -34,8 +33,7 @@ extension VolumeControlStackView {
     }
 
     private func setupImageViews() {
-        mutedVolumeImageView.image = R.image.mutedVolume()
-        maxVolumeImageView.image = R.image.maxVolume()
+        mutedVolumeImageView.image = UIImage(systemSymbol: .speakerFill)
+        maxVolumeImageView.image = UIImage(systemSymbol: .speaker3Fill)
     }
-
 }

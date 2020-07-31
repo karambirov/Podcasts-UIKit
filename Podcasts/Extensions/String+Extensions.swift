@@ -18,5 +18,4 @@ extension String {
         // swiftlint:disable:next force_unwrapping
         addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)!
     }
-
 }
