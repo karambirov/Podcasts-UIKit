@@ -6,15 +6,15 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class VolumeControlStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var currentVolumeSlider  = UISlider()
-    fileprivate lazy var mutedVolumeImageView = UIImageView()
-    fileprivate lazy var maxVolumeImageView   = UIImageView()
+    private lazy var currentVolumeSlider = UISlider()
+    private lazy var mutedVolumeImageView = UIImageView()
+    private lazy var maxVolumeImageView = UIImageView()
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -27,15 +27,15 @@ final class VolumeControlStackView: UIStackView {
 // MARK: - Setup
 extension VolumeControlStackView {
 
-    fileprivate func setupLayout() {
-        self.addArrangedSubview(mutedVolumeImageView)
-        self.addArrangedSubview(currentVolumeSlider)
-        self.addArrangedSubview(maxVolumeImageView)
+    private func setupLayout() {
+        addArrangedSubview(mutedVolumeImageView)
+        addArrangedSubview(currentVolumeSlider)
+        addArrangedSubview(maxVolumeImageView)
     }
 
-    fileprivate func setupImageViews() {
+    private func setupImageViews() {
         mutedVolumeImageView.image = R.image.mutedVolume()
-        maxVolumeImageView.image   = R.image.maxVolume()
+        maxVolumeImageView.image = R.image.maxVolume()
     }
 
 }

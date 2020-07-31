@@ -24,6 +24,7 @@ whitelist_rules:
   - custom_rules
 
 excluded:
+  - Podcasts/Resources
   - Carthage
   - Pods
 

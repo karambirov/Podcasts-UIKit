@@ -11,13 +11,13 @@ import UIKit
 final class PlayerStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var closeButton              = UIButton(type: .system)
-    fileprivate lazy var episodeImageView         = UIImageView()
-    fileprivate lazy var timeControlStackView     = TimeControlStackView()
-    fileprivate lazy var titleLabel               = UILabel()
-    fileprivate lazy var authorLabel              = UILabel()
-    fileprivate lazy var playingControlsStackView = PlayingControlsStackView()
-    fileprivate lazy var volumeControlStackView   = VolumeControlStackView()
+    private lazy var closeButton = UIButton(type: .system)
+    private lazy var episodeImageView = UIImageView()
+    private lazy var timeControlStackView = TimeControlStackView()
+    private lazy var titleLabel = UILabel()
+    private lazy var authorLabel = UILabel()
+    private lazy var playingControlsStackView = PlayingControlsStackView()
+    private lazy var volumeControlStackView = VolumeControlStackView()
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -31,30 +31,30 @@ final class PlayerStackView: UIStackView {
 // MARK: - Setup
 extension PlayerStackView {
 
-    fileprivate func setupLayout() {
-        self.axis    = .vertical
-        self.spacing = 5
+    private func setupLayout() {
+        axis = .vertical
+        spacing = 5
         let arrangedSubviews = [closeButton, episodeImageView, timeControlStackView, titleLabel, authorLabel, playingControlsStackView, volumeControlStackView]
         arrangedSubviews.forEach { self.addArrangedSubview($0) }
     }
 
-    fileprivate func setupEpisodeImageView() {
-        episodeImageView.image              = R.image.appicon()
+    private func setupEpisodeImageView() {
+        episodeImageView.image = R.image.appicon()
         episodeImageView.layer.cornerRadius = 5
-        episodeImageView.clipsToBounds      = true
-        episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1/1) }
+        episodeImageView.clipsToBounds = true
+        episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1 / 1) }
     }
 
-    fileprivate func setupLabels() {
-        titleLabel.text          = "Episode Title"
+    private func setupLabels() {
+        titleLabel.text = "Episode Title"
         titleLabel.textAlignment = .center
-        titleLabel.font          = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.snp.makeConstraints { $0.height.greaterThanOrEqualTo(20) }
 
-        authorLabel.text          = "Author"
+        authorLabel.text = "Author"
         authorLabel.textAlignment = .center
-        authorLabel.font          = .systemFont(ofSize: 16, weight: .medium)
-        authorLabel.textColor     = R.color.tintColor()
+        authorLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        authorLabel.textColor = R.color.tintColor()
         authorLabel.snp.makeConstraints { $0.height.equalTo(20) }
     }
 

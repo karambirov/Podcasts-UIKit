@@ -11,11 +11,12 @@ import Foundation
 extension String {
 
     var httpsUrlString: String {
-        return self.contains("https") ? self : self.replacingOccurrences(of: "http", with: "https")
+        contains("https") ? self : replacingOccurrences(of: "http", with: "https")
     }
 
-    var URLEscapedString: String {
-        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)!
+    var urlEscapedString: String {
+        // swiftlint:disable:next force_unwrapping
+        addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)!
     }
 
 }

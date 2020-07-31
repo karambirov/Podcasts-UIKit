@@ -11,15 +11,17 @@ import UIKit
 final class FavoritesViewController: UICollectionViewController {
 
     // MARK: - Properties
-    fileprivate let viewModel: FavoritesViewModel
+    private let viewModel: FavoritesViewModel
 
     // MARK: - View Controller's life cycle
-    init(viewModel: FavoritesViewModel,
-         collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
+    init(
+        viewModel: FavoritesViewModel,
+        collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout())
+    {
         // FIXME: - Crash due to collection view layout is nil
         self.viewModel = viewModel
         super.init(collectionViewLayout: collectionViewLayout)
-        
+
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -50,7 +52,7 @@ extension FavoritesViewController {
     // MARK: - Navigation
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let podcast = viewModel.podcast(for: indexPath)
-        let episodesViewModel  = EpisodesViewModel(podcast: podcast)
+        let episodesViewModel = EpisodesViewModel(podcast: podcast)
         let episodesController = EpisodesViewController(viewModel: episodesViewModel)
         navigationController?.pushViewController(episodesController, animated: true)
     }
@@ -66,11 +68,11 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        16
     }
 
 }
@@ -78,7 +80,7 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Setup
 extension FavoritesViewController {
 
-    fileprivate func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: FavoritePodcastCell.typeName)
         collectionView.dataSource = viewModel.dataSource
@@ -87,7 +89,7 @@ extension FavoritesViewController {
         collectionView.addGestureRecognizer(gesture)
     }
 
-    fileprivate func refreshFavorites() {
+    private func refreshFavorites() {
         viewModel.fetchFavorites { [weak self] in
             guard let self = self else { return }
             self.collectionView.dataSource = self.viewModel.dataSource

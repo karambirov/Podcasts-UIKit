@@ -11,9 +11,9 @@ import UIKit
 final class PlayingControlsStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var rewindButton      = UIButton(type: .system)
-    fileprivate lazy var playPauseButton   = UIButton(type: .system)
-    fileprivate lazy var fastForwardButton = UIButton(type: .system)
+    private lazy var rewindButton = UIButton(type: .system)
+    private lazy var playPauseButton = UIButton(type: .system)
+    private lazy var fastForwardButton = UIButton(type: .system)
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -26,16 +26,16 @@ final class PlayingControlsStackView: UIStackView {
 // MARK: - Setup
 extension PlayingControlsStackView {
 
-    fileprivate func setupLayout() {
-        self.addArrangedSubview(rewindButton)
-        self.addArrangedSubview(playPauseButton)
-        self.addArrangedSubview(fastForwardButton)
-        self.alignment    = .center
-        self.distribution = .fillEqually
+    private func setupLayout() {
+        addArrangedSubview(rewindButton)
+        addArrangedSubview(playPauseButton)
+        addArrangedSubview(fastForwardButton)
+        alignment = .center
+        distribution = .fillEqually
 
     }
 
-    fileprivate func setupButtons() {
+    private func setupButtons() {
         rewindButton.setImage(R.image.rewind15(), for: .normal)
         playPauseButton.setImage(R.image.pause(), for: .normal)
         fastForwardButton.setImage(R.image.fastforward15(), for: .normal)

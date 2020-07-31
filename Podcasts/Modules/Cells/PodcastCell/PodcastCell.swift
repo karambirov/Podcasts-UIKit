@@ -6,18 +6,18 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class PodcastCell: UITableViewCell {
 
     // MARK: - Properties
     var viewModel: PodcastCellViewModel?
 
-    fileprivate lazy var podcastImageView  = UIImageView()
-    fileprivate lazy var trackNameLabel    = UILabel()
-    fileprivate lazy var artistNameLabel   = UILabel()
-    fileprivate lazy var episodeCountLabel = UILabel()
+    private lazy var podcastImageView = UIImageView()
+    private lazy var trackNameLabel = UILabel()
+    private lazy var artistNameLabel = UILabel()
+    private lazy var episodeCountLabel = UILabel()
 
     // MARK: - Life cycle
     override func prepareForReuse() {
@@ -34,14 +34,14 @@ extension PodcastCell {
         self.viewModel = viewModel
         let podcast = viewModel.podcast.value
 
-        trackNameLabel.text    = podcast?.trackName
-        artistNameLabel.text   = podcast?.artistName
+        trackNameLabel.text = podcast?.trackName
+        artistNameLabel.text = podcast?.artistName
         episodeCountLabel.text = "\(podcast?.trackCount ?? 0) Episodes"
 
         viewModel.podcast.bind { [weak self] podcast in
             guard let self = self else { return }
-            self.trackNameLabel.text    = podcast?.trackName
-            self.artistNameLabel.text   = podcast?.artistName
+            self.trackNameLabel.text = podcast?.trackName
+            self.artistNameLabel.text = podcast?.artistName
             self.episodeCountLabel.text = "\(podcast?.trackCount ?? 0) Episodes"
             self.podcastImageView.setImage(from: self.viewModel?.podcastImageURL)
         }
@@ -51,7 +51,7 @@ extension PodcastCell {
     }
 
     private func setupViews() {
-        self.accessoryType = .disclosureIndicator
+        accessoryType = .disclosureIndicator
         setupLabels()
         setupLayout()
     }
@@ -66,7 +66,7 @@ extension PodcastCell {
     }
 
     private func setupLayout() {
-        self.addSubview(podcastImageView)
+        addSubview(podcastImageView)
         podcastImageView.contentMode = .scaleAspectFit
         podcastImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
@@ -78,7 +78,7 @@ extension PodcastCell {
         let stackView = UIStackView(arrangedSubviews: [trackNameLabel, artistNameLabel, episodeCountLabel])
         stackView.spacing = 4
         stackView.axis = .vertical
-        self.addSubview(stackView)
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.snp.trailingMargin)

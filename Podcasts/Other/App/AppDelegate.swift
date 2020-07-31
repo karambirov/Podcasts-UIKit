@@ -6,17 +6,19 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import AlamofireNetworkActivityIndicator
 import Gedatsu
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions
-                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
@@ -26,9 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
 
-		#if DEBUG
-		Gedatsu.open()
-		#endif
+        #if DEBUG
+        Gedatsu.open()
+        #endif
 
         return true
     }

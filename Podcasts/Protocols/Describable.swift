@@ -15,16 +15,16 @@ protocol Describable {
 
 extension Describable {
     var typeName: String {
-        return String(describing: self)
+        String(describing: self)
     }
 
     static var typeName: String {
-        return String(describing: self)
+        String(describing: self)
     }
 }
 
 extension Describable where Self: NSObjectProtocol {
     var typeName: String {
-        return String(describing: type(of: self))
+        String(describing: type(of: self))
     }
 }

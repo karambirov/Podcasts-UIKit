@@ -6,16 +6,16 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class TimeControlStackView: UIStackView {
 
     // MARK: - Properties
-    fileprivate lazy var currentTimeSlider = UISlider()
-    fileprivate lazy var currentTimeLabel  = UILabel()
-    fileprivate lazy var durationLabel     = UILabel()
-    fileprivate lazy var timeStackView     = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
+    private lazy var currentTimeSlider = UISlider()
+    private lazy var currentTimeLabel = UILabel()
+    private lazy var durationLabel = UILabel()
+    private lazy var timeStackView = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
 
     // TODO: - Configure init to set labels text and value for slider
     // MARK: - Life cycle
@@ -29,16 +29,16 @@ final class TimeControlStackView: UIStackView {
 // MARK: - Setup
 extension TimeControlStackView {
 
-    fileprivate func setupLayout() {
-        self.axis    = .vertical
-        self.spacing = 4
-        self.addArrangedSubview(currentTimeSlider)
-        self.addArrangedSubview(timeStackView)
+    private func setupLayout() {
+        axis = .vertical
+        spacing = 4
+        addArrangedSubview(currentTimeSlider)
+        addArrangedSubview(timeStackView)
         currentTimeSlider.snp.makeConstraints { $0.height.equalTo(36) }
         timeStackView.snp.makeConstraints { $0 .height.equalTo(22) }
     }
 
-    fileprivate func setupLabels() {
+    private func setupLabels() {
         currentTimeLabel.text      = "00:00:00"
         currentTimeLabel.font      = .systemFont(ofSize: 12)
         currentTimeLabel.textColor = .lightGray

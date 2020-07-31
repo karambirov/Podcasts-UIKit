@@ -11,8 +11,8 @@ import UIKit
 final class PodcastsSearchViewModel {
 
     // MARK: - Private
-    fileprivate var timer: Timer?
-    fileprivate let networkingService = NetworkingService()
+    private var timer: Timer?
+    private let networkingService = NetworkingService()
 
     // MARK: - Properties
     var podcasts = [Podcast]()
@@ -25,7 +25,7 @@ extension PodcastsSearchViewModel {
 
     func searchPodcasts(with query: String, completion: @escaping () -> Void) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
             guard let self = self else { return }
             self.networkingService.fetchPodcasts(searchText: query) { [weak self] podcasts in
                 guard let self = self else { return }
@@ -43,10 +43,10 @@ extension PodcastsSearchViewModel {
     }
 
     func podcast(for indexPath: IndexPath) -> Podcast {
-        return podcasts[indexPath.row]
+        podcasts[indexPath.row]
     }
 
-    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
+    private func podcastsDidLoad(_ podcasts: [Podcast]) {
         self.podcasts = podcasts
         dataSource = .make(for: podcasts)
     }

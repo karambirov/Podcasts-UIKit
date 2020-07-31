@@ -11,8 +11,8 @@ import UIKit
 class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
-    fileprivate var viewModel: PlayerDetailsViewModel
-    fileprivate lazy var playerView = PlayerStackView()
+    private var viewModel: PlayerDetailsViewModel
+    private lazy var playerView = PlayerStackView()
 
     // MARK: - View Controller's life cycle
     init(viewModel: PlayerDetailsViewModel) {
@@ -34,7 +34,7 @@ class PlayerDetailsViewController: UIViewController {
 // MARK: - Setup
 extension PlayerDetailsViewController {
 
-    fileprivate func initialSetup() {
+    private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()
     }

@@ -6,9 +6,9 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import AVKit
 import MediaPlayer
+import UIKit
 
 // FIXME: Fix spacing between title and author labels.
 // TODO: Extract mini player in its own class
@@ -19,6 +19,7 @@ final class PlayerDetailsView: UIView {
 
     // MARK: - Properties
     // MARK: Internal
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var episode: Episode! {
         didSet {
             miniTitleLabel.text = episode.title
@@ -38,35 +39,34 @@ final class PlayerDetailsView: UIView {
 
             miniEpisodeImageView.setImage(from: url) { image in
                 let image = self.episodeImageView.image ?? UIImage()
-                let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { size -> UIImage in
-                    return image
-                })
+                let artworkItem = MPMediaItemArtwork(boundsSize: .zero, requestHandler: { _ in image })
                 MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyArtwork] = artworkItem
             }
         }
     }
 
     var playlistEpisodes = [Episode]()
+    // swiftlint:disable:next implicitly_unwrapped_optional
     var panGesture: UIPanGestureRecognizer!
 
-    // MARK: Fileprivate
-    fileprivate let player: AVPlayer = {
+    // MARK: private
+    private let player: AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false
         return avPlayer
     }()
 
-    fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    private let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Outlets
     @IBOutlet weak var maximizedStackView: UIStackView!
 
-    @IBOutlet fileprivate weak var currentTimeSlider: UISlider!
-    @IBOutlet fileprivate weak var currentTimeLabel: UILabel!
-    @IBOutlet fileprivate weak var durationLabel: UILabel!
-    @IBOutlet fileprivate weak var authorLabel: UILabel!
+    @IBOutlet private weak var currentTimeSlider: UISlider!
+    @IBOutlet private weak var currentTimeLabel: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var authorLabel: UILabel!
 
-    @IBOutlet fileprivate weak var titleLabel: UILabel! {
+    @IBOutlet private weak var titleLabel: UILabel! {
         didSet {
             titleLabel.numberOfLines = 2
         }
@@ -79,13 +79,13 @@ final class PlayerDetailsView: UIView {
         }
     }
 
-    @IBOutlet fileprivate weak var volumeSlider: UISlider! {
+    @IBOutlet private weak var volumeSlider: UISlider! {
         didSet {
             volumeSlider.value = AVAudioSession.sharedInstance().outputVolume
         }
     }
 
-    @IBOutlet fileprivate weak var episodeImageView: UIImageView! {
+    @IBOutlet private weak var episodeImageView: UIImageView! {
         didSet {
             episodeImageView.layer.cornerRadius = 5
             episodeImageView.clipsToBounds = true
@@ -96,17 +96,17 @@ final class PlayerDetailsView: UIView {
     // MARK: - Mini player outlets
     @IBOutlet weak var miniPlayerView: UIView!
 
-    @IBOutlet fileprivate weak var miniEpisodeImageView: UIImageView!
-    @IBOutlet fileprivate weak var miniTitleLabel: UILabel!
+    @IBOutlet private weak var miniEpisodeImageView: UIImageView!
+    @IBOutlet private weak var miniTitleLabel: UILabel!
 
-    @IBOutlet fileprivate weak var miniPlayPauseButton: UIButton! {
+    @IBOutlet private weak var miniPlayPauseButton: UIButton! {
         didSet {
             miniPlayPauseButton.addTarget(self, action: #selector(playPause), for: .touchUpInside)
             miniPlayPauseButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         }
     }
 
-    @IBOutlet fileprivate weak var miniFastForwardButton: UIButton! {
+    @IBOutlet private weak var miniFastForwardButton: UIButton! {
         didSet {
             miniFastForwardButton.addTarget(self, action: #selector(fastForward(_:)), for: .touchUpInside)
             miniFastForwardButton.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -135,10 +135,12 @@ final class PlayerDetailsView: UIView {
 extension PlayerDetailsView {
 
     static func initFromNib() -> PlayerDetailsView {
-        return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+        // swiftlint:disable:next force_cast
+        Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
     }
 
-    @IBAction fileprivate func handleCurrentTimeSliderChange(_ sender: Any) {
+    @IBAction
+    private func handleCurrentTimeSliderChange(_ sender: Any) {
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
         let durationInSeconds = CMTimeGetSeconds(duration)
@@ -149,13 +151,15 @@ extension PlayerDetailsView {
         player.seek(to: seekTime)
     }
 
-    @IBAction fileprivate func dismiss(_ sender: Any) {
+    @IBAction
+    private func dismiss(_ sender: Any) {
         let mainTabBarController = UIApplication.mainTabBarController
 //        mainTabBarController?.minimizePlayerDetails()
 
     }
 
-    @objc fileprivate func playPause() {
+    @objc
+    private func playPause() {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(R.image.pause(), for: .normal)
@@ -171,16 +175,19 @@ extension PlayerDetailsView {
         }
     }
 
-    @IBAction fileprivate func rewind(_ sender: Any) {
+    @IBAction
+    private func rewind(_ sender: Any) {
         seekToCurrentTime(delta: -15)
     }
 
-    @IBAction fileprivate func fastForward(_ sender: Any) {
+    @IBAction
+    private func fastForward(_ sender: Any) {
         seekToCurrentTime(delta: 15)
 
     }
 
-    @IBAction fileprivate func changeVolume(_ sender: UISlider) {
+    @IBAction
+    private func changeVolume(_ sender: UISlider) {
         player.volume = sender.value
         // TODO: Set value when volume change by pressing hardware buttons
     }
@@ -189,26 +196,26 @@ extension PlayerDetailsView {
 
 extension PlayerDetailsView {
 
-    fileprivate func seekToCurrentTime(delta: Int64) {
+    private func seekToCurrentTime(delta: Int64) {
         let seconds = CMTimeMake(value: delta, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), seconds)
         player.seek(to: seekTime)
     }
 
-    fileprivate func setupElapsedTime(playbackRate: Float) {
+    private func setupElapsedTime(playbackRate: Float) {
         let elapsedTime = CMTimeGetSeconds(player.currentTime())
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
     }
 
-    fileprivate func setupNowPlayingInfo() {
+    private func setupNowPlayingInfo() {
         var nowPlayingInfo = [String: Any]()
         nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
         nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
 
-    fileprivate func setupAudioSession() {
+    private func setupAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -217,7 +224,7 @@ extension PlayerDetailsView {
         }
     }
 
-    fileprivate func playEpisode() {
+    private func playEpisode() {
         if episode.fileUrl != nil {
             playEpisodeUsingFileUrl()
         } else {
@@ -229,7 +236,7 @@ extension PlayerDetailsView {
         }
     }
 
-    fileprivate func playEpisodeUsingFileUrl() {
+    private func playEpisodeUsingFileUrl() {
         print("Attempt to play episode with file url:", episode.fileUrl ?? "")
 
         guard let fileUrl = URL(string: episode.fileUrl ?? "") else { return }
@@ -243,7 +250,7 @@ extension PlayerDetailsView {
         player.play()
     }
 
-    fileprivate func observePlayerCurrentTime() {
+    private func observePlayerCurrentTime() {
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
             self?.currentTimeLabel.text = time.toDisplayString()
@@ -254,7 +261,7 @@ extension PlayerDetailsView {
         }
     }
 
-    fileprivate func observeBoundaryTime() {
+    private func observeBoundaryTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
 
@@ -265,21 +272,21 @@ extension PlayerDetailsView {
         }
     }
 
-    fileprivate func updateCurrentTimeSlider() {
+    private func updateCurrentTimeSlider() {
         let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
         let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
         let percentage = currentTimeSeconds / durationSeconds
 
-        self.currentTimeSlider.value = Float(percentage)
+        currentTimeSlider.value = Float(percentage)
     }
 
-    fileprivate func enlargeEpisodeImageView() {
+    private func enlargeEpisodeImageView() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.episodeImageView.transform = .identity
         })
     }
 
-    fileprivate func shrinkEpisodeImageView() {
+    private func shrinkEpisodeImageView() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.episodeImageView.transform = self.shrunkenTransform
         })
@@ -291,7 +298,8 @@ extension PlayerDetailsView {
 extension PlayerDetailsView {
 
     // MARK: - Internal
-    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+    @objc
+    func handlePan(gesture: UIPanGestureRecognizer) {
         if gesture.state == .changed {
             handlePanChanged(gesture: gesture)
         } else if gesture.state == .ended {
@@ -299,30 +307,32 @@ extension PlayerDetailsView {
         }
     }
 
-    @objc func handleMaximize() {
+    @objc
+    func handleMaximize() {
 //        UIApplication.mainTabBarController?.maximizePlayerDetails(for: nil)
     }
 
-    // MARK: - Fileprivate
-    fileprivate func setupGestures() {
+    // MARK: - private
+    private func setupGestures() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMaximize)))
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
         miniPlayerView.addGestureRecognizer(panGesture)
 
-        maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self,
-                                                                       action: #selector(handleDismissalPan(gesture:))))
+        maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handleDismissalPan(gesture:))))
     }
 
-    fileprivate func handlePanChanged(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
-        self.miniPlayerView.alpha = 1 + translation.y / 200
-        self.maximizedStackView.alpha = -translation.y / 200
+    private func handlePanChanged(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: superview)
+        transform = CGAffineTransform(translationX: 0, y: translation.y)
+        miniPlayerView.alpha = 1 + translation.y / 200
+        maximizedStackView.alpha = -translation.y / 200
     }
 
-    fileprivate func handlePanEnded(gesture: UIPanGestureRecognizer) {
-        let translation = gesture.translation(in: self.superview)
-        let velocity = gesture.velocity(in: self.superview)
+    private func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: superview)
+        let velocity = gesture.velocity(in: superview)
         print("Ended:", velocity.y)
 
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -336,7 +346,8 @@ extension PlayerDetailsView {
         })
     }
 
-    @objc fileprivate func handleDismissalPan(gesture: UIPanGestureRecognizer) {
+    @objc
+    private func handleDismissalPan(gesture: UIPanGestureRecognizer) {
         if gesture.state == .changed {
             let translation = gesture.translation(in: superview)
             maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
@@ -358,7 +369,7 @@ extension PlayerDetailsView {
 // MARK: - Background playing and Remote control
 extension PlayerDetailsView {
 
-    fileprivate func setupRemoteControl() {
+    private func setupRemoteControl() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
 
         let commandCenter = MPRemoteCommandCenter.shared()
@@ -392,11 +403,12 @@ extension PlayerDetailsView {
         commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
     }
 
-    @objc fileprivate func handleNextTrack() {
+    @objc
+    private func handleNextTrack() {
         if playlistEpisodes.isEmpty { return }
 
         let currentEpisodeIndex = playlistEpisodes.firstIndex { episode -> Bool in
-            return self.episode.title == episode.title && self.episode.author == episode.author
+            self.episode.title == episode.title && self.episode.author == episode.author
         }
 
         guard let index = currentEpisodeIndex else { return }
@@ -408,14 +420,15 @@ extension PlayerDetailsView {
             nextEpisode = playlistEpisodes[index + 1]
         }
 
-        self.episode = nextEpisode
+        episode = nextEpisode
     }
 
-    @objc fileprivate func handlePrevTrack() {
+    @objc
+    private func handlePrevTrack() {
         if playlistEpisodes.isEmpty { return }
 
         let currentEpisodeIndex = playlistEpisodes.firstIndex { episode -> Bool in
-            return self.episode.title == episode.title && self.episode.author == episode.author
+            self.episode.title == episode.title && self.episode.author == episode.author
         }
 
         guard let index = currentEpisodeIndex else { return }
@@ -428,14 +441,15 @@ extension PlayerDetailsView {
             prevEpisode = playlistEpisodes[index - 1]
         }
 
-        self.episode = prevEpisode
+        episode = prevEpisode
     }
 
-    fileprivate func setupInterruptionObserver() {
+    private func setupInterruptionObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
     }
 
-    @objc fileprivate func handleInterruption(notification: Notification) {
+    @objc
+    private func handleInterruption(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
 
@@ -454,7 +468,7 @@ extension PlayerDetailsView {
         }
     }
 
-    fileprivate func setupLockscreenDuration() {
+    private func setupLockscreenDuration() {
         guard let duration = player.currentItem?.duration else { return }
         let durationSeconds = CMTimeGetSeconds(duration)
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds

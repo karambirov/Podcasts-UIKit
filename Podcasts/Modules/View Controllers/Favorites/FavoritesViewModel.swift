@@ -11,7 +11,7 @@ import Foundation
 final class FavoritesViewModel {
 
     // MARK: - Private
-    fileprivate let podcastsService = PodcastsService()
+    private let podcastsService = PodcastsService()
 
     // MARK: - Properties
     lazy var podcasts = podcastsService.savedPodcasts
@@ -30,7 +30,7 @@ extension FavoritesViewModel {
     }
 
     func podcast(for indexPath: IndexPath) -> Podcast {
-        return podcasts[indexPath.item]
+        podcasts[indexPath.item]
     }
 
     func deletePodcast(for indexPath: IndexPath) {
@@ -40,7 +40,7 @@ extension FavoritesViewModel {
         dataSource = .make(for: podcasts)
     }
 
-    fileprivate func podcastsDidLoad(_ podcasts: [Podcast]) {
+    private func podcastsDidLoad(_ podcasts: [Podcast]) {
         dataSource = .make(for: podcasts)
     }
 

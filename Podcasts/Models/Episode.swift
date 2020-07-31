@@ -6,8 +6,8 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import Foundation
 import FeedKit
+import Foundation
 
 struct Episode: Codable {
 
@@ -21,12 +21,12 @@ struct Episode: Codable {
     var imageUrl: String?
 
     init(feedItem: RSSFeedItem) {
-        self.streamUrl = feedItem.enclosure?.attributes?.url ?? ""
-        self.title = feedItem.title ?? ""
-        self.pubDate = feedItem.pubDate ?? Date()
-        self.description = feedItem.iTunes?.iTunesSubtitle ?? feedItem.description ?? ""
-        self.author = feedItem.iTunes?.iTunesAuthor ?? ""
-        self.imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href
+        streamUrl = feedItem.enclosure?.attributes?.url ?? ""
+        title = feedItem.title ?? ""
+        pubDate = feedItem.pubDate ?? Date()
+        description = feedItem.iTunes?.iTunesSubtitle ?? feedItem.description ?? ""
+        author = feedItem.iTunes?.iTunesAuthor ?? ""
+        imageUrl = feedItem.iTunes?.iTunesImage?.attributes?.href
     }
 
 }

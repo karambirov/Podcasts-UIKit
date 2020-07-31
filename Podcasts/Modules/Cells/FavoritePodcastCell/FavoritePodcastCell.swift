@@ -13,9 +13,9 @@ final class FavoritePodcastCell: UICollectionViewCell {
     // MARK: - Properties
     var viewModel: FavoritePodcastCellViewModel?
 
-    fileprivate lazy var imageView =  UIImageView(image: R.image.appicon())
-    fileprivate lazy var nameLabel = UILabel()
-    fileprivate lazy var artistNameLabel = UILabel()
+    private lazy var imageView = UIImageView(image: R.image.appicon())
+    private lazy var nameLabel = UILabel()
+    private lazy var artistNameLabel = UILabel()
 
     // MARK: - Life cycle
     override func prepareForReuse() {
@@ -32,13 +32,13 @@ extension FavoritePodcastCell {
         self.viewModel = viewModel
         let podcast = viewModel.podcast.value
 
-        nameLabel.text       = podcast?.trackName
+        nameLabel.text = podcast?.trackName
         artistNameLabel.text = podcast?.artistName
 
         viewModel.podcast.bind { [weak self] podcast in
             guard let self = self else { return }
-            self.nameLabel.text         = podcast?.trackName
-            self.artistNameLabel.text   = podcast?.artistName
+            self.nameLabel.text = podcast?.trackName
+            self.artistNameLabel.text = podcast?.artistName
             self.imageView.setImage(from: self.viewModel?.podcastImageURL)
         }
 
@@ -60,7 +60,7 @@ extension FavoritePodcastCell {
     }
 
     private func setupLayout() {
-        self.addSubview(imageView)
+        addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
@@ -72,7 +72,7 @@ extension FavoritePodcastCell {
         let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, artistNameLabel])
         stackView.spacing = 4
         stackView.axis = .vertical
-        self.addSubview(stackView)
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.snp.trailingMargin)

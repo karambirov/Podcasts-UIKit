@@ -11,9 +11,9 @@ import UIKit
 final class PodcastsSearchingView: UIView {
 
     // MARK: - Properties
-    fileprivate lazy var activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-    fileprivate lazy var textLabel             = UILabel()
-    fileprivate lazy var stackView             = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
+    private lazy var activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+    private lazy var textLabel = UILabel()
+    private lazy var stackView = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -25,7 +25,7 @@ final class PodcastsSearchingView: UIView {
 // MARK: - Setup views
 extension PodcastsSearchingView {
 
-    fileprivate func setupViews() {
+    private func setupViews() {
         setupActivityIndicatorView()
         setupLabel()
         setupLayout()
@@ -47,11 +47,10 @@ extension PodcastsSearchingView {
     private func setupLayout() {
         stackView.spacing = 12
         stackView.axis = .vertical
-        self.addSubview(stackView)
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(200)
         }
     }
-
 }

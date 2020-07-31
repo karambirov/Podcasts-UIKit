@@ -11,7 +11,7 @@ import UIKit
 final class DownloadsViewController: UITableViewController {
 
     // MARK: - Properties
-    fileprivate let viewModel: DownloadsViewModel
+    private let viewModel: DownloadsViewModel
 
     // MARK: - View Controller's life cycle
     init(viewModel: DownloadsViewModel) {
@@ -47,7 +47,7 @@ final class DownloadsViewController: UITableViewController {
 extension DownloadsViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Sizes.cellHeight
+        Sizes.cellHeight
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -64,12 +64,12 @@ extension DownloadsViewController {
 // MARK: - Setup
 extension DownloadsViewController {
 
-    fileprivate func initialSetup() {
+    private func initialSetup() {
         setupTableView()
         setupObservers()
     }
 
-    fileprivate func launchEpisodePlayer(for indexPath: IndexPath) {
+    private func launchEpisodePlayer(for indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
         if episode.fileUrl != nil {
 //            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
@@ -79,10 +79,11 @@ extension DownloadsViewController {
         }
     }
 
-    fileprivate func askPermissonForPlayUsingStreaming(for episode: Episode) {
-        let alertController = UIAlertController(title: "File URL not found",
-                                                message: "Cannot find local file, play using stream URL instead",
-                                                preferredStyle: .actionSheet)
+    private func askPermissonForPlayUsingStreaming(for episode: Episode) {
+        let alertController = UIAlertController(
+            title: "File URL not found",
+            message: "Cannot find local file, play using stream URL instead",
+            preferredStyle: .actionSheet)
 
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
 //            UIApplication.mainTabBarController?.maximizePlayerDetails(for: episode,
@@ -100,10 +101,16 @@ extension DownloadsViewController {
     }
 
     private func setupObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress),
-                                               name: .downloadProgress, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(viewModel.handleDownloadComplete),
-                                               name: .downloadComplete, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleDownloadProgress),
+            name: .downloadProgress,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(viewModel.handleDownloadComplete),
+            name: .downloadComplete,
+            object: nil)
     }
 
     @objc

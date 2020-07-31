@@ -29,21 +29,21 @@ extension MainTabBarViewModel.TabBarItem {
     var viewController: UIViewController {
         switch self {
         case .search:
-            guard let search = R.image.search() else { fatalError() }
-            let podcastsSearchViewModel  = PodcastsSearchViewModel()
+            guard let search = R.image.search() else { fatalError("Image not found") }
+            let podcastsSearchViewModel = PodcastsSearchViewModel()
             let podcastsSearchViewController = PodcastsSearchViewController(viewModel: podcastsSearchViewModel)
             let controller = makeNavigationController(for: podcastsSearchViewController, title: "Search", image: search)
             return controller
 
         case .favorites:
-            guard let favorites = R.image.favorites() else { fatalError() }
-            let favoritesViewModel  = FavoritesViewModel()
+            guard let favorites = R.image.favorites() else { fatalError("Image not found") }
+            let favoritesViewModel = FavoritesViewModel()
             let favoritesViewController = FavoritesViewController(viewModel: favoritesViewModel)
             let controller = makeNavigationController(for: favoritesViewController, title: "Favorites", image: favorites)
             return controller
 
         case .downloads:
-            guard let downloads = R.image.downloads() else { fatalError() }
+            guard let downloads = R.image.downloads() else { fatalError("Image not found") }
             let downloadsViewModel = DownloadsViewModel()
             let downloadsViewController = DownloadsViewController(viewModel: downloadsViewModel)
             let controller = makeNavigationController(for: downloadsViewController, title: "Downloads", image: downloads)
@@ -52,12 +52,15 @@ extension MainTabBarViewModel.TabBarItem {
         }
     }
 
-    private func makeNavigationController(for rootViewController: UIViewController,
-                                          title: String, image: UIImage) -> UIViewController {
+    private func makeNavigationController(
+        for rootViewController: UIViewController,
+        title: String,
+        image: UIImage) -> UIViewController
+    {
         let navigationController = UINavigationController(rootViewController: rootViewController)
         rootViewController.navigationItem.title = title
-        navigationController.tabBarItem.title   = title
-        navigationController.tabBarItem.image   = image
+        navigationController.tabBarItem.title = title
+        navigationController.tabBarItem.image = image
         return navigationController
     }
 

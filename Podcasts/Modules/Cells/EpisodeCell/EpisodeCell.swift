@@ -6,20 +6,20 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class EpisodeCell: UITableViewCell {
 
     // MARK: - Properties
     var viewModel: EpisodeCellViewModel?
 
-    fileprivate lazy var episodeImageView = UIImageView()
+    private lazy var episodeImageView = UIImageView()
     // TODO: - Handle progress text using view model
-    lazy var progressLabel                = UILabel()
-    fileprivate lazy var pubDateLabel     = UILabel()
-    fileprivate lazy var titleLabel       = UILabel()
-    fileprivate lazy var descriptionLabel = UILabel()
+    lazy var progressLabel = UILabel()
+    private lazy var pubDateLabel = UILabel()
+    private lazy var titleLabel = UILabel()
+    private lazy var descriptionLabel = UILabel()
 
     // MARK: - Life cycle
     override func prepareForReuse() {
@@ -36,15 +36,15 @@ extension EpisodeCell {
         self.viewModel = viewModel
         let episode = viewModel.episode.value
 
-        titleLabel.text        = episode?.title
-        descriptionLabel.text  = episode?.description
-        pubDateLabel.text      = viewModel.pubDate
+        titleLabel.text = episode?.title
+        descriptionLabel.text = episode?.description
+        pubDateLabel.text = viewModel.pubDate
 
         viewModel.episode.bind { [weak self] episode in
             guard let self = self else { return }
-            self.titleLabel.text        = episode?.title
-            self.descriptionLabel.text  = episode?.description
-            self.pubDateLabel.text      = viewModel.pubDate
+            self.titleLabel.text = episode?.title
+            self.descriptionLabel.text = episode?.description
+            self.pubDateLabel.text = viewModel.pubDate
             self.episodeImageView.setImage(from: self.viewModel?.episodeImageURL)
         }
 
@@ -53,7 +53,7 @@ extension EpisodeCell {
     }
 
     private func setupViews() {
-        self.accessoryType = .disclosureIndicator
+        accessoryType = .disclosureIndicator
         setupLabels()
         setupLayout()
     }
@@ -68,7 +68,7 @@ extension EpisodeCell {
     }
 
     private func setupLayout() {
-        self.addSubview(episodeImageView)
+        addSubview(episodeImageView)
         episodeImageView.contentMode = .scaleAspectFit
         episodeImageView.snp.makeConstraints { make in
             make.height.width.equalTo(100)
@@ -77,7 +77,7 @@ extension EpisodeCell {
             make.bottom.equalTo(self.snp.bottomMargin)
         }
 
-        self.addSubview(progressLabel)
+        addSubview(progressLabel)
         progressLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(episodeImageView.snp.center)
         }
@@ -85,7 +85,7 @@ extension EpisodeCell {
         let stackView = UIStackView(arrangedSubviews: [pubDateLabel, titleLabel, descriptionLabel])
         stackView.spacing = 4
         stackView.axis = .vertical
-        self.addSubview(stackView)
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalTo(self.snp.trailingMargin)

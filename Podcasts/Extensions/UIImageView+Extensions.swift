@@ -6,8 +6,8 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 extension UIImageView {
 
