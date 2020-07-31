@@ -13,5 +13,4 @@ final class PlayerDetailsViewModel {
     init() {
         print("PlayerDetailsViewModel is inited")
     }
-
 }

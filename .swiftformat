@@ -1,0 +1,18 @@
+# options
+--self remove # redundantSelf
+--importgrouping testable-bottom # sortedImports
+--commas always # trailingCommas
+--trimwhitespace always # trailingSpace
+--indent 4 #indent
+--ifdef no-indent #indent
+--wraparguments before-first # wrapArguments
+--wrapparameters before-first # wrapArguments
+--wrapcollections before-first # wrapArguments
+--closingparen balanced # wrapArguments
+--funcattributes prev-line # wrapAttributes
+--typeattributes prev-line # wrapAttributes
+--swiftversion 5.1
+--stripunusedargs closure-only
+
+# rules
+--rules anyObjectProtocol,blankLinesBetweenScopes,consecutiveBlankLines,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingclosures,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes

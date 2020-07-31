@@ -26,21 +26,19 @@ final class Podcast: NSObject, Decodable, NSCoding {
 
     init?(coder aDecoder: NSCoder) {
         print("Trying to turn Data into Podcast")
-        self.trackName     = aDecoder.decodeObject(forKey: Keys.trackNameKey) as? String
-        self.artistName    = aDecoder.decodeObject(forKey: Keys.artistNameKey) as? String
-        self.artworkUrl600 = aDecoder.decodeObject(forKey: Keys.artworkKey) as? String
-        self.feedUrl       = aDecoder.decodeObject(forKey: Keys.feedKey) as? String
+        trackName = aDecoder.decodeObject(forKey: Keys.trackNameKey) as? String
+        artistName = aDecoder.decodeObject(forKey: Keys.artistNameKey) as? String
+        artworkUrl600 = aDecoder.decodeObject(forKey: Keys.artworkKey) as? String
+        feedUrl = aDecoder.decodeObject(forKey: Keys.feedKey) as? String
     }
-
 }
 
 private extension Podcast {
 
     enum Keys {
-        static let trackNameKey  = "trackNameKey"
+        static let trackNameKey = "trackNameKey"
         static let artistNameKey = "artistNameKey"
-        static let artworkKey    = "artworkKey"
-        static let feedKey       = "feedKey"
+        static let artworkKey = "artworkKey"
+        static let feedKey = "feedKey"
     }
-
 }

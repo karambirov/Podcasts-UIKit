@@ -24,5 +24,4 @@ final class PodcastCellViewModel {
     init(podcast: Podcast) {
         self.podcast.value = podcast
     }
-
 }

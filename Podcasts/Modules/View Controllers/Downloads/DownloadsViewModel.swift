@@ -11,13 +11,12 @@ import Foundation
 final class DownloadsViewModel {
 
     // MARK: - Private
-    fileprivate let networkingService = NetworkingService()
-    fileprivate let podcastsService   = PodcastsService()
+    private let networkingService = NetworkingService()
+    private let podcastsService = PodcastsService()
 
     // MARK: - Properties
     lazy var episodes = podcastsService.downloadedEpisodes
     var dataSource: TableViewDataSource<Episode, EpisodeCell>?
-
 }
 
 // MARK: - Methods
@@ -31,7 +30,7 @@ extension DownloadsViewModel {
     }
 
     func episode(for indexPath: IndexPath) -> Episode {
-        return episodes[indexPath.row]
+        episodes[indexPath.row]
     }
 
     func deleteEpisode(for indexPath: IndexPath) {
@@ -43,13 +42,12 @@ extension DownloadsViewModel {
 
     @objc
     func handleDownloadComplete(notification: Notification) {
-        guard let  episodeDownloadComplete = notification.object as? NetworkingService.EpisodeDownloadComplete else { return }
+        guard let episodeDownloadComplete = notification.object as? NetworkingService.EpisodeDownloadComplete else { return }
         guard let index = episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
         episodes[index].fileUrl = episodeDownloadComplete.fileUrl
     }
 
-    fileprivate func episodesDidLoad(_ episodes: [Episode]) {
+    private func episodesDidLoad(_ episodes: [Episode]) {
         dataSource = .make(for: episodes)
     }
-
 }

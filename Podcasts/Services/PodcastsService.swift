@@ -12,13 +12,12 @@ final class PodcastsService {
 
     // MARK: - Properties
     var savedPodcasts: [Podcast] {
-        return fetchSavedPodcasts()
+        fetchSavedPodcasts()
     }
 
     var downloadedEpisodes: [Episode] {
-        return fetchDownloadedEpisodes()
+        fetchDownloadedEpisodes()
     }
-
 }
 
 // MARK: - Methods
@@ -27,10 +26,12 @@ extension PodcastsService {
     func deletePodcast(_ podcast: Podcast) {
         let podcasts = savedPodcasts
         let filteredPodcasts = podcasts.filter { podcast -> Bool in
-            return podcast.trackName != podcast.trackName && podcast.artistName != podcast.artistName
+            podcast.trackName != podcast.trackName && podcast.artistName != podcast.artistName
         }
 
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: filteredPodcasts, requiringSecureCoding: false)
+        guard
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: filteredPodcasts, requiringSecureCoding: false)
+        else { return }
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
     }
 
@@ -48,7 +49,7 @@ extension PodcastsService {
     func deleteEpisode(_ episode: Episode) {
         let savedEpisodes = downloadedEpisodes
         let filteredEpisodes = savedEpisodes.filter { filteredEpisode -> Bool in
-            return filteredEpisode.title != episode.title
+            filteredEpisode.title != episode.title
         }
 
         do {
@@ -58,21 +59,25 @@ extension PodcastsService {
             print("Failed to encode episode:", encodeError)
         }
     }
-
 }
 
 // MARK: - Private
+
 extension PodcastsService {
 
-    fileprivate func fetchSavedPodcasts() -> [Podcast] {
-        guard let savedPodcastsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
-        guard let savedPodcasts = try! NSKeyedUnarchiver
-            .unarchivedObject(ofClasses: [Podcast.self], from: savedPodcastsData) as? [Podcast] else { return [] }
+    private func fetchSavedPodcasts() -> [Podcast] {
+        guard
+            let savedData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey),
+            let savedPodcasts = try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [Podcast.self], from: savedData) as? [Podcast]
+        else { return [] }
+
         return savedPodcasts
     }
 
-    fileprivate func fetchDownloadedEpisodes() -> [Episode] {
-        guard let episodesData = UserDefaults.value(forKey: UserDefaults.downloadedEpisodesKey) as? Data else { return [] }
+    private func fetchDownloadedEpisodes() -> [Episode] {
+        guard
+            let episodesData = UserDefaults.value(forKey: UserDefaults.downloadedEpisodesKey) as? Data
+        else { return [] }
 
         do {
             return try JSONDecoder().decode([Episode].self, from: episodesData)
@@ -82,5 +87,4 @@ extension PodcastsService {
 
         return []
     }
-
 }

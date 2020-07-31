@@ -12,5 +12,4 @@ extension UserDefaults {
 
     static let favoritedPodcastKey = "favoritedPodcastKey"
     static let downloadedEpisodesKey = "downloadEpisodesKey"
-
 }

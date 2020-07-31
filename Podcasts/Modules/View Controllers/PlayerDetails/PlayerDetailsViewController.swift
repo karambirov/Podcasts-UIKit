@@ -11,8 +11,8 @@ import UIKit
 class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
-    fileprivate var viewModel: PlayerDetailsViewModel
-    fileprivate lazy var playerView = PlayerStackView()
+    private var viewModel: PlayerDetailsViewModel
+    private lazy var playerView = PlayerStackView()
 
     // MARK: - View Controller's life cycle
     init(viewModel: PlayerDetailsViewModel) {
@@ -20,6 +20,7 @@ class PlayerDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+	@available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,13 +29,11 @@ class PlayerDetailsViewController: UIViewController {
         super.viewDidLoad()
         initialSetup()
     }
-
 }
 
 // MARK: - Setup
 extension PlayerDetailsViewController {
-
-    fileprivate func initialSetup() {
+    private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()
     }

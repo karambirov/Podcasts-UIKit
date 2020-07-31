@@ -6,18 +6,18 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class MiniPlayerView: UIView {
 
     // MARK: - Properties
-    fileprivate lazy var separatorView     = UIView()
-    fileprivate lazy var imageView         = UIImageView()
-    fileprivate lazy var titleLabel        = UILabel()
-    fileprivate lazy var playPauseButton   = UIButton(type: .system)
-    fileprivate lazy var fastForwardButton = UIButton(type: .system)
-    fileprivate lazy var stackView         = UIStackView(arrangedSubviews: [imageView, titleLabel, playPauseButton, fastForwardButton])
+    private lazy var separatorView = UIView()
+    private lazy var imageView = UIImageView()
+    private lazy var titleLabel = UILabel()
+    private lazy var playPauseButton = UIButton(type: .system)
+    private lazy var fastForwardButton = UIButton(type: .system)
+    private lazy var stackView = UIStackView(arrangedSubviews: [imageView, titleLabel, playPauseButton, fastForwardButton])
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -25,13 +25,12 @@ final class MiniPlayerView: UIView {
     }
 
     // TODO: - Configure init to set label text and actions for buttons
-
 }
 
 // MARK: - Setup
 extension MiniPlayerView {
 
-    fileprivate func setupViews() {
+    private func setupViews() {
         setupImageView()
         setupTitleLabel()
         setupPlayPauseButton()
@@ -41,8 +40,8 @@ extension MiniPlayerView {
     }
 
     private func setupLayout() {
-        self.addSubview(separatorView)
-        self.addSubview(stackView)
+        addSubview(separatorView)
+        addSubview(stackView)
 
         separatorView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
@@ -54,39 +53,37 @@ extension MiniPlayerView {
             make.top.equalTo(separatorView).offset(8)
         }
 
-        self.snp.makeConstraints { make in
+        snp.makeConstraints { make in
             make.leading.trailing.top.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(64)
         }
     }
 
     private func setupImageView() {
-        imageView.image       = R.image.appicon()
+        imageView.image = UIImage()
         imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints { $0.width.equalTo(48) }
     }
 
     private func setupTitleLabel() {
-        titleLabel.text      = "Episode Title"
-        titleLabel.font      = .systemFont(ofSize: 15, weight: .medium)
+        titleLabel.text = "Episode Title"
+        titleLabel.font = .systemFont(ofSize: 15, weight: .medium)
         titleLabel.textColor = .darkText
     }
 
     private func setupPlayPauseButton() {
         playPauseButton.setTitle("", for: .normal)
-        playPauseButton.setImage(R.image.pause(), for: .normal)
+        playPauseButton.setImage(.pause, for: .normal)
         playPauseButton.snp.makeConstraints { $0.width.equalTo(48) }
     }
 
     private func setupFastForwardButton() {
         fastForwardButton.setTitle("", for: .normal)
-        fastForwardButton.setImage(R.image.fastforward15(), for: .normal)
+        fastForwardButton.setImage(.goforward15, for: .normal)
         fastForwardButton.snp.makeConstraints { $0.width.equalTo(48) }
     }
 
     private func setupStackView() {
         stackView.addArrangedSubview(imageView)
-
     }
-
 }

@@ -23,8 +23,8 @@ final class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITable
         self.cellConfigurator = cellConfigurator
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        models.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,41 +33,42 @@ final class TableViewDataSource<Model, Cell: UITableViewCell>: NSObject, UITable
         cellConfigurator(model, cell)
         return cell
     }
-
 }
 
 extension TableViewDataSource where Model == Podcast {
-
-    static func make(for podcasts: [Podcast],
-                     reuseIdentifier: String = PodcastCell.typeName) -> TableViewDataSource {
-
-        return TableViewDataSource(models: podcasts, reuseIdentifier: reuseIdentifier,
-                                   cellConfigurator: { podcast, cell in
-            let cellViewModel = PodcastCellViewModel(podcast: podcast)
-            if let cell = cell as? PodcastCell {
-                cell.setup(with: cellViewModel)
+    static func make(
+        for podcasts: [Podcast],
+        reuseIdentifier: String = PodcastCell.typeName
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: podcasts,
+            reuseIdentifier: reuseIdentifier,
+            cellConfigurator: { podcast, cell in
+                let cellViewModel = PodcastCellViewModel(podcast: podcast)
+                if let cell = cell as? PodcastCell {
+                    cell.setup(with: cellViewModel)
+                }
+                cell.layoutIfNeeded()
             }
-            cell.layoutIfNeeded()
-        })
-
+        )
     }
-
 }
 
 extension TableViewDataSource where Model == Episode {
-
-    static func make(for episodes: [Episode],
-                     reuseIdentifier: String = EpisodeCell.typeName) -> TableViewDataSource {
-
-        return TableViewDataSource(models: episodes, reuseIdentifier: reuseIdentifier,
-                                   cellConfigurator: { episode, cell in
-            let cellViewModel = EpisodeCellViewModel(episode: episode)
-            if let cell = cell as? EpisodeCell {
-                cell.setup(with: cellViewModel)
+    static func make(
+        for episodes: [Episode],
+        reuseIdentifier: String = EpisodeCell.typeName
+    ) -> TableViewDataSource {
+        TableViewDataSource(
+            models: episodes,
+            reuseIdentifier: reuseIdentifier,
+            cellConfigurator: { episode, cell in
+                let cellViewModel = EpisodeCellViewModel(episode: episode)
+                if let cell = cell as? EpisodeCell {
+                    cell.setup(with: cellViewModel)
+                }
+                cell.layoutIfNeeded()
             }
-            cell.layoutIfNeeded()
-        })
-
+        )
     }
-
 }
