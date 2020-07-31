@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireNetworkActivityIndicator
+import Gedatsu
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = R.color.tintColor()
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
+
+		#if DEBUG
+		Gedatsu.open()
+		#endif
 
         return true
     }
