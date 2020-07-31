@@ -16,6 +16,7 @@
 		51B8295F24D1E41A00F08332 /* SPStorkController in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8295E24D1E41A00F08332 /* SPStorkController */; };
 		51B8296224D1E43700F08332 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296124D1E43700F08332 /* Disk */; };
 		51B8296624D1EA7E00F08332 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296524D1EA7E00F08332 /* Rswift */; };
+		51B8296924D20ABD00F08332 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296824D20ABD00F08332 /* Gedatsu */; };
 		AA28B60F222590320090B0A8 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */; };
 		AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */; };
 		AA341C02223FFB6500931C36 /* PlayerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C01223FFB6500931C36 /* PlayerStackView.swift */; };
@@ -132,6 +133,7 @@
 			files = (
 				51B8295024D1E22F00F08332 /* AlamofireNetworkActivityIndicator in Frameworks */,
 				51B8296224D1E43700F08332 /* Disk in Frameworks */,
+				51B8296924D20ABD00F08332 /* Gedatsu in Frameworks */,
 				51B8294D24D1E1CE00F08332 /* Moya in Frameworks */,
 				51B8295324D1E2A900F08332 /* SDWebImage in Frameworks */,
 				51B8295F24D1E41A00F08332 /* SPStorkController in Frameworks */,
@@ -486,6 +488,7 @@
 				51B8295E24D1E41A00F08332 /* SPStorkController */,
 				51B8296124D1E43700F08332 /* Disk */,
 				51B8296524D1EA7E00F08332 /* Rswift */,
+				51B8296824D20ABD00F08332 /* Gedatsu */,
 			);
 			productName = Podcasts;
 			productReference = AA62F5DF2154C1BF00356E3F /* Podcasts.app */;
@@ -531,6 +534,7 @@
 				51B8295D24D1E41900F08332 /* XCRemoteSwiftPackageReference "SPStorkController" */,
 				51B8296024D1E43700F08332 /* XCRemoteSwiftPackageReference "Disk" */,
 				51B8296424D1EA7E00F08332 /* XCRemoteSwiftPackageReference "R.swift" */,
+				51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */,
 			);
 			productRefGroup = AA62F5E02154C1BF00356E3F /* Products */;
 			projectDirPath = "";
@@ -880,6 +884,14 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bannzai/Gedatsu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -927,6 +939,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 51B8296424D1EA7E00F08332 /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		51B8296824D20ABD00F08332 /* Gedatsu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */;
+			productName = Gedatsu;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
