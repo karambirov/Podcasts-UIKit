@@ -18,7 +18,8 @@ final class FavoritesViewController: UICollectionViewController {
          collectionViewLayout: UICollectionViewLayout = UICollectionViewFlowLayout()) {
         // FIXME: - Crash due to collection view layout is nil
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init(collectionViewLayout: collectionViewLayout)
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

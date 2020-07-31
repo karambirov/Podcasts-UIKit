@@ -1,5 +1,5 @@
 # Podcasts
-This is a clone of Apple's Podcasts. Final version **will be** built with RxSwift using MVVM and Coordinator.
+This is a clone of Apple's Podcasts. The SwiftUI version can be found [here](https://github.com/Karambirov/Podcasts)
 
 ## Features
 - [x] Searching for podcasts using iTunes API.
@@ -33,11 +33,11 @@ This is a clone of Apple's Podcasts. Final version **will be** built with RxSwif
 Make sure you have Xcode installed from the App Store. Then run the following commands in Terminal:
 
 ```sh
-clone https://github.com/Karambirov/Podcasts.git
+clone https://github.com/Karambirov/OldPodcasts.git
 cd Podcasts
 pod install
 open Podcasts.xcworkspace
 ```
 
 ## License
-MIT License. See [LICENSE](https://github.com/Karambirov/Podcasts/blob/develop/LICENSE).
+MIT License. See [LICENSE](https://github.com/Karambirov/OldPodcasts/blob/develop/LICENSE).
