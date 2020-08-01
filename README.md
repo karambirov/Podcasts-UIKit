@@ -1,5 +1,5 @@
 # Podcasts
-This is a clone of Apple's Podcasts. The SwiftUI version can be found [here](https://github.com/Karambirov/Podcasts)
+This is a clone of Apple's Podcasts. The SwiftUI version can be found [here](https://github.com/Karambirov/Podcasts).
 
 ## Features
 - [x] Searching for podcasts using iTunes API.
@@ -34,7 +34,7 @@ Make sure you have Xcode installed from the App Store. Then run the following co
 
 ```sh
 clone https://github.com/Karambirov/OldPodcasts.git
-cd Podcasts
+cd OldPodcasts
 pod install
 open Podcasts.xcworkspace
 ```
