@@ -11,12 +11,14 @@ import UIKit
 final class MainTabBarController: UITabBarController {
 
     // MARK: - Properties
-    fileprivate let viewModel: MainTabBarViewModel
-//    fileprivate let playerDetailsView = PlayerDetailsView.initFromNib()
+    private let viewModel: MainTabBarViewModel
+//    private let playerDetailsView = PlayerDetailsView.initFromNib()
 
-    fileprivate var maximizedTopAnchorConstraint: NSLayoutConstraint!
-    fileprivate var minimizedTopAnchorConstraint: NSLayoutConstraint!
-    fileprivate var bottomAnchorConstraint: NSLayoutConstraint!
+    // swiftlint:disable implicitly_unwrapped_optional
+    private var maximizedTopAnchorConstraint: NSLayoutConstraint!
+    private var minimizedTopAnchorConstraint: NSLayoutConstraint!
+    private var bottomAnchorConstraint: NSLayoutConstraint!
+    // swiftlint:enable implicitly_unwrapped_optional
 
     // MARK: - View Controller's life cycle
     init(viewModel: MainTabBarViewModel) {
@@ -24,6 +26,7 @@ final class MainTabBarController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -34,12 +37,10 @@ final class MainTabBarController: UITabBarController {
         set(items: viewModel.items)
 //        setupPlayerDetailsView()
     }
-
 }
 
 // MARK: - Setup
 extension MainTabBarController {
-
 //    @objc
 //    func minimizePlayerDetails() {
 //        maximizedTopAnchorConstraint.isActive = false
@@ -79,17 +80,17 @@ extension MainTabBarController {
 //    }
 
     // MARK: - Private
-    fileprivate func viewController(for itemType: MainTabBarViewModel.TabBarItem) -> UIViewController {
+    private func viewController(for itemType: MainTabBarViewModel.TabBarItem) -> UIViewController {
         let controller = itemType.viewController
         return controller
     }
 
-    fileprivate func set(items: [MainTabBarViewModel.TabBarItem]) {
+    private func set(items: [MainTabBarViewModel.TabBarItem]) {
         guard viewControllers?.count != items.count else { return }
         viewControllers = items.map { viewController(for: $0) }
     }
 
-//    fileprivate func setupPlayerDetailsView() {
+//    private func setupPlayerDetailsView() {
 //        view.insertSubview(playerDetailsView, belowSubview: tabBar)
 //        setupConstraintsForPlayerDetailsView()
 //    }
@@ -110,5 +111,4 @@ extension MainTabBarController {
 //        playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 //        playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 //    }
-
 }

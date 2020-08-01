@@ -23,8 +23,8 @@ final class CollectionViewDataSource<Model, Cell: UICollectionViewCell>: NSObjec
         self.cellConfigurator = cellConfigurator
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return models.count
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        models.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,23 +33,23 @@ final class CollectionViewDataSource<Model, Cell: UICollectionViewCell>: NSObjec
         cellConfigurator(model, cell)
         return cell
     }
-
 }
 
 extension CollectionViewDataSource where Model == Podcast {
-
-    static func make(for podcasts: [Podcast],
-                     reuseIdentifier: String = FavoritePodcastCell.typeName) -> CollectionViewDataSource {
-
-        return CollectionViewDataSource(models: podcasts, reuseIdentifier: reuseIdentifier,
-                                        cellConfigurator: { podcast, cell in
-            let cellViewModel = FavoritePodcastCellViewModel(podcast: podcast)
-            if let cell = cell as? FavoritePodcastCell {
-                cell.setup(with: cellViewModel)
+    static func make(
+        for podcasts: [Podcast],
+        reuseIdentifier: String = FavoritePodcastCell.typeName
+    ) -> CollectionViewDataSource {
+        CollectionViewDataSource(
+            models: podcasts,
+            reuseIdentifier: reuseIdentifier,
+            cellConfigurator: { podcast, cell in
+                let cellViewModel = FavoritePodcastCellViewModel(podcast: podcast)
+                if let cell = cell as? FavoritePodcastCell {
+                    cell.setup(with: cellViewModel)
+                }
+                cell.layoutIfNeeded()
             }
-            cell.layoutIfNeeded()
-        })
-
+        )
     }
-
 }

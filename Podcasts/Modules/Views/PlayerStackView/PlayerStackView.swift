@@ -46,28 +46,27 @@ final class PlayerStackView: UIStackView {
 extension PlayerStackView {
 
     fileprivate func setupLayout() {
-        self.axis            = .vertical
-        self.spacing         = 5
+        axis            = .vertical
+        spacing         = 5
         let arrangedSubviews = [closeButton, episodeImageView, timeControlStackView, titleLabel, authorLabel, playingControlsStackView, volumeControlStackView]
         arrangedSubviews.forEach { self.addArrangedSubview($0) }
     }
 
-    fileprivate func setupEpisodeImageView() {
-        episodeImageView.image              = R.image.appicon()
+    private func setupEpisodeImageView() {
+        episodeImageView.image = UIImage()
         episodeImageView.layer.cornerRadius = 5
-        episodeImageView.clipsToBounds      = true
-        episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1/1) }
+        episodeImageView.clipsToBounds = true
+        episodeImageView.snp.makeConstraints { $0.width.equalTo(episodeImageView.snp.height).multipliedBy(1 / 1) }
     }
 
     fileprivate func setupLabels() {
         titleLabel.textAlignment = .center
-        titleLabel.font          = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         titleLabel.snp.makeConstraints { $0.height.greaterThanOrEqualTo(20) }
 
         authorLabel.textAlignment = .center
-        authorLabel.font          = .systemFont(ofSize: 16, weight: .medium)
-        authorLabel.textColor     = R.color.tintColor()
+        authorLabel.font = .systemFont(ofSize: 16, weight: .medium)
+        authorLabel.textColor = AppConfig.tintColor
         authorLabel.snp.makeConstraints { $0.height.equalTo(20) }
     }
-
 }

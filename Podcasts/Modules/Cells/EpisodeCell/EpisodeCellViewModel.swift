@@ -11,7 +11,7 @@ import Foundation
 final class EpisodeCellViewModel {
 
     // MARK: - Private
-    fileprivate lazy var dateFormatter = DateFormatter()
+    private lazy var dateFormatter = DateFormatter()
 
     // MARK: - Properties
     var episode = Observable<Episode>()
@@ -32,5 +32,4 @@ final class EpisodeCellViewModel {
     init(episode: Episode) {
         self.episode.value = episode
     }
-
 }

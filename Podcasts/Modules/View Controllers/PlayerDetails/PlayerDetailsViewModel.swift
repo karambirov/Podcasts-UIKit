@@ -18,11 +18,10 @@ final class PlayerDetailsViewModel {
     }
 
     var currentTime: Double {
-        return playerService.currentTime
+        playerService.currentTime
     }
 
     func playEpisode() {
         playerService.load(episode: episode)
     }
-
 }

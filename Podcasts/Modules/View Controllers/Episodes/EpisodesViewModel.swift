@@ -11,8 +11,8 @@ import Foundation
 final class EpisodesViewModel {
 
     // MARK: - Private
-    fileprivate let networkingService = NetworkingService()
-    fileprivate let podcastsService   = PodcastsService()
+    private let networkingService = NetworkingService()
+    private let podcastsService = PodcastsService()
 
     // MARK: - Properties
     let podcast: Podcast
@@ -22,7 +22,6 @@ final class EpisodesViewModel {
     init(podcast: Podcast) {
         self.podcast = podcast
     }
-
 }
 
 // MARK: - Methods
@@ -44,8 +43,9 @@ extension EpisodesViewModel {
         print("Saving info into UserDefaults")
         var listOfPodcasts = podcastsService.savedPodcasts
         listOfPodcasts.append(podcast)
-        let data = try! NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts,
-                                                     requiringSecureCoding: false)
+        guard
+            let data = try? NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts, requiringSecureCoding: false)
+        else { return }
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
     }
 
@@ -56,20 +56,18 @@ extension EpisodesViewModel {
     }
 
     func episode(for indexPath: IndexPath) -> Episode {
-        return episodes[indexPath.row]
+        episodes[indexPath.row]
     }
 
     func checkIfPodcastHasFavorited() -> Bool {
-        let savedPodcasts = podcastsService.savedPodcasts
-        let hasFavorited = savedPodcasts
-            .firstIndex(where: { $0.trackName  == self.podcast.trackName &&
-                            $0.artistName == self.podcast.artistName }) != nil
-        return hasFavorited
+        let savedPodcasts = podcastsService.savedPodcasts.firstIndex {
+            $0.trackName == self.podcast.trackName && $0.artistName == self.podcast.artistName
+        }
+        return savedPodcasts != nil
     }
 
-    fileprivate func episodesDidLoad(_ episodes: [Episode]) {
+    private func episodesDidLoad(_ episodes: [Episode]) {
         self.episodes = episodes
         dataSource = .make(for: episodes)
     }
-
 }

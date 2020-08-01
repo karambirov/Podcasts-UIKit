@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		512B307E24D49E6D0020B441 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 512B307D24D49E6D0020B441 /* SFSafeSymbols */; };
+		512B308024D4A1A20020B441 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512B307F24D4A1A20020B441 /* AppConfig.swift */; };
 		51B8294D24D1E1CE00F08332 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8294C24D1E1CE00F08332 /* Moya */; };
 		51B8295024D1E22F00F08332 /* AlamofireNetworkActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8294F24D1E22F00F08332 /* AlamofireNetworkActivityIndicator */; };
 		51B8295324D1E2A900F08332 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8295224D1E2A900F08332 /* SDWebImage */; };
@@ -15,7 +17,6 @@
 		51B8295C24D1E3F600F08332 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8295B24D1E3F600F08332 /* SnapKit */; };
 		51B8295F24D1E41A00F08332 /* SPStorkController in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8295E24D1E41A00F08332 /* SPStorkController */; };
 		51B8296224D1E43700F08332 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296124D1E43700F08332 /* Disk */; };
-		51B8296624D1EA7E00F08332 /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296524D1EA7E00F08332 /* Rswift */; };
 		51B8296924D20ABD00F08332 /* Gedatsu in Frameworks */ = {isa = PBXBuildFile; productRef = 51B8296824D20ABD00F08332 /* Gedatsu */; };
 		AA28B60F222590320090B0A8 /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */; };
 		AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */; };
@@ -24,6 +25,7 @@
 		AA341C0922401F7500931C36 /* TimeControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0822401F7500931C36 /* TimeControlStackView.swift */; };
 		AA341C0C22401FAF00931C36 /* PlayingControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0B22401FAF00931C36 /* PlayingControlsStackView.swift */; };
 		AA341C0F22412B5E00931C36 /* VolumeControlStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA341C0E22412B5E00931C36 /* VolumeControlStackView.swift */; };
+		AA38217524D5493B009DBB0F /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = AA38217424D5493B009DBB0F /* ModernAVPlayer */; };
 		AA58FE89215E5BE200309F97 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58FE87215E5BE200309F97 /* FavoritePodcastCell.swift */; };
 		AA62F5E32154C1BF00356E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F5E22154C1BF00356E3F /* AppDelegate.swift */; };
 		AA62F5EA2154C1C100356E3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA62F5E92154C1C100356E3F /* Assets.xcassets */; };
@@ -46,7 +48,6 @@
 		AA62F62E215B608400356E3F /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F62D215B608400356E3F /* UserDefaults+Extensions.swift */; };
 		AA62F631215B751500356E3F /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA62F630215B751500356E3F /* PlayerDetailsView.swift */; };
 		AA6CB61E215CE8C400EE317B /* CMTime+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CB61D215CE8C400EE317B /* CMTime+Extensions.swift */; };
-		AA7CDA62221FF20100838F13 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA61221FF20000838F13 /* R.generated.swift */; };
 		AA7CDA68221FF3F400838F13 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA67221FF3F400838F13 /* Describable.swift */; };
 		AA7CDA6A221FF45700838F13 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA69221FF45700838F13 /* UITableView+Extensions.swift */; };
 		AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CDA6B221FF47900838F13 /* UITableViewCell+Extensions.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		512B307F24D4A1A20020B441 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		AA28B60E222590320090B0A8 /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
 		AA28B6102225A32A0090B0A8 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		AA341C01223FFB6500931C36 /* PlayerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStackView.swift; sourceTree = "<group>"; };
@@ -135,14 +137,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				512B307E24D49E6D0020B441 /* SFSafeSymbols in Frameworks */,
 				51B8295024D1E22F00F08332 /* AlamofireNetworkActivityIndicator in Frameworks */,
 				51B8296224D1E43700F08332 /* Disk in Frameworks */,
 				51B8296924D20ABD00F08332 /* Gedatsu in Frameworks */,
 				51B8294D24D1E1CE00F08332 /* Moya in Frameworks */,
 				51B8295324D1E2A900F08332 /* SDWebImage in Frameworks */,
 				51B8295F24D1E41A00F08332 /* SPStorkController in Frameworks */,
+				AA38217524D5493B009DBB0F /* ModernAVPlayer in Frameworks */,
 				51B8295C24D1E3F600F08332 /* SnapKit in Frameworks */,
-				51B8296624D1EA7E00F08332 /* Rswift in Frameworks */,
 				51B8295924D1E3AC00F08332 /* FeedKit in Frameworks */,
 				51B8295624D1E31800F08332 /* KingfisherStatic in Frameworks */,
 			);
@@ -437,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				AA62F5EE2154C1C100356E3F /* Info.plist */,
+				512B307F24D4A1A20020B441 /* AppConfig.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -491,6 +495,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA62F5F12154C1C100356E3F /* Build configuration list for PBXNativeTarget "Podcasts" */;
 			buildPhases = (
+				5123D25B24D489DA00CA8DE2 /* Run SwiftFormat */,
+				5123D25D24D48D9200CA8DE2 /* Run Swiftlint */,
 				AA62F5DB2154C1BF00356E3F /* Sources */,
 				AA62F5DC2154C1BF00356E3F /* Frameworks */,
 				AA62F5DD2154C1BF00356E3F /* Resources */,
@@ -509,8 +515,9 @@
 				51B8295B24D1E3F600F08332 /* SnapKit */,
 				51B8295E24D1E41A00F08332 /* SPStorkController */,
 				51B8296124D1E43700F08332 /* Disk */,
-				51B8296524D1EA7E00F08332 /* Rswift */,
 				51B8296824D20ABD00F08332 /* Gedatsu */,
+				512B307D24D49E6D0020B441 /* SFSafeSymbols */,
+				AA38217424D5493B009DBB0F /* ModernAVPlayer */,
 			);
 			productName = Podcasts;
 			productReference = AA62F5DF2154C1BF00356E3F /* Podcasts.app */;
@@ -523,7 +530,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Eugene Karambirov";
 				TargetAttributes = {
 					AA62F5DE2154C1BF00356E3F = {
@@ -555,8 +562,9 @@
 				51B8295A24D1E3F600F08332 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				51B8295D24D1E41900F08332 /* XCRemoteSwiftPackageReference "SPStorkController" */,
 				51B8296024D1E43700F08332 /* XCRemoteSwiftPackageReference "Disk" */,
-				51B8296424D1EA7E00F08332 /* XCRemoteSwiftPackageReference "R.swift" */,
 				51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */,
+				512B307C24D49E6D0020B441 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+				AA38217324D5493B009DBB0F /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
 			);
 			productRefGroup = AA62F5E02154C1BF00356E3F /* Products */;
 			projectDirPath = "";
@@ -578,6 +586,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5123D25B24D489DA00CA8DE2 /* Run SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftFormat";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n\tswiftformat .\nelse\n\techo \"error: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\n\texit 1\nfi\n";
+		};
+		5123D25D24D48D9200CA8DE2 /* Run Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Swiftlint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AA62F5DB2154C1BF00356E3F /* Sources */ = {
@@ -607,7 +654,6 @@
 				AA815F7B2238115A001B4817 /* FavoritePodcastCellViewModel.swift in Sources */,
 				AA7CDA6E2220009A00838F13 /* TableViewDataSource.swift in Sources */,
 				AABC9418225A41D30034FEA2 /* PlayerDetailsViewModel.swift in Sources */,
-				AA7CDA62221FF20100838F13 /* R.generated.swift in Sources */,
 				AA62F61C215958F200356E3F /* Notification+Extensions.swift in Sources */,
 				AA62F6052154CF5000356E3F /* DownloadsViewController.swift in Sources */,
 				AA341C06223FFBB900931C36 /* MiniPlayerView.swift in Sources */,
@@ -631,6 +677,7 @@
 				AA62F61E21595C2C00356E3F /* SearchResult.swift in Sources */,
 				AA7CDA6C221FF47900838F13 /* UITableViewCell+Extensions.swift in Sources */,
 				AABC941A225A56A60034FEA2 /* UIViewController+Extensions.swift in Sources */,
+				512B308024D4A1A20020B441 /* AppConfig.swift in Sources */,
 				AA9070C9225A59B40033155E /* PlayerService.swift in Sources */,
 				AA62F5FF2154CF0A00356E3F /* FavoritesViewController.swift in Sources */,
 				AA28B6112225A32A0090B0A8 /* MainTabBarViewModel.swift in Sources */,
@@ -678,6 +725,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -703,7 +751,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -740,6 +788,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -759,7 +808,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -776,13 +825,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TDR3533VJS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Other/Config/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karambirov.PodcastsClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -797,13 +847,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TDR3533VJS;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Podcasts/Other/Config/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.karambirov.PodcastsClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -836,6 +887,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		512B307C24D49E6D0020B441 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/piknotech/SFSafeSymbols";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		51B8294B24D1E1CE00F08332 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -900,14 +959,6 @@
 				minimumVersion = 0.6.4;
 			};
 		};
-		51B8296424D1EA7E00F08332 /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.2.0;
-			};
-		};
 		51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bannzai/Gedatsu";
@@ -916,9 +967,22 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		AA38217324D5493B009DBB0F /* XCRemoteSwiftPackageReference "ModernAVPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noreasonprojects/ModernAVPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		512B307D24D49E6D0020B441 /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512B307C24D49E6D0020B441 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
 		51B8294C24D1E1CE00F08332 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 51B8294B24D1E1CE00F08332 /* XCRemoteSwiftPackageReference "Moya" */;
@@ -959,15 +1023,15 @@
 			package = 51B8296024D1E43700F08332 /* XCRemoteSwiftPackageReference "Disk" */;
 			productName = Disk;
 		};
-		51B8296524D1EA7E00F08332 /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 51B8296424D1EA7E00F08332 /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
-		};
 		51B8296824D20ABD00F08332 /* Gedatsu */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 51B8296724D20ABD00F08332 /* XCRemoteSwiftPackageReference "Gedatsu" */;
 			productName = Gedatsu;
+		};
+		AA38217424D5493B009DBB0F /* ModernAVPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA38217324D5493B009DBB0F /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
+			productName = ModernAVPlayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

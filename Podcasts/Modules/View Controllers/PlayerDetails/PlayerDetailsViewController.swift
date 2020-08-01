@@ -6,14 +6,14 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import ModernAVPlayer
+import UIKit
 
 final class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
-    fileprivate var viewModel: PlayerDetailsViewModel
-    fileprivate lazy var playerView = PlayerStackView()
+    private var viewModel: PlayerDetailsViewModel
+    private lazy var playerView = PlayerStackView()
 
     // MARK: - View Controller's life cycle
     init(viewModel: PlayerDetailsViewModel) {
@@ -21,6 +21,7 @@ final class PlayerDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,13 +31,11 @@ final class PlayerDetailsViewController: UIViewController {
         initialSetup()
         viewModel.playEpisode()
     }
-
 }
 
 // MARK: - Setup
 extension PlayerDetailsViewController {
-
-    fileprivate func initialSetup() {
+    private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()
         setupViews()

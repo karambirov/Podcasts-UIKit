@@ -6,10 +6,11 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
-import Moya
 import Foundation
+import Moya
 
 enum ITunesAPI {
+
     case search(term: String)
 }
 
@@ -29,24 +30,23 @@ extension ITunesAPI: TargetType {
         }
     }
 
-	var method: Moya.Method {
-        return .get
+    var method: Moya.Method {
+        .get
     }
 
     var sampleData: Data {
-        return Data()
+        Data()
     }
 
     var task: Task {
         switch self {
-        case .search(let term):
-            let parameters = ["term": term.URLEscapedString, "media": "podcast"]
+        case let .search(term):
+            let parameters = ["term": term.urlEscapedString, "media": "podcast"]
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         }
     }
 
     var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        ["Content-type": "application/json"]
     }
-
 }

@@ -11,7 +11,6 @@ import UIKit
 extension UIApplication {
 
     static var mainTabBarController: MainTabBarController? {
-        return shared.keyWindow?.rootViewController as? MainTabBarController
+        shared.keyWindow?.rootViewController as? MainTabBarController
     }
-
 }

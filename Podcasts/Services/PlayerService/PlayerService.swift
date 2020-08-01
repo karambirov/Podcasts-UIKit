@@ -11,17 +11,16 @@ import ModernAVPlayer
 final class PlayerService {
 
     var playerState: ModernAVPlayer.State {
-        return player.state
+        player.state
     }
 
     var currentTime: Double {
-        return player.currentTime
+        player.currentTime
     }
 
     private var metadata: ModernAVPlayerMediaMetadata?
     private var media: ModernAVPlayerMedia?
     private var player = ModernAVPlayer(loggerDomains: [.state, .error])
-
 
     func load(episode: Episode) {
         // TODO: - Add playing from fileURL
@@ -57,6 +56,7 @@ final class PlayerService {
     func seek(to position: Double) {
         player.seek(position: position)
     }
+
 //    func changeVolume(value: Double) {
 //
 //    }

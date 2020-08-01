@@ -11,21 +11,20 @@ import UIKit
 final class PodcastsSearchingView: UIView {
 
     // MARK: - Properties
-    fileprivate lazy var activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
-    fileprivate lazy var textLabel             = UILabel()
-    fileprivate lazy var stackView             = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
+    private lazy var activityIndicatorView = UIActivityIndicatorView(style: .large)
+    private lazy var textLabel = UILabel()
+    private lazy var stackView = UIStackView(arrangedSubviews: [activityIndicatorView, textLabel])
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
         setupViews()
     }
-
 }
 
 // MARK: - Setup views
 extension PodcastsSearchingView {
 
-    fileprivate func setupViews() {
+    private func setupViews() {
         setupActivityIndicatorView()
         setupLabel()
         setupLayout()
@@ -38,7 +37,7 @@ extension PodcastsSearchingView {
 
     private func setupLabel() {
         textLabel.numberOfLines = 0
-        textLabel.textColor = R.color.tintColor()
+        textLabel.textColor = AppConfig.tintColor
         textLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         textLabel.text = "Currently searching, please wait"
         textLabel.textAlignment = .center
@@ -47,11 +46,10 @@ extension PodcastsSearchingView {
     private func setupLayout() {
         stackView.spacing = 12
         stackView.axis = .vertical
-        self.addSubview(stackView)
+        addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalTo(200)
         }
     }
-
 }

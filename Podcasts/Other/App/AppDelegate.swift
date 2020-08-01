@@ -6,31 +6,32 @@
 //  Copyright © 2018 Eugene Karambirov. All rights reserved.
 //
 
-import UIKit
 import AlamofireNetworkActivityIndicator
 import Gedatsu
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions
-                     launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _: UIApplication,
+        didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
         let mainTabBarViewModel = MainTabBarViewModel(items: [.search, .favorites, .downloads])
         window?.rootViewController = MainTabBarController(viewModel: mainTabBarViewModel)
-        window?.tintColor = R.color.tintColor()
+        window?.tintColor = AppConfig.tintColor
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
 
-		#if DEBUG
-		Gedatsu.open()
-		#endif
+        #if DEBUG
+        Gedatsu.open()
+        #endif
 
         return true
     }
-
 }
