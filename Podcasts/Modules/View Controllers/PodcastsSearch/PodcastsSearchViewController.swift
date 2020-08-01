@@ -20,7 +20,7 @@ final class PodcastsSearchViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-	@available(*, unavailable)
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -41,6 +41,17 @@ final class PodcastsSearchViewController: UITableViewController {
     }
 }
 
+private extension PodcastsSearchViewController {
+
+    func searchPodcasts(with searchText: String) {
+        guard searchText.count > 2 else { return }
+        viewModel.searchPodcasts(with: searchText) { [weak self] in
+            self?.tableView.dataSource = self?.viewModel.dataSource
+            self?.tableView.reloadData()
+        }
+    }
+}
+
 // MARK: - UITableView
 extension PodcastsSearchViewController {
 
@@ -50,8 +61,7 @@ extension PodcastsSearchViewController {
 
     // MARK: Header Setup
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let emptyStateView = setupEmptyStateView()
-        return emptyStateView
+        makeEmptyStateView()
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -62,7 +72,7 @@ extension PodcastsSearchViewController {
 
     // MARK: Footer Setup
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        setupLoadingView()
+        PodcastsSearchingView()
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -93,28 +103,16 @@ extension PodcastsSearchViewController: UISearchBarDelegate {
 }
 
 // MARK: - Setup
-extension PodcastsSearchViewController {
+private extension PodcastsSearchViewController {
 
-    private func initialSetup() {
+    func initialSetup() {
         view.backgroundColor = .white
         setupNavigationBar()
         setupSearchBar()
         setupTableView()
     }
 
-    private func searchPodcasts(with searchText: String) {
-        viewModel.deleteLoadedPodcasts()
-        tableView.reloadData()
-
-        guard searchText.count > 2 else { return }
-        viewModel.searchPodcasts(with: searchText) { [weak self] in
-            guard let self = self else { return }
-            self.tableView.dataSource = self.viewModel.dataSource
-            self.tableView.reloadData()
-        }
-    }
-
-    private func setupEmptyStateView() -> UIView {
+    func makeEmptyStateView() -> UIView {
         let label = UILabel()
         label.text = Strings.enterSearchTermMessage
         label.textAlignment = .center
@@ -123,17 +121,12 @@ extension PodcastsSearchViewController {
         return label
     }
 
-    private func setupLoadingView() -> UIView? {
-        let podcastsSearchingView = PodcastsSearchingView()
-        return podcastsSearchingView
-    }
-
-    private func setupNavigationBar() {
+    func setupNavigationBar() {
         navigationItem.searchController = searchController
         title = Strings.title
     }
 
-    private func setupSearchBar() {
+    func setupSearchBar() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.definesPresentationContext = true
@@ -141,7 +134,7 @@ extension PodcastsSearchViewController {
         searchController.searchBar.delegate = self
     }
 
-    private func setupTableView() {
+    func setupTableView() {
         tableView.register(PodcastCell.self, forCellReuseIdentifier: PodcastCell.typeName)
         tableView.dataSource = viewModel.dataSource
         tableView.tableFooterView = UIView()
@@ -149,6 +142,7 @@ extension PodcastsSearchViewController {
 }
 
 private extension PodcastsSearchViewController {
+
     enum Strings {
         static let podcastsSearchingView = "PodcastsSearchingView"
         static let enterSearchTermMessage = "Please, enter a search term."

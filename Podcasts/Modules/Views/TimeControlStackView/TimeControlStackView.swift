@@ -13,7 +13,7 @@ final class TimeControlStackView: UIStackView {
 
     // MARK: - Properties
     private lazy var currentTimeSlider = UISlider()
-    private lazy var currentTimeLabel = UILabel()
+    lazy var currentTimeLabel = UILabel()
     private lazy var durationLabel = UILabel()
     private lazy var timeStackView = UIStackView(arrangedSubviews: [currentTimeLabel, durationLabel])
 

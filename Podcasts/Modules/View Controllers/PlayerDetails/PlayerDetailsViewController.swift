@@ -6,9 +6,10 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
+import ModernAVPlayer
 import UIKit
 
-class PlayerDetailsViewController: UIViewController {
+final class PlayerDetailsViewController: UIViewController {
 
     // MARK: - Properties
     private var viewModel: PlayerDetailsViewModel
@@ -20,7 +21,7 @@ class PlayerDetailsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-	@available(*, unavailable)
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -28,14 +29,27 @@ class PlayerDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        viewModel.playEpisode()
     }
 }
 
 // MARK: - Setup
 extension PlayerDetailsViewController {
+
     private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()
+        setupViews()
+    }
+
+    fileprivate func setupViews() {
+        playerView.timeControlStackView.currentTimeLabel.text = viewModel.currentTime.toDisplayString()
+
+        playerView.titleLabel.text = viewModel.episode.title
+        playerView.authorLabel.text = viewModel.episode.author
+
+        guard let url = URL(string: viewModel.episode.imageUrl?.httpsUrlString ?? "") else { return }
+        playerView.episodeImageView.setImage(from: url)
     }
 
     private func setupLayout() {

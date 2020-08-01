@@ -20,7 +20,7 @@ final class EpisodesViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-	@available(*, unavailable)
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,10 +30,9 @@ final class EpisodesViewController: UITableViewController {
         initialSetup()
 
         viewModel.fetchEpisodes { [weak self] in
-            guard let self = self else { return }
-            self.navigationItem.title = self.viewModel.podcast.trackName
-            self.tableView.dataSource = self.viewModel.dataSource
-            self.tableView.reloadData()
+            self?.navigationItem.title = self?.viewModel.podcast.trackName
+            self?.tableView.dataSource = self?.viewModel.dataSource
+            self?.tableView.reloadData()
         }
     }
 }
@@ -69,14 +68,19 @@ extension EpisodesViewController {
     // MARK: Navigation
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = viewModel.episode(for: indexPath)
-//        let mainTabBarController = UIApplication.mainTabBarController
-//        mainTabBarController?.maximizePlayerDetails(for: episode,
-//                                                    playlistEpisodes: viewModel.episodes)
-        let playerVM = PlayerDetailsViewModel()
-        let playerVC = PlayerDetailsViewController(viewModel: playerVM)
-        presentAsStork(playerVC)
+        presentPlayer(with: episode)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
+    private func presentPlayer(with episode: Episode) {
+//        let mainTabBarController = UIApplication.mainTabBarController
+//        mainTabBarController?.maximizePlayerDetails(for: episode,playlistEpisodes: viewModel.episodes)
+
+        let viewModel = PlayerDetailsViewModel(episode: episode, playerService: viewModel.playerService)
+        let playerViewController = PlayerDetailsViewController(viewModel: viewModel)
+        present(playerViewController, animated: true)
+    }
+
 }
 
 // MARK: - Setup

@@ -10,7 +10,20 @@ import Foundation
 
 final class PlayerDetailsViewModel {
 
-    init() {
-        print("PlayerDetailsViewModel is inited")
+    let episode: Episode
+    private let playerService: PlayerService
+
+    init(episode: Episode, playerService: PlayerService) {
+        self.episode = episode
+        self.playerService = playerService
+    }
+
+    var currentTime: Double {
+        playerService.currentTime
+    }
+
+    func playEpisode() {
+        playerService.load(episode: episode)
+        playerService.play()
     }
 }

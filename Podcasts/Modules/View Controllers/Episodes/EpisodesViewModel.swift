@@ -10,37 +10,30 @@ import Foundation
 
 final class EpisodesViewModel {
 
-    // MARK: - Private
-    private let networkingService = NetworkingService()
-    private let podcastsService = PodcastsService()
-
-    // MARK: - Properties
     let podcast: Podcast
-    var episodes = [Episode]()
-    var dataSource: TableViewDataSource<Episode, EpisodeCell>?
+    private let networkingService = NetworkingService()
+    private let podcastsService: PodcastsService
+    private let playerService: PlayerService
+    private(set) var episodes = [Episode]()
+    private(set) var dataSource: TableViewDataSource<Episode, EpisodeCell>?
 
-    init(podcast: Podcast) {
+    init(podcast: Podcast, podcastsService: PodcastsService, playerService: PlayerService) {
         self.podcast = podcast
+        self.podcastsService = podcastsService
+        self.playerService = playerService
     }
 }
 
-// MARK: - Methods
 extension EpisodesViewModel {
 
     func fetchEpisodes(_ completion: @escaping () -> Void) {
-        print("Looking for episodes at feed url:", podcast.feedUrl ?? "")
-        guard let feedURL = podcast.feedUrl else { return }
-        networkingService.fetchEpisodes(feedUrl: feedURL) { [weak self] episodes in
-            guard let self = self else { return }
-            self.episodesDidLoad(episodes)
-            DispatchQueue.main.async {
-                completion()
-            }
+        networkingService.fetchEpisodes(feedUrlSting: podcast.feedUrlSting) { [weak self] episodes in
+            self?.episodesDidLoad(episodes)
+            completion()
         }
     }
 
     func saveFavorite() {
-        print("Saving info into UserDefaults")
         var listOfPodcasts = podcastsService.savedPodcasts
         listOfPodcasts.append(podcast)
         guard

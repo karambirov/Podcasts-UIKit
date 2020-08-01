@@ -23,7 +23,7 @@ final class FavoritesViewController: UICollectionViewController {
         super.init(collectionViewLayout: collectionViewLayout)
     }
 
-	@available(*, unavailable)
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

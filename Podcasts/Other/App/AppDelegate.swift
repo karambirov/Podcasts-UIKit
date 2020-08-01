@@ -19,11 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _: UIApplication,
         didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        let mainTabBarViewModel = MainTabBarViewModel(items: [.search, .favorites, .downloads])
-        window?.rootViewController = MainTabBarController(viewModel: mainTabBarViewModel)
+        window?.rootViewController = MainTabBarController(
+            viewModel: MainTabBarViewModel(
+                items: [.search, .favorites, .downloads],
+                playerService: ServiceLocator.playerService
+            )
+        )
         window?.tintColor = AppConfig.tintColor
 
         NetworkActivityIndicatorManager.shared.isEnabled = true
