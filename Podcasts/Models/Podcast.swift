@@ -14,14 +14,14 @@ final class Podcast: NSObject, Decodable, NSCoding {
     var artistName: String?
     var artworkUrl600: String?
     var trackCount: Int?
-    var feedUrl: String?
+    var feedUrlSting: String?
 
     func encode(with aCoder: NSCoder) {
         print("Trying to transform Podcast into Data")
         aCoder.encode(trackName ?? "", forKey: Keys.trackNameKey)
         aCoder.encode(artistName ?? "", forKey: Keys.artistNameKey)
         aCoder.encode(artworkUrl600 ?? "", forKey: Keys.artworkKey)
-        aCoder.encode(feedUrl ?? "", forKey: Keys.feedKey)
+        aCoder.encode(feedUrlSting ?? "", forKey: Keys.feedKey)
     }
 
     init?(coder aDecoder: NSCoder) {
@@ -29,7 +29,7 @@ final class Podcast: NSObject, Decodable, NSCoding {
         trackName = aDecoder.decodeObject(forKey: Keys.trackNameKey) as? String
         artistName = aDecoder.decodeObject(forKey: Keys.artistNameKey) as? String
         artworkUrl600 = aDecoder.decodeObject(forKey: Keys.artworkKey) as? String
-        feedUrl = aDecoder.decodeObject(forKey: Keys.feedKey) as? String
+        feedUrlSting = aDecoder.decodeObject(forKey: Keys.feedKey) as? String
     }
 }
 

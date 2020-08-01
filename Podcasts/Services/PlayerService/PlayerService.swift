@@ -6,6 +6,7 @@
 //  Copyright © 2019 Eugene Karambirov. All rights reserved.
 //
 
+import Foundation
 import ModernAVPlayer
 
 final class PlayerService {
@@ -24,10 +25,14 @@ final class PlayerService {
 
     func load(episode: Episode) {
         // TODO: - Add playing from fileURL
-        guard let episodeURL = URL(string: episode.streamUrl.httpsUrlString ?? "") else { return }
-        guard let imageURL = URL(string: episode.imageUrl?.httpsUrlString ?? "") else { return }
+        guard
+            let episodeURL = URL(string: episode.streamUrl.httpsUrlString),
+            let imageURL = URL(string: episode.imageUrl?.httpsUrlString ?? "")
+        else { return }
+
         metadata = ModernAVPlayerMediaMetadata(title: episode.title, artist: episode.author, remoteImageUrl: imageURL)
         media = ModernAVPlayerMedia(url: episodeURL, type: .stream(isLive: true), metadata: metadata)
+
         guard let media = media else { return }
         player.load(media: media, autostart: true)
     }
@@ -60,5 +65,4 @@ final class PlayerService {
 //    func changeVolume(value: Double) {
 //
 //    }
-
 }

@@ -10,12 +10,16 @@ import Foundation
 
 final class FavoritesViewModel {
 
-    // MARK: - Private
-    private let podcastsService = PodcastsService()
+    private let podcastsService: PodcastsService
+    private let playerService: PlayerService
 
-    // MARK: - Properties
-    lazy var podcasts = podcastsService.savedPodcasts
-    var dataSource: CollectionViewDataSource<Podcast, FavoritePodcastCell>?
+    private(set) lazy var podcasts = podcastsService.savedPodcasts
+    private(set) var dataSource: CollectionViewDataSource<Podcast, FavoritePodcastCell>?
+
+    init(podcastsService: PodcastsService, playerService: PlayerService) {
+        self.podcastsService = podcastsService
+        self.playerService = playerService
+    }
 }
 
 // MARK: - Methods
@@ -23,9 +27,7 @@ extension FavoritesViewModel {
 
     func fetchFavorites(_ completion: @escaping () -> Void) {
         podcastsDidLoad(podcasts)
-        DispatchQueue.main.async {
-            completion()
-        }
+        completion()
     }
 
     func podcast(for indexPath: IndexPath) -> Podcast {

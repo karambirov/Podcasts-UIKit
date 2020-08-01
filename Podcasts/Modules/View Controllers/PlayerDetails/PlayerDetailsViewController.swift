@@ -35,6 +35,7 @@ final class PlayerDetailsViewController: UIViewController {
 
 // MARK: - Setup
 extension PlayerDetailsViewController {
+
     private func initialSetup() {
         view.backgroundColor = .white
         setupLayout()

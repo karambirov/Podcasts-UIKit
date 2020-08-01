@@ -11,15 +11,15 @@ import UIKit
 final class PlayerStackView: UIStackView {
 
     // MARK: - Properties
-    lazy var closeButton              = UIButton(type: .system)
-    lazy var episodeImageView         = UIImageView()
-    lazy var timeControlStackView     = TimeControlStackView()
-    lazy var titleLabel               = UILabel()
-    lazy var authorLabel              = UILabel()
-    lazy var playingControlsStackView = PlayingControlsStackView()
-    lazy var volumeControlStackView   = VolumeControlStackView()
+    private lazy var closeButton = UIButton(type: .system)
+    lazy var episodeImageView = UIImageView()
+    lazy var timeControlStackView = TimeControlStackView()
+    lazy var titleLabel = UILabel()
+    lazy var authorLabel = UILabel()
+    private lazy var playingControlsStackView = PlayingControlsStackView()
+    private lazy var volumeControlStackView = VolumeControlStackView()
 
-    fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    private let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
 
     // MARK: - Life cycle
     override func didMoveToSuperview() {
@@ -45,9 +45,9 @@ final class PlayerStackView: UIStackView {
 // MARK: - Setup
 extension PlayerStackView {
 
-    fileprivate func setupLayout() {
-        axis            = .vertical
-        spacing         = 5
+    private func setupLayout() {
+        axis = .vertical
+        spacing = 5
         let arrangedSubviews = [closeButton, episodeImageView, timeControlStackView, titleLabel, authorLabel, playingControlsStackView, volumeControlStackView]
         arrangedSubviews.forEach { self.addArrangedSubview($0) }
     }

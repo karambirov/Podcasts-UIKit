@@ -10,11 +10,12 @@ import Foundation
 
 final class PlayerDetailsViewModel {
 
-    var episode: Episode
-    let playerService = PlayerService()
+    let episode: Episode
+    private let playerService: PlayerService
 
-    init(episode: Episode) {
+    init(episode: Episode, playerService: PlayerService) {
         self.episode = episode
+        self.playerService = playerService
     }
 
     var currentTime: Double {
@@ -23,5 +24,6 @@ final class PlayerDetailsViewModel {
 
     func playEpisode() {
         playerService.load(episode: episode)
+        playerService.play()
     }
 }

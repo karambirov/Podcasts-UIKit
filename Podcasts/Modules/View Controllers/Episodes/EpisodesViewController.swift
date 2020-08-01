@@ -30,10 +30,9 @@ final class EpisodesViewController: UITableViewController {
         initialSetup()
 
         viewModel.fetchEpisodes { [weak self] in
-            guard let self = self else { return }
-            self.navigationItem.title = self.viewModel.podcast.trackName
-            self.tableView.dataSource = self.viewModel.dataSource
-            self.tableView.reloadData()
+            self?.navigationItem.title = self?.viewModel.podcast.trackName
+            self?.tableView.dataSource = self?.viewModel.dataSource
+            self?.tableView.reloadData()
         }
     }
 }
@@ -74,12 +73,12 @@ extension EpisodesViewController {
     }
 
     private func presentPlayer(with episode: Episode) {
-        //        let mainTabBarController = UIApplication.mainTabBarController
-        //        mainTabBarController?.maximizePlayerDetails(for: episode,
-        //                                                    playlistEpisodes: viewModel.episodes)
-        let viewModel = PlayerDetailsViewModel(episode: episode)
+//        let mainTabBarController = UIApplication.mainTabBarController
+//        mainTabBarController?.maximizePlayerDetails(for: episode,playlistEpisodes: viewModel.episodes)
+
+        let viewModel = PlayerDetailsViewModel(episode: episode, playerService: viewModel.playerService)
         let playerViewController = PlayerDetailsViewController(viewModel: viewModel)
-        presentAsStork(playerViewController)
+        present(playerViewController, animated: true)
     }
 
 }

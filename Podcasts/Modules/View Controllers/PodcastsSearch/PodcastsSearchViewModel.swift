@@ -10,30 +10,25 @@ import UIKit
 
 final class PodcastsSearchViewModel {
 
-    // MARK: - Private
+    private let networkingService: NetworkingService
     private var timer: Timer?
-    private let networkingService = NetworkingService()
+    private(set) var dataSource: TableViewDataSource<Podcast, PodcastCell>?
+    private(set) var podcasts = [Podcast]()
 
-    // MARK: - Properties
-    var podcasts = [Podcast]()
-    var dataSource: TableViewDataSource<Podcast, PodcastCell>?
+    init(networkingService: NetworkingService = NetworkingService()) {
+        self.networkingService = networkingService
+    }
 }
 
-// MARK: - Methods
 extension PodcastsSearchViewModel {
 
+    // TODO: Search with delay 0.3 sec
     func searchPodcasts(with query: String, completion: @escaping () -> Void) {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false, block: { [weak self] _ in
-            guard let self = self else { return }
-            self.networkingService.fetchPodcasts(searchText: query) { [weak self] podcasts in
-                guard let self = self else { return }
-                self.podcastsDidLoad(podcasts)
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-        })
+        deleteLoadedPodcasts()
+        networkingService.fetchPodcasts(searchText: query) { [weak self] podcasts in
+            self?.podcastsDidLoad(podcasts)
+            completion()
+        }
     }
 
     func deleteLoadedPodcasts() {
